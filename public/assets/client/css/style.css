@@ -2140,3 +2140,47 @@ textarea.input {
     margin-top: 10px;
   }
 }
+.content{
+  line-height: 1.8;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.content ul{
+  padding-left: 20px;
+}
+.news-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 20px 0;
+}
+.news-card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.news-card img {
+  width: 100%;
+  height: auto;
+}
+.news-content {
+  padding: 20px;
+}
+.news-content h5 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.news-content p {
+  font-size: 14px;
+  color: #666;
+}
+.btn-danger {
+  background-color: #D10024;
+  border: none;
+  border-radius: 20px;
+}
+.contacts{
+  margin: 20px 0 20px 0;
+}

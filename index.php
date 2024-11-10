@@ -22,6 +22,10 @@ Route::get('/', 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 
+Route::get('/gioithieu', 'App\Controllers\Client\HomeController@gioithieu');
+Route::get('/lienhe', 'App\Controllers\Client\HomeController@lienhe');
+Route::get('/tintuc', 'App\Controllers\Client\HomeController@tintuc');
+
 
 // *** Admin
 
