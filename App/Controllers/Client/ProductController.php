@@ -34,36 +34,89 @@ class ProductController
             [
                 'id' => 3,
                 'name' => 'Category 3',
-                'status' => 0
+                'status' => 1
             ],
 
         ];
         $products = [
             [
                 'id' => 1,
-                'name' => 'Product 1',
-                'description' => 'Description Product 1',
+                'name' => 'Sản phẩm 1',
+                'description' => 'Mô tả sản phẩm 1',
                 'price' => 100000,
                 'discount_price' => 10000,
-                'image' => 'product.jpg',
+                'image' => '../../../public/assets/client/img/product11.jpg',
                 'status' => 1
             ],
             [
                 'id' => 2,
-                'name' => 'Product 2',
-                'description' => 'Description Product 2',
+                'name' => 'Sản phẩm 2',
+                'description' => 'Mô tả sản phẩm 2',
                 'price' => 200000,
                 'discount_price' => 20000,
-                'image' => 'product.jpg',
+                'image' => '../../../public/assets/client/img/product12.jpg',
                 'status' => 1
             ],
             [
                 'id' => 3,
-                'name' => 'Product 3',
-                'description' => 'Description Product 3',
+                'name' => 'Sản phẩm 3',
+                'description' => 'Mô tả sản phẩm 3',
                 'price' => 300000,
                 'discount_price' => 30000,
-                'image' => 'product.jpg',
+                'image' => '../../../public/assets/client/img/product13.jpg',
+                'status' => 1
+            ],
+            [
+                'id' => 4,
+                'name' => 'Sản phẩm 4',
+                'description' => 'Mô tả sản phẩm 4',
+                'price' => 100000,
+                'discount_price' => 10000,
+                'image' => '../../../public/assets/client/img/product14.jpg',
+                'status' => 1
+            ],
+            [
+                'id' => 5,
+                'name' => 'Sản phẩm 5',
+                'description' => 'Mô tả sản phẩm 2',
+                'price' => 200000,
+                'discount_price' => 20000,
+                'image' => '../../../public/assets/client/img/product15.jpg',
+                'status' => 1
+            ],
+            [
+                'id' => 6,
+                'name' => 'Sản phẩm 6',
+                'description' => 'Mô tả sản phẩm 3',
+                'price' => 300000,
+                'discount_price' => 30000,
+                'image' => '../../../public/assets/client/img/product16.jpg',
+                'status' => 1
+            ],[
+                'id' => 7,
+                'name' => 'Sản phẩm 7',
+                'description' => 'Mô tả sản phẩm 1',
+                'price' => 100000,
+                'discount_price' => 10000,
+                'image' => '../../../public/assets/client/img/product17.jpg',
+                'status' => 1
+            ],
+            [
+                'id' => 8,
+                'name' => 'Sản phẩm 8',
+                'description' => 'Mô tả sản phẩm 2',
+                'price' => 200000,
+                'discount_price' => 20000,
+                'image' => '../../../public/assets/client/img/product18.jpg',
+                'status' => 1
+            ],
+            [
+                'id' => 9,
+                'name' => 'Sản phẩm 9',
+                'description' => 'Mô tả sản phẩm 3',
+                'price' => 300000,
+                'discount_price' => 30000,
+                'image' => '../../../public/assets/client/img/product19.jpg',
                 'status' => 1
             ],
 
@@ -81,15 +134,15 @@ class ProductController
     {
         $product_detail = [
             'id' => $id,
-            'name' => 'Product 1',
-            'description' => 'Description Product 1',
+            'name' => 'Sản phẩm 1',
+            'description' => 'Mô tả sản phẩm 1',
             'price' => 100000,
             'discount_price' => 10000,
-            'image' => 'product.jpg',
+            'image' => 'product11.jpg',
             'status' => 1
         ];
         $data = [
-            'product' => $product_detail
+            'products' => $product_detail
         ];
         Header::render();
 
