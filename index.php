@@ -26,6 +26,8 @@ Route::get('/gioithieu', 'App\Controllers\Client\HomeController@gioithieu');
 Route::get('/lienhe', 'App\Controllers\Client\HomeController@lienhe');
 Route::get('/tintuc', 'App\Controllers\Client\HomeController@tintuc');
 
+Route::get('/login', 'App\Controllers\Client\AuthController@login');
+
 
 // *** Admin
 

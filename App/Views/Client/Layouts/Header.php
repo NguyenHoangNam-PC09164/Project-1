@@ -48,7 +48,7 @@ class Header extends BaseView
                         </ul>
                         <ul class="header-links pull-right">
                             <li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
-                            <li><a href="#"><i class="fa fa-user-o"></i> Tài khoản</a></li>
+                            <li><a href="/login"><i class="fa fa-user-o"></i> Tài khoản</a></li>
                         </ul>
                     </div>
                 </div>
@@ -106,36 +106,7 @@ class Header extends BaseView
                                                     </div>
                                                     <button class="delete"><i class="fa fa-close"></i></button>
                                                 </div>
-                                                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                                                        <span class="navbar-toggler-icon"></span>
-                                                    </button>
-                                                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                                                        <a class="navbar-brand" href="/">Client</a>
-                                                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                                                            <li class="nav-item active">
-                                                                <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="/products">Sản phẩm</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">Giỏ hàng</a>
-                                                            </li>
-
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">Đăng nhập</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link" href="#">Đăng ký</a>
-                                                            </li>
-                                                        </ul>
-                                                        <form class="form-inline my-2 my-lg-0">
-                                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
-                                                        </form>
-                                                    </div>
-                                                </nav>
+                                        
 
                                                 <div class="product-widget">
                                                     <div class="product-img">
