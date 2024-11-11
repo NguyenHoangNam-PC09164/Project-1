@@ -217,10 +217,14 @@ class Home extends BaseView
                 </div>
             </div>
         </div>
+        <div class="section">
+            <div class="container" >
+                <div class="row" id="hot-deal">
 
-        <div id="hot-deal" class="section">
-
+                </div>
+            </div>
         </div>
+
 
         <div class="section">
             <div class="container">
@@ -387,6 +391,41 @@ class Home extends BaseView
                 </div>
             </div>
         </div>
+
+
+
+
+    <div class="container mt-4">
+        <div class="row text-center">
+        <div class="col-md-12 mb-4">
+                <div class="card product-card">
+                    <img src="../../../public/assets/client/img/banner_bottom_1.webp" class="card-img-top" alt="Sony Camera">
+                    
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="../../../public/assets/client/img/banner_bottom_2.webp" class="card-img-top" alt="Sony Camera">
+                    
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="../../../public/assets/client/img/banner_bottom_3.webp" class="card-img-top" alt="Nikon Camera">
+                    
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="../../../public/assets/client/img/banner_bottom_4.webp" class="card-img-top" alt="Fujifilm Camera">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
         <div class="section">
             <div class="container">

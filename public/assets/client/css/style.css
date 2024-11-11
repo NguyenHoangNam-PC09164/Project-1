@@ -784,14 +784,19 @@ textarea.input {
 /*=========================================================
 	05 -> HOT DEAL
 ===========================================================*/
-
-#hot-deal{ 
+#hot-deal {
   background-image: url('../img/img_one_banner.jpg'); 
   background-repeat: no-repeat; 
   background-position: center; 
-  margin: 10px 165px 0 165px; 
-  height: 350px; 
+  background-size: cover;
+  width: 100%;        
+  max-width: 1170px;  
+  height: 350px;      
+  margin: 0 auto;     
 }
+
+
+
 
 /*=========================================================
 	06 -> PRODUCT
@@ -2184,3 +2189,36 @@ textarea.input {
 .contacts{
   margin: 20px 0 20px 0;
 }
+
+.text-danger{
+  color: #D10024;
+
+}
+.frm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0 100px 0;
+}
+
+.frm .card {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng cho card */
+  border-radius: 8px; /* Bo tròn các góc */
+  padding: 20px; /* Khoảng cách bên trong card */
+}
+
+
+/* Product Card Styling */
+.product-card {
+  transition: transform 0.3s ease;
+}
+.product-card:hover {
+  transform: scale(1.05);
+}
+.product-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  margin-top: 30px;
+}
+

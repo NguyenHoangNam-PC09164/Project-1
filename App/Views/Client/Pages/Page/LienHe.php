@@ -44,7 +44,7 @@ class LienHe extends BaseView
 					<div class="map-responsive">
 						<iframe 
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.4204309702277!2d105.75565247450827!3d9.982086773343747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08906415c355f%3A0x416815a99ebd841e!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1731257797841!5m2!1svi!2s" 
-						width="500" height="450" style="border:0;" 
+						width="550" height="450" style="border:0;" 
 						allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
 						</iframe>
 					</div>
