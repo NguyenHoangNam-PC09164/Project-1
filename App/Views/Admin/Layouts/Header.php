@@ -91,7 +91,9 @@ class Header extends BaseView
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><strong><i class="bi bi-camera-fill"></i> Máy ảnh 360</strong></a>
+                    <!-- <a class="navbar-brand" href="index.html"><strong><i class="bi bi-camera-fill"></i> Photo Hub</strong></a> -->
+                    <a class="navbar-brand" href="/admin"><img src="../../../../public/uploads/users/logoAdmin.jpg" alt="ảnh admin"></a>
+
 
                     <div id="sideNav" href="">
                         <i class="fa fa-bars icon"></i>
