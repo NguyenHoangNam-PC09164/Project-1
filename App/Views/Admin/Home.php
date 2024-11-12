@@ -27,12 +27,23 @@ class Home extends BaseView
                                         <i class="fa fa-eye fa-5x red"></i>
                                     </div>
 
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="page-header">
+                                            <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
+                                            <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                            <div class="page-breadcrumb">
+                                                <nav aria-label="breadcrumb">
+                                                    <ol class="breadcrumb">
+                                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển 1</a></li>
+                                                        <li class="breadcrumb-item active" aria-current="page">Loại sản phẩm</li>
+                                                    </ol>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    <div class="ecommerce-widget">
-                        <!-- <div class="row">
+                                    <div class="ecommerce-widget">
+                                        <!-- <div class="row">
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -90,7 +101,7 @@ class Home extends BaseView
                                 </div>
                             </div>
                         </div> -->
-                        <!-- <div class="row">
+                                        <!-- <div class="row">
 
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
@@ -223,18 +234,18 @@ class Home extends BaseView
                     </div><!--/.row-->
 
 
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Line Chart
-                                </div>
-                                <div class="panel-body">
-                                    <div id="morris-line-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="row">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        Line Chart
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div id="morris-line-chart"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="row">
                             <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
 
                                 <div class="card">
@@ -323,47 +334,47 @@ class Home extends BaseView
 
 
 
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Tasks Panel
-                                </div>
-                                <div class="panel-body">
-                                    <div class="list-group">
+                                            <div class="row">
+                                                <div class="col-md-4 col-sm-12 col-xs-12">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            Tasks Panel
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="list-group">
 
-                                        <a href="#" class="list-group-item">
-                                            <span class="badge">7 minutes ago</span>
-                                            <i class="fa fa-fw fa-comment"></i> Commented on a post
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <span class="badge">16 minutes ago</span>
-                                            <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <span class="badge">36 minutes ago</span>
-                                            <i class="fa fa-fw fa-globe"></i> Invoice 653 has paid
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <span class="badge">1 hour ago</span>
-                                            <i class="fa fa-fw fa-user"></i> A new user has been added
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <span class="badge">1.23 hour ago</span>
-                                            <i class="fa fa-fw fa-user"></i> A new user has added
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <span class="badge">yesterday</span>
-                                            <i class="fa fa-fw fa-globe"></i> Saved the world
-                                        </a>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                                                                <a href="#" class="list-group-item">
+                                                                    <span class="badge">7 minutes ago</span>
+                                                                    <i class="fa fa-fw fa-comment"></i> Commented on a post
+                                                                </a>
+                                                                <a href="#" class="list-group-item">
+                                                                    <span class="badge">16 minutes ago</span>
+                                                                    <i class="fa fa-fw fa-truck"></i> Order 392 shipped
+                                                                </a>
+                                                                <a href="#" class="list-group-item">
+                                                                    <span class="badge">36 minutes ago</span>
+                                                                    <i class="fa fa-fw fa-globe"></i> Invoice 653 has paid
+                                                                </a>
+                                                                <a href="#" class="list-group-item">
+                                                                    <span class="badge">1 hour ago</span>
+                                                                    <i class="fa fa-fw fa-user"></i> A new user has been added
+                                                                </a>
+                                                                <a href="#" class="list-group-item">
+                                                                    <span class="badge">1.23 hour ago</span>
+                                                                    <i class="fa fa-fw fa-user"></i> A new user has added
+                                                                </a>
+                                                                <a href="#" class="list-group-item">
+                                                                    <span class="badge">yesterday</span>
+                                                                    <i class="fa fa-fw fa-globe"></i> Saved the world
+                                                                </a>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                            <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Customer Acquisition</h5>
                                     <div class="card-body">
@@ -463,15 +474,15 @@ class Home extends BaseView
                                 </div>
                             </div> -->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-    <?php
+                            <?php
 
-    }
-}
+                        }
+                    }
 
-    ?>
+                            ?>
