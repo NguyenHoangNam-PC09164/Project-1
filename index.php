@@ -27,6 +27,7 @@ Route::get('/lienhe', 'App\Controllers\Client\HomeController@lienhe');
 Route::get('/tintuc', 'App\Controllers\Client\HomeController@tintuc');
 
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
+Route::get('/register', 'App\Controllers\Client\AuthController@register');
 
 
 // *** Admin
