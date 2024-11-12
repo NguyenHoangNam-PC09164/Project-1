@@ -19,107 +19,126 @@ class Header extends BaseView
             <!-- Tell the browser to be responsive to screen width -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>Admin</title>
-            <!-- Bootstrap Styles-->
-             
-            <link href="../../../../public/assets/admin/template/css/bootstrap.css" rel="stylesheet" />
-            
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/vendor/bootstrap/css/bootstrap.min.css">
+            <link href="../../../../public/assets/admin/template/assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/libs/css/style.css">
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/vendor/charts/chartist-bundle/chartist.css">
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/vendor/charts/morris-bundle/morris.css">
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/vendor/charts/c3charts/c3.css">
+            <link rel="stylesheet" href="../../../../public/assets/admin/template/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+            <!-- Bootstrap -->
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-            <!-- FontAwesome Styles-->
-            <link href="../../../../public/assets/admin/template/css/font-awesome.css" rel="stylesheet" />
-            <!-- Morris Chart Styles-->
-            <link href="../../../../public/assets/admin/template/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
-            <!-- Custom Styles-->
-            <link href="../../../../public/assets/admin/template/css/custom-styles.css" rel="stylesheet" />
             <!-- Google Fonts-->
-            <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-            <link rel="stylesheet" href="./../../../public/assets/admin/template/js/Lightweight-Chart/cssCharts.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Manrope:wght@200..800&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Wix+Madefor+Display:wght@400..800&display=swap" rel="stylesheet">
 
         </head>
 
         <body>
-            <!-- sidebar -->
-            <!--/. NAV TOP  -->
-            <nav class="navbar-default navbar-side" role="navigation">
-                <div class="sidebar-collapse">
-                    <ul class="nav" id="main-menu">
-                        <li>
-                            <a class="active-menu" href="/admin"><i class="fa fa-dashboard"></i> Bảng điều khiển</a>
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap"></i> Quản lý sản phẩm<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/admin/products">Danh sách sản phẩm</a>
-                                    <a href="/admin/products/create">Thêm sản phẩm</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href=""><i class="fa fa-sitemap"></i> Quản lý loại sản phẩm<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/admin/categories">Danh sách loại sản phẩm</a>
-                                    <a href="/admin/categories/create">Thêm loại sản phẩm</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/admin/comments"><i class="fa fa-sitemap"></i> Quản lý bình luận</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap"></i> Quản lý người dùng<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/admin/users">Danh sách người dùng</a>
-                                    <a href="/admin/users/create">Thêm người dùng</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
-
-            </nav>
-
-            <!-- nav top -->
-            <nav class="navbar navbar-default top-navbar" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+            <!-- navbar -->
+            <div class="dashboard-header">
+                <nav class="navbar navbar-expand-lg bg-white fixed-top">
+                    <a class="navbar-brand text-danger" href="index.html">Photo Hub</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <!-- <a class="navbar-brand" href="index.html"><strong><i class="bi bi-camera-fill"></i> Photo Hub</strong></a> -->
-                    <a class="navbar-brand" href="/admin"><img src="../../../../public/uploads/users/logoAdmin.jpg" alt="ảnh admin"></a>
-
-
-                    <div id="sideNav" href="">
-                        <i class="fa fa-bars icon"></i>
-                    </div>
-                </div>
-
-                <ul class="nav navbar-top-links navbar-right">
-                    <!-- /.dropdown -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> Thông tin</a>
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-right-top">
+                            <li class="nav-item">
+                                <div id="custom-search" class="top-search-bar">
+                                    <input class="form-control" type="text" placeholder="Search..">
+                                </div>
                             </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                            <li class="nav-item dropdown nav-user">
+                                <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                                <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                    <div class="nav-user-info">
+                                        <h5 class="mb-0 text-white nav-user-name">Admin</h5>
+                                    </div>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Thông tin tài khoản</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Đăng xuất</a>
+                                </div>
                             </li>
                         </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                    <!-- /.dropdown -->
-                </ul>
-            </nav>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- sidebar -->
+            <div class="nav-left-sidebar sidebar-dark">
+                <div class="menu-list">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="d-xl-none d-lg-none" href="#">Bảng điều khiển</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav flex-column">
+                                <li class="nav-item ">
+                                    <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Bảng điều khiển</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Quản lý loại sản phẩm</a>
+                                    <div id="submenu-5" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/general-table.html">Danh sách loại sản phẩm</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/data-tables.html">Thêm loại sản phẩm</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Quản lý sản phẩm</a>
+                                    <div id="submenu-5" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/general-table.html">Danh sách sản phẩm</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/data-tables.html">Thêm sản phẩm</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="bi bi-chat-dots-fill"></i>Quản lý bình luận</a>
+                                    <div id="submenu-5" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/general-table.html">Danh sách bình luận</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/data-tables.html">Thêm bình luận</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="bi bi-people-fill"></i>Quản lý người dùng</a>
+                                    <div id="submenu-5" class="collapse submenu" style="">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/general-table.html">Danh sách người dùng</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="pages/data-tables.html">Thêm người dùng</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
     <?php
 
     }

@@ -10,33 +10,35 @@ class Footer extends BaseView
         {
 
 ?>
-                <!-- /. WRAPPER  -->
-                <!-- JS Scripts-->
-                <!-- jQuery Js -->
-                <script src="../../../../public/assets/admin/template/js/jquery-1.10.2.js"></script>
-                <!-- Bootstrap Js -->
-                <script src="../../../../public/assets/admin/template/js/bootstrap.min.js"></script>
-
-                <!-- Metis Menu Js -->
-                <script src="../../../../public/assets/admin/template/js/jquery.metisMenu.js"></script>
-                <!-- Morris Chart Js -->
-                <script src="../../../../public/assets/admin/template/js/morris/raphael-2.1.0.min.js"></script>
-                <script src="../../../../public/assets/admin/template/js/morris/morris.js"></script>
-
-
-                <script src="../../../../public/assets/admin/template/js/easypiechart.js"></script>
-                <script src="../../../../public/assets/admin/template/js/easypiechart-data.js"></script>
-
-                <script src="../../../../public/assets/admin/template/js/Lightweight-Chart/jquery.chart.js"></script>
-
-                <!-- Custom Js -->
-                <script src="../../../../public/assets/admin/template/js/custom-scripts.js"></script>
-
-
-                <!-- Chart Js -->
-                <script type="text/javascript" src="../../../../public/assets/admin/template/js/Chart.min.js"></script>
-                <script type="text/javascript" src="../../../../public/assets/admin/template/js/chartjs.js"></script>
-
+                <div class="footer">
+                        <div class="container-fluid">
+                                <div class="row">
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                Copyright © Được thiết kế bởi NHT team
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+                <script src="../../../../public/assets/admin/template/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+                <!-- bootstap bundle js -->
+                <script src="../../../../public/assets/admin/template/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+                <!-- slimscroll js -->
+                <script src="../../../../public/assets/admin/template/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+                <!-- main js -->
+                <script src="../../../../public/assets/admin/template/assets/libs/js/main-js.js"></script>
+                <!-- chart chartist js -->
+                <script src="../../../../public/assets/admin/template/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+                <!-- sparkline js -->
+                <script src="../../../../public/assets/admin/template/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+                <!-- morris js -->
+                <script src="../../../../public/assets/admin/template/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+                <script src="../../../../public/assets/admin/template/assets/vendor/charts/morris-bundle/morris.js"></script>
+                <!-- chart c3 js -->
+                <script src="../../../../public/assets/admin/template/assets/vendor/charts/c3charts/c3.min.js"></script>
+                <script src="../../../../public/assets/admin/template/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+                <script src="../../../../public/assets/admin/template/assets/vendor/charts/c3charts/C3chartjs.js"></script>
+                <script src="../../../../public/assets/admin/template/assets/libs/js/dashboard-ecommerce.js"></script>
                 </body>
 
                 </html>
