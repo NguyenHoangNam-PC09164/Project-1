@@ -13,6 +13,7 @@ use App\Views\Client\Layouts\Header;
 use App\Views\Client\Pages\Product\Category as ProductCategory;
 use App\Views\Client\Pages\Product\Detail;
 use App\Views\Client\Pages\Product\Index;
+use App\Views\Client\Pages\Shop\Checkout;
 
 class ProductController
 {
@@ -151,5 +152,11 @@ class ProductController
     }
     public static function getProductByCategory($id)
     {
+    }
+
+    public static function checkout(){
+        Header::render();
+        Checkout::render();
+        Footer::render();
     }
 }
