@@ -22,11 +22,14 @@ Route::get('/', 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 
+Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
+
 Route::get('/gioithieu', 'App\Controllers\Client\HomeController@gioithieu');
 Route::get('/lienhe', 'App\Controllers\Client\HomeController@lienhe');
 Route::get('/tintuc', 'App\Controllers\Client\HomeController@tintuc');
 
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
+Route::get('/register', 'App\Controllers\Client\AuthController@register');
 
 
 // *** Admin
