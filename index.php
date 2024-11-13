@@ -56,6 +56,47 @@ Route::put('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@u
 Route::delete('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@delete');
 
 
+//PRODUCTS
+// GET /product (lấy danh sách sản phẩm)
+Route::get('/admin/product', 'App\Controllers\Admin\ProductController@index');
+
+// GET /product/create (hiển thị form thêm sản phẩm)
+Route::get('/admin/product/create', 'App\Controllers\Admin\ProductController@create');
+
+// POST /product (tạo mới một sản phẩm)
+Route::post('/admin/product', 'App\Controllers\Admin\ProductController@store');
+
+// GET /product/{id} (lấy chi tiết sản phẩm với id cụ thể)
+Route::get('/admin/product/{id}', 'App\Controllers\Admin\ProductController@edit');
+
+// PUT /product/{id} (update sản phẩm với id cụ thể)
+Route::put('/admin/product/{id}', 'App\Controllers\Admin\ProductController@update');
+
+// DELETE /product/{id} (delete sản phẩm với id cụ thể)
+Route::delete('/admin/product/{id}', 'App\Controllers\Admin\ProductController@delete');
+
+//USERS
+// GET /user (lấy danh sách người dùng)
+Route::get('/admin/user', 'App\Controllers\Admin\UserController@index');
+
+// GET /product/{id} (lấy chi tiết loại người dùng với id cụ thể)
+Route::get('/admin/user/{id}', 'App\Controllers\Admin\UserController@edit');
+
+// DELETE /user/{id} (delete loại người dùng với id cụ thể)
+Route::delete('/admin/user/{id}', 'App\Controllers\Admin\UserController@delete');
+
+//COMMENTS
+// GET /comment (lấy danh sách sản phẩm)
+Route::get('/admin/comment', 'App\Controllers\Admin\CommentController@index');
+
+// POST /comment (tạo mới một sản phẩm)
+Route::post('/admin/comment', 'App\Controllers\Admin\CommentController@store');
+
+// PUT /comment/{id} (update sản phẩm với id cụ thể)
+Route:: get('/admin/comment/1', 'App\Controllers\Admin\CommentController@edit');
+
+// DELETE /comment/{id} (delete sản phẩm với id cụ thể)
+Route::delete('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@delete');
 
 
 Route::dispatch($_SERVER['REQUEST_URI']);

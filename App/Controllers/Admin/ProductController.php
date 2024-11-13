@@ -3,15 +3,15 @@
 namespace App\Controllers\Admin;
 
 use App\Helpers\NotificationHelper;
-use App\Models\Category;
+use App\Models\Product;
 use App\Views\Admin\Layouts\Footer;
 use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
-use App\Views\Admin\Pages\Category\Create;
-use App\Views\Admin\Pages\Category\Edit;
-use App\Views\Admin\Pages\Category\Index;
+use App\Views\Admin\Pages\Product\Create;
+use App\Views\Admin\Pages\Product\Edit;
+use App\Views\Admin\Pages\Product\Index;
 
-class CategoryController
+class ProductController
 {
     // hiển thị danh sách
     public static function index()
@@ -20,17 +20,17 @@ class CategoryController
         $data = [
             [
                 'id' => 1,
-                'name' => 'Category 1',
+                'name' => 'Product 1',
                 'status' => 1
             ],
             [
                 'id' => 2,
-                'name' => 'Category 2',
+                'name' => 'Product 2',
                 'status' => 1
             ],
             [
                 'id' => 3,
-                'name' => 'Category 3',
+                'name' => 'Product 3',
                 'status' => 0
             ],
 
@@ -72,7 +72,7 @@ class CategoryController
         // giả sử data là mảng dữ liệu lấy được từ database
         $data = [
             'id' => $id,
-            'name' => 'Category 1',
+            'name' => 'Product 1',
             'status' => 1
         ];
         if ($data) {

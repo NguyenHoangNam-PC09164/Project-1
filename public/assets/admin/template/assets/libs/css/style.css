@@ -185,6 +185,10 @@ h2 {
     line-height: 30px;
 }
 
+svg:not(:root){
+    overflow: visible !important;
+}
+
 h3 {
     font-size: 20px;
 }
@@ -269,15 +273,15 @@ label {
     background-color: #fff;
     border-color: #a7a7f0;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(214, 214, 255, .75);
+    box-shadow: 0 0 0 0.2rem rgb(171, 214, 248);
 }
 
 input[type=file] {
-    color: #71748d;
+    /* color: #71748d; */
     background-color: #fff;
-    border-color: #a7a7f0;
+    /* border-color: #a7a7f0; */
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(214, 214, 255, .75);
+    /* box-shadow: 0 0 0 0.2rem rgba(214, 214, 255, .75); */
 }
 
 .col-form-label {
@@ -320,7 +324,7 @@ input::-webkit-input-placeholder {
 }
 
 input:focus::-webkit-input-placeholder {
-    color: #5969ff !important;
+    /* color: #5969ff !important; */
 }
 
 textarea::-webkit-input-placeholder {
@@ -1000,6 +1004,7 @@ Borders
 
 .text-muted {
     color: #7171a6 !important;
+    font-size:20px !important;;
 }
 
 .rating-color {
@@ -1360,6 +1365,15 @@ Top Header
     color: #5969ff;
     font-size: 14px;
     margin-right: 8px;
+}
+
+.footer{
+    position:absolute !important;
+    bottom:0
+}
+
+.table thead th, .table th {
+    font-family: 'Noto Sans' !important;
 }
 
 .list-footer,
@@ -1968,6 +1982,11 @@ Splash Container / Wrapper
     padding: 20px;
 }
 
+.card-header{
+    font-size:20px!important;
+    color:#ef172c;
+}
+
 .splash-description {
     text-align: center;
     display: block;
@@ -2012,6 +2031,15 @@ Pageheader
 
 .page-breadcrumb .breadcrumb-link:hover {
     color: #5969ff;
+}
+
+.breadcrumb .breadcrumb-item .breadcrumb-link{
+    font-size: 20px!important;
+    color: #ef172c;
+}
+
+.breadcrumb .breadcrumb-item.active{
+    font-size:14px!important;
 }
 
 .page-breadcrumb .breadcrumb {
@@ -3224,7 +3252,6 @@ btn-link
     font-size: 14px;
 }
 
-.card-body {}
 
 .card-text {}
 

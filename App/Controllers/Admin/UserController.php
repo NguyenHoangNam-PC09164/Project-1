@@ -3,15 +3,15 @@
 namespace App\Controllers\Admin;
 
 use App\Helpers\NotificationHelper;
-use App\Models\Category;
+use App\Models\User;
 use App\Views\Admin\Layouts\Footer;
 use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
-use App\Views\Admin\Pages\Category\Create;
-use App\Views\Admin\Pages\Category\Edit;
-use App\Views\Admin\Pages\Category\Index;
+use App\Views\Admin\Pages\User\Create;
+use App\Views\Admin\Pages\User\Edit;
+use App\Views\Admin\Pages\User\Index;
 
-class CategoryController
+class UserController
 {
     // hiển thị danh sách
     public static function index()
@@ -20,17 +20,17 @@ class CategoryController
         $data = [
             [
                 'id' => 1,
-                'name' => 'Category 1',
+                'name' => 'User 1',
                 'status' => 1
             ],
             [
                 'id' => 2,
-                'name' => 'Category 2',
+                'name' => 'User 2',
                 'status' => 1
             ],
             [
                 'id' => 3,
-                'name' => 'Category 3',
+                'name' => 'User 3',
                 'status' => 0
             ],
 
@@ -48,7 +48,7 @@ class CategoryController
     {
         Header::render();
         // hiển thị form thêm
-        Create::render();
+        // Create::render();
         Footer::render();
     }
 
@@ -72,13 +72,13 @@ class CategoryController
         // giả sử data là mảng dữ liệu lấy được từ database
         $data = [
             'id' => $id,
-            'name' => 'Category 1',
+            'name' => 'User 1',
             'status' => 1
         ];
         if ($data) {
             Header::render();
             // hiển thị form sửa
-            Edit::render($data);
+            // Edit::render($data);
             Footer::render();
         } else {
             header('location: /admin/categories');
