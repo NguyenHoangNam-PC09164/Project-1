@@ -14,33 +14,21 @@ class Home extends BaseView
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">
                     <div class="row">
-                        <div class="col-md-3 col-sm-12 col-xs-12">
-                            <div class="board">
-                                <div class="panel panel-primary">
-                                    <div class="number">
-                                        <h3>
-                                            <h3>44,023</h3>
-                                            <small>Lượt truy cập</small><br>
-                                        </h3>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-eye fa-5x red"></i>
-                                    </div>
-
-                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div class="page-header">
-                                            <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
-                                            <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
-                                            <div class="page-breadcrumb">
-                                                <nav aria-label="breadcrumb">
-                                                    <ol class="breadcrumb">
-                                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển 1</a></li>
-                                                        <li class="breadcrumb-item active" aria-current="page">Loại sản phẩm</li>
-                                                    </ol>
-                                                </nav>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển 1</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Loại sản phẩm</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                                     <div class="ecommerce-widget">
                                         <!-- <div class="row">
@@ -193,59 +181,91 @@ class Home extends BaseView
                                     </div>
                                 </div>
 
-                    <div class="row">
-                        <div class="col-xs-6 col-md-3">
-                            <div class="panel panel-default">
-                                <div class="panel-body easypiechart-panel">
-                                    <h4>Profit</h4>
-                                    <div class="easypiechart" id="easypiechart-blue" data-percent="82"><span class="percent">82%</span>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Bán hàng</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">$12099</h1>
+                                        </div>
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5.86%</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xs-6 col-md-3">
-                            <div class="panel panel-default">
-                                <div class="panel-body easypiechart-panel">
-                                    <h4>Sales</h4>
-                                    <div class="easypiechart" id="easypiechart-orange" data-percent="55"><span class="percent">55%</span>
+
+                            <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Khách hàng mới</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">1245</h1>
+                                        </div>
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">10%</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xs-6 col-md-3">
-                            <div class="panel panel-default">
-                                <div class="panel-body easypiechart-panel">
-                                    <h4>Customers</h4>
-                                    <div class="easypiechart" id="easypiechart-teal" data-percent="84"><span class="percent">84%</span>
+
+                            <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Lượt truy cập</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">13000</h1>
+                                        </div>
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                            <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
+                                <div class="card border-3 border-top border-top-primary">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Tỏng số đơn hàng được đặt</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <h1 class="mb-1">1340</h1>
+                                        </div>
+                                        <div class="metric-label d-inline-block float-right text-danger font-weight-bold">
+                                            <span class="icon-circle-small icon-box-xs text-danger bg-danger-light bg-danger-light "><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1">4%</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="col-xs-6 col-md-3">
-                            <div class="panel panel-default">
-                                <div class="panel-body easypiechart-panel">
-                                    <h4>No. of Visits</h4>
-                                    <div class="easypiechart" id="easypiechart-red" data-percent="46"><span class="percent">46%</span>
+                        <div class="row">
+
+                            <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Doanh thu theo danh mục</h5>
+                                    <div class="card-body">
+                                        <div id="c3chart_category" style="height: 420px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Tổng doanh thu</h5>
+                                    <div class="card-body">
+                                        <div id="morris_totalrevenue"></div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="display-7 font-weight-bold"><span class="text-primary d-inline-block">$26,000</span><span class="text-success float-right">+9.45%</span></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><!--/.row-->
-
-
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        Line Chart
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div id="morris-line-chart"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
 
                                 <div class="card">
@@ -322,57 +342,89 @@ class Home extends BaseView
                                 </div>
                             </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-
-                        </div>
-                    </div>
-                    <!-- /. ROW  -->
-
-
-
-
-
-                                            <div class="row">
-                                                <div class="col-md-4 col-sm-12 col-xs-12">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">
-                                                            Tasks Panel
-                                                        </div>
-                                                        <div class="panel-body">
-                                                            <div class="list-group">
-
-                                                                <a href="#" class="list-group-item">
-                                                                    <span class="badge">7 minutes ago</span>
-                                                                    <i class="fa fa-fw fa-comment"></i> Commented on a post
-                                                                </a>
-                                                                <a href="#" class="list-group-item">
-                                                                    <span class="badge">16 minutes ago</span>
-                                                                    <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                                                                </a>
-                                                                <a href="#" class="list-group-item">
-                                                                    <span class="badge">36 minutes ago</span>
-                                                                    <i class="fa fa-fw fa-globe"></i> Invoice 653 has paid
-                                                                </a>
-                                                                <a href="#" class="list-group-item">
-                                                                    <span class="badge">1 hour ago</span>
-                                                                    <i class="fa fa-fw fa-user"></i> A new user has been added
-                                                                </a>
-                                                                <a href="#" class="list-group-item">
-                                                                    <span class="badge">1.23 hour ago</span>
-                                                                    <i class="fa fa-fw fa-user"></i> A new user has added
-                                                                </a>
-                                                                <a href="#" class="list-group-item">
-                                                                    <span class="badge">yesterday</span>
-                                                                    <i class="fa fa-fw fa-globe"></i> Saved the world
-                                                                </a>
-                                                            </div>
-                                                            <div class="text-right">
-                                                                <a href="#">More Tasks <i class="fa fa-arrow-circle-right"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Đơn hàng đã đặt gần đây</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">#</th>
+                                                        <th class="border-0">Hình ảnh</th>
+                                                        <th class="border-0">Tên sản phẩm</th>
+                                                        <th class="border-0">Mã sản phẩm</th>
+                                                        <th class="border-0">Số lượng</th>
+                                                        <th class="border-0">Giá</th>
+                                                        <th class="border-0">Thời gian</th>
+                                                        <th class="border-0">Khách hàng</th>
+                                                        <th class="border-0">Trạng thái</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #1 </td>
+                                                        <td>id000001 </td>
+                                                        <td>20</td>
+                                                        <td>$80.00</td>
+                                                        <td>27-08-2018 01:22:12</td>
+                                                        <td>Patricia J. King </td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #2 </td>
+                                                        <td>id000002 </td>
+                                                        <td>12</td>
+                                                        <td>$180.00</td>
+                                                        <td>25-08-2018 21:12:56</td>
+                                                        <td>Rachel J. Wicker </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic-3.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #3 </td>
+                                                        <td>id000003 </td>
+                                                        <td>23</td>
+                                                        <td>$820.00</td>
+                                                        <td>24-08-2018 14:12:77</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic-4.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #4 </td>
+                                                        <td>id000004 </td>
+                                                        <td>34</td>
+                                                        <td>$340.00</td>
+                                                        <td>23-08-2018 09:12:35</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="9"><a href="#" class="btn btn-outline-light float-right">Xem chi tiết</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                                                     <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
@@ -392,64 +444,88 @@ class Home extends BaseView
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>S No.</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>User Name</th>
-                                                    <th>Email ID.</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>John15482</td>
-                                                    <td>name@site.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Kimsila</td>
-                                                    <td>Marriye</td>
-                                                    <td>Kim1425</td>
-                                                    <td>name@site.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Rossye</td>
-                                                    <td>Nermal</td>
-                                                    <td>Rossy1245</td>
-                                                    <td>name@site.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Richard</td>
-                                                    <td>Orieal</td>
-                                                    <td>Rich5685</td>
-                                                    <td>name@site.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Jacob</td>
-                                                    <td>Hielsar</td>
-                                                    <td>Jac4587</td>
-                                                    <td>name@site.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>Wrapel</td>
-                                                    <td>Dere</td>
-                                                    <td>Wrap4585</td>
-                                                    <td>name@site.com</td>
-                                                </tr>
+                            </div> -->
 
-                                            </tbody>
-                                        </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Sản phẩm được yêu thích nhất</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">#</th>
+                                                        <th class="border-0">Hình ảnh</th>
+                                                        <th class="border-0">Tên sản phẩm</th>
+                                                        <th class="border-0">Mã sản phẩm</th>
+                                                        <th class="border-0">Số lượng</th>
+                                                        <th class="border-0">Giá</th>
+                                                        <th class="border-0">Thời gian đặt hàng</th>
+                                                        <th class="border-0">Khách hàng</th>
+                                                        <th class="border-0">Trạng thái</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #1 </td>
+                                                        <td>id000001 </td>
+                                                        <td>20</td>
+                                                        <td>$80.00</td>
+                                                        <td>27-08-2018 01:22:12</td>
+                                                        <td>Patricia J. King </td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #2 </td>
+                                                        <td>id000002 </td>
+                                                        <td>12</td>
+                                                        <td>$180.00</td>
+                                                        <td>25-08-2018 21:12:56</td>
+                                                        <td>Rachel J. Wicker </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic-3.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #3 </td>
+                                                        <td>id000003 </td>
+                                                        <td>23</td>
+                                                        <td>$820.00</td>
+                                                        <td>24-08-2018 14:12:77</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>
+                                                            <div class="m-r-10"><img src="assets/images/product-pic-4.jpg" alt="user" class="rounded" width="45"></div>
+                                                        </td>
+                                                        <td>Product #4 </td>
+                                                        <td>id000004 </td>
+                                                        <td>34</td>
+                                                        <td>$340.00</td>
+                                                        <td>23-08-2018 09:12:35</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="9"><a href="#" class="btn btn-outline-light float-right">Xem chi tiết</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
