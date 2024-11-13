@@ -23,6 +23,7 @@ Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 
 Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
+Route::get('/cart', 'App\Controllers\Client\ProductController@cart');
 
 Route::get('/introduce', 'App\Controllers\Client\HomeController@introduce');
 Route::get('/contact', 'App\Controllers\Client\HomeController@contact');

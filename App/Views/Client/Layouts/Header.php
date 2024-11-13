@@ -124,7 +124,7 @@ class Header extends BaseView
                                                 <h5>Tổng: 2.940.000đ</h5>
                                             </div>
                                             <div class="cart-btns">
-                                                <a href="#">Xem giỏ hàng</a>
+                                                <a href="/cart">Xem giỏ hàng</a>
                                                 <a href="/checkout">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
