@@ -7,9 +7,9 @@ use App\Views\Client\Components\Notification;
 use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Home;
 use App\Views\Client\Layouts\Header;
-use App\Views\Client\Pages\Page\GioiThieu;
-use App\Views\Client\Pages\Page\LienHe;
-use App\Views\Client\Pages\Page\TinTuc;
+use App\Views\Client\Pages\Page\Introduce;
+use App\Views\Client\Pages\Page\Contact;
+use App\Views\Client\Pages\Page\News;
 
 class HomeController
 {
@@ -20,22 +20,22 @@ class HomeController
         Home::render();
         Footer::render();
     }
-    public static function gioithieu()
+    public static function introduce()
     {
         Header::render();
-        GioiThieu::render();
+        Introduce::render();
         Footer::render();
     }
-    public static function lienhe()
+    public static function contact()
     {
         Header::render();
-        LienHe::render();
+        Contact::render();
         Footer::render();
     }
-    public static function tintuc()
+    public static function news()
     {
         Header::render();
-        TinTuc::render();
+        News::render();
         Footer::render();
     }
 }

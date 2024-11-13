@@ -4,7 +4,7 @@ namespace App\Views\Client\Pages\Page;
 
 use App\Views\BaseView;
 
-class TinTuc extends BaseView
+class News extends BaseView
 {
     public static function render($data = null)
     {

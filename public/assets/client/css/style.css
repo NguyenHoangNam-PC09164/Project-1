@@ -2274,3 +2274,29 @@ textarea.input {
   margin-top: 20px;
 }
 
+.product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.quantity-input {
+  width: 70px;
+}
+.shop-cart {
+  margin-top: 30px;
+}
+.section {
+  padding: 50px 0;
+}
+.shop-cart th,
+.shop-cart td {
+    text-align: center;         
+    vertical-align: middle;     
+    padding: 15px;               
+}
+.image-section img{
+  width: 100%; 
+  height: 300px; 
+  object-fit: cover;
+}

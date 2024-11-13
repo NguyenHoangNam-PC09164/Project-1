@@ -4,7 +4,7 @@ namespace App\Views\Client\Pages\Page;
 
 use App\Views\BaseView;
 
-class LienHe extends BaseView
+class Contact extends BaseView
 {
     public static function render($data = null)
     {

@@ -148,9 +148,9 @@ class Header extends BaseView
                         <ul class="main-nav nav navbar-nav">
                             <li class="active"><a href="/">Trang chủ</a></li>
                             <li><a href="/products">Sản phẩm</a></li>
-                            <li><a href="/gioithieu">Giới thiệu</a></li>
-                            <li><a href="/tintuc">Tin tức</a></li>
-                            <li><a href="/lienhe">Liên hệ</a></li>
+                            <li><a href="/introduce">Giới thiệu</a></li>
+                            <li><a href="/news">Tin tức</a></li>
+                            <li><a href="/contact">Liên hệ</a></li>
 
                         </ul>
                     </div>
