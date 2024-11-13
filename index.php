@@ -28,10 +28,6 @@ Route::get('/introduce', 'App\Controllers\Client\HomeController@introduce');
 Route::get('/contact', 'App\Controllers\Client\HomeController@contact');
 Route::get('/news', 'App\Controllers\Client\HomeController@news');
 
-Route::get('/gioithieu', 'App\Controllers\Client\HomeController@gioithieu');
-Route::get('/lienhe', 'App\Controllers\Client\HomeController@lienhe');
-Route::get('/tintuc', 'App\Controllers\Client\HomeController@tintuc');
-
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
 Route::get('/register', 'App\Controllers\Client\AuthController@register');
 
