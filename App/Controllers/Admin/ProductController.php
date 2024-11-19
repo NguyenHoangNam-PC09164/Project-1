@@ -81,12 +81,14 @@ class ProductController
         }
 
         $name = $_POST['name'];
+        $quantity=$_POST['quantity'];
         $price = $_POST['price'];
         $discount_price = $_POST['discount_price'];
         $is_feature = $_POST['is_feature'];
+        $description = $_POST['description'];
         $status=$_POST['status'];
         $category_id = $_POST['category_id'];
-        $description = $_POST['description'];
+        
         // kiểm tra tên sp có tồn tại chưa => không được trùng tên
         $product=new Product();
         $is_exist=$product->getOneProductByName($name);
@@ -100,12 +102,14 @@ class ProductController
         // thực hiện thêm vào csdl
         $data=[
             'name'=>$name,
+            'quantity'=>$quantity,
             'price'=>$price,
             'discount_price'=>$discount_price,
             'is_feature'=>$is_feature,
+            'description'=>$description,
             'status'=>$status,
             'category_id'=>$category_id,
-            'description'=>$description
+            
         ];
 
         $is_upload =ProductValidation::uploadImage();
