@@ -28,7 +28,7 @@ class Create extends BaseView
                             </div>
                         </div>
                     </div>
-                    <form class="form">
+                    <form class="form" action="/admin/products" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="Product" class="form-label">Tên Sản phẩm</label>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên sản phẩm">
@@ -51,13 +51,36 @@ class Create extends BaseView
                         </div>
                         <div class="mb-3">
                             <label for="Product" class="form-label">Mô tả</label>
-                            <input type="text" class="form-control" name="description" placeholder="Nhập mô tả sản phẩm">
+                            <textarea type="text" class="form-control" name="description" placeholder="Nhập mô tả sản phẩm"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category_id" class="form-label">Loại sản phẩm*</label>
+                                        <select class="form-control" style="width: 100%; height:36px;" id="category_id" name="category_id" >
+                                        <option value="" selected disabled>Vui lòng chọn...</option>
+                                            <?php
+                                            foreach($data as $item):    
+                                            ?>
+                                            <option value="<?=$item['id'] ?>"><?= $item['name'] ?></option>
+                                            <?php
+                                            endforeach;    
+                                            ?>
+                                            
+                                        </select>
                         </div>
                         <div class="mb-3">
                             <label for="Product" class="form-label">Trạng thái</label>
                             <select name="status" class="form-control">
-                                <option>Ẩn</option>
-                                <option>Hiện</option>
+                                <option value="" selected disabled>Vui lòng chọn...</option>
+                                <option value="1">Hiện</option>
+                                <option value="0">Ẩn</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Product" class="form-label">Nổi bật</label>
+                            <select name="status" class="form-control">
+                                <option value="" selected disabled>Vui lòng chọn...</option>
+                                <option value="1">Hiện</option>
+                                <option value="0">Ẩn</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary ">Submit</button>

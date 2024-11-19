@@ -29,10 +29,6 @@ Route::get('/introduce', 'App\Controllers\Client\HomeController@introduce');
 Route::get('/contact', 'App\Controllers\Client\HomeController@contact');
 Route::get('/news', 'App\Controllers\Client\HomeController@news');
 
-Route::get('/gioithieu', 'App\Controllers\Client\HomeController@gioithieu');
-Route::get('/lienhe', 'App\Controllers\Client\HomeController@lienhe');
-Route::get('/tintuc', 'App\Controllers\Client\HomeController@tintuc');
-
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
 Route::get('/register', 'App\Controllers\Client\AuthController@register');
 
@@ -63,22 +59,22 @@ Route::delete('/admin/categories/{id}', 'App\Controllers\Admin\CategoryControlle
 
 //PRODUCTS
 // GET /product (lấy danh sách sản phẩm)
-Route::get('/admin/product', 'App\Controllers\Admin\ProductController@index');
+Route::get('/admin/products', 'App\Controllers\Admin\ProductController@index');
 
-// GET /product/create (hiển thị form thêm sản phẩm)
-Route::get('/admin/product/create', 'App\Controllers\Admin\ProductController@create');
+// GET /products/create (hiển thị form thêm sản phẩm)
+Route::get('/admin/products/create', 'App\Controllers\Admin\ProductController@create');
 
-// POST /product (tạo mới một sản phẩm)
-Route::post('/admin/product', 'App\Controllers\Admin\ProductController@store');
+// POST /products (tạo mới một sản phẩm)
+Route::post('/admin/products', 'App\Controllers\Admin\ProductController@store');
 
-// GET /product/{id} (lấy chi tiết sản phẩm với id cụ thể)
-Route::get('/admin/product/{id}', 'App\Controllers\Admin\ProductController@edit');
+// GET /products/{id} (lấy chi tiết sản phẩm với id cụ thể)
+Route::get('/admin/products/{id}', 'App\Controllers\Admin\ProductController@edit');
 
-// PUT /product/{id} (update sản phẩm với id cụ thể)
-Route::put('/admin/product/{id}', 'App\Controllers\Admin\ProductController@update');
+// PUT /products/{id} (update sản phẩm với id cụ thể)
+Route::put('/admin/products/{id}', 'App\Controllers\Admin\ProductController@update');
 
-// DELETE /product/{id} (delete sản phẩm với id cụ thể)
-Route::delete('/admin/product/{id}', 'App\Controllers\Admin\ProductController@delete');
+// DELETE /products/{id} (delete sản phẩm với id cụ thể)
+Route::delete('/admin/products/{id}', 'App\Controllers\Admin\ProductController@delete');
 
 //USERS
 // GET /user (lấy danh sách người dùng)

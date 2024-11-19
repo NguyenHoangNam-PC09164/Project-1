@@ -98,10 +98,10 @@ class Header extends BaseView
                                     <div id="submenu-2" class="collapse submenu" style="">
                                         <ul class="nav flex-column">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="/admin/product">Danh sách sản phẩm</a>
+                                                <a class="nav-link" href="/admin/products">Danh sách sản phẩm</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="/admin/product/create">Thêm sản phẩm</a>
+                                                <a class="nav-link" href="/admin/products/create">Thêm sản phẩm</a>
                                             </li>
                                         </ul>
                                     </div>
