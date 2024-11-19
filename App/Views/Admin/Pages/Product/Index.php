@@ -28,6 +28,9 @@ class Index extends BaseView
                             </div>
                         </div>
                     </div>
+                    <?php
+                        if (count($data)) :
+                    ?>
                     <!-- danh sach loai san pham -->
                     <table class="table table-bordered mt-5">
                         <thead>
@@ -35,55 +38,48 @@ class Index extends BaseView
                                 <th scope="col">#</th>
                                 <th scope="col">Hình ảnh</th>
                                 <th scope="col">Tên sản phẩm</th>
-                                <th scope="col">Số lượng</th>
                                 <th scope="col">Giá</th>
+                                <th scope="col">Số lượng</th>
                                 <th scope="col">Mô tả</th>
                                 <th scope="col">Trạng thái</th>
                                 <th scope="col">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                            foreach ($data as $item) :
+                        ?>
                             <tr>
-                                <th scope="row">1</th>
-                                <td><img src="../../../../../public/uploads/products/anh1.jpg" width="100px" alt="Camera Image"></td>
-                                <td>Sản phẩm 1</td>
-                                <td>100</td>
-                                <td>10</td>
-                                <td>Mô tả 1</td>
-                                <td>Hiện</td>
+                                <th scope="row"><?= $item['id'] ?></th>
+                                <td>
+                                    <img src="<?= APP_URL?>/public/uploads/products/<?=$item['image'] ?>" alt="" width="100px">
+                                </td>
+                                <td><?= $item['name'] ?></td>
+                                <td><?= number_format($item['price']) ?></td>
+                                <td><?= number_format($item['quantity']) ?></td>
+                                <td><?= $item['description'] ?></td>
+                                <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                 <td colspan="2">
                                     <button class="btn btn-warning"><a href="" class="text-light">Sửa</a></button>
                                     <button class="btn btn-danger"><a href="" class="text-light">Xóa</a></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td><img src="../../../../../public/uploads/products/anh2.jpg" alt="Camera Image" width='100px'></td>
-                                <td>Sản phẩm 2</td>
-                                <td>200</td>
-                                <td>20</td>
-                                <td>Mô tả 2</td>
-                                <td>Hiện</td>
-                                <td colspan="2">
-                                    <button class="btn btn-warning"><a href="" class="text-light">Sửa</a></button>
-                                    <button class="btn btn-danger"><a href="" class="text-light">Xóa</a></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td><img src="../../../../../public/uploads/products/anh3.jpg" width="100px" alt="Camera Image"></td>
-                                <td>Sản phẩm 3</td>
-                                <td>300</td>
-                                <td>30</td>
-                                <td>Mô tả 3</td>
-                                <td>Hiện</td>
-                                <td colspan="2">
-                                    <button class="btn btn-warning"><a href="" class="text-light">Sửa</a></button>
-                                    <button class="btn btn-danger"><a href="" class="text-light">Xóa</a></button>
-                                </td>
-                            </tr>
+                            <?php
+                                                endforeach;
+
+
+                                                ?>
                         </tbody>
                     </table>
+                    <?php
+                                else :
+
+                                ?>
+                                    <h4 class="text-center text-danger">Không có dữ liệu</h4>
+                                <?php
+                                endif;
+
+                                ?>
                 </div>
             </div>
     <?php
