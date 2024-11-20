@@ -56,11 +56,11 @@ class Index extends BaseView
                                                 <tr>
                                                     <td><?= $item['id'] ?></td>
                                                     <td>
-                                                        <a href="/admin/users/<?= $item['user_id'] ?>"> <?= $item['username'] ?></a>
+                                                        <a href="/admin/users/<?= $item['user_id'] ?>"> </a>
 
                                                     </td>
                                                     <td>
-                                                        <a href="/admin/products/<?= $item['product_id'] ?>"> <?= $item['product_name'] ?></a>
+                                                        <a href="/admin/products/<?= $item['product_id'] ?>"></a>
 
 
                                                     </td>
@@ -68,8 +68,8 @@ class Index extends BaseView
                                                     <td><?= $item['date'] ?></td>
                                                     <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                                     <td>
-                                                        <a href="/admin/comments/<?= $item['id'] ?>" class="btn btn-primary ">Sửa</a>
-                                                        <form action="/admin/comments/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
+                                                        <a href="/admin/comment/<?= $item['id'] ?>" class="btn btn-primary ">Sửa</a>
+                                                        <form action="/admin/comment/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
                                                             <input type="hidden" name="method" value="DELETE" id="">
                                                             <button type="submit" class="btn btn-danger text-white">Xoá</button>
                                                         </form>
@@ -96,18 +96,10 @@ class Index extends BaseView
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
-        </div>
        
+        </div>
+    </div>
+
 <?php
     }
 }

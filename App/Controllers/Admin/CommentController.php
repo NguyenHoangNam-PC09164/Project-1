@@ -8,7 +8,6 @@ use App\Validations\CommentValidation;
 use App\Views\Admin\Layouts\Footer;
 use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
-use App\Views\Admin\Pages\Comment\Create;
 use App\Views\Admin\Pages\Comment\Edit;
 use App\Views\Admin\Pages\Comment\Index;
 
@@ -22,7 +21,7 @@ class CommentController
 
 
         $comment = new Comment();
-        $data = $comment->getAllCommentJoinProductAndUser();
+        $data = $comment->getAllComment();
 
         Header::render();
         Notification::render();
@@ -31,14 +30,6 @@ class CommentController
         Index::render($data);
         Footer::render();
     }
-
-
-    // hiển thị giao diện form thêm
-    public static function create()
-    {
-    }
-
-
     // xử lý chức năng thêm
     public static function store()
     {
@@ -56,13 +47,13 @@ class CommentController
 
 
         $comment = new Comment();
-        $data = $comment->getOneCommentJoinProductAndUser($id);
+        $data = $comment->getOneComment($id);
 
 
 
         if (!$data) {
             NotificationHelper::error('edit', 'Không thể xem bình luận này');
-            header('location: /admin/comments');
+            header('location: /admin/comment');
             exit;
         }
 
@@ -85,7 +76,7 @@ class CommentController
         if (!$is_valid) {
 
             NotificationHelper::error('update', 'Cập nhật bình luận thất bại');
-            header("location: /admin/comments/$id");
+            header("location: /admin/comment/$id");
             exit;
         }
 
@@ -110,11 +101,11 @@ class CommentController
 
         if ($result) {
             NotificationHelper::success('update', 'Cập nhật bình luận thành công');
-            header('location: /admin/comments');
+            header('location: /admin/comment');
             exit;
         } else {
             NotificationHelper::error('update', 'Cập nhật bình luận thất bại');
-            header("location: /admin/comments/$id");
+            header("location: /admin/comment/$id");
         }
     }
 
@@ -128,10 +119,10 @@ class CommentController
         // var_dump($result);
         if($result) {
             NotificationHelper::success('delete', 'Xoá bình luận thành công');
-            header('location: /admin/comments');
+            header('location: /admin/comment');
         } else{
             NotificationHelper::error('delete', 'Xoá bình luận thất bại');
-            header('location: /admin/comments');
+            header('location: /admin/comment');
         }
     }
 }

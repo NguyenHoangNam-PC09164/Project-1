@@ -36,6 +36,7 @@ class Comment extends BaseModel
         return $this->getAllByStatus();
     }
 
+  
     public function getAllCommentJoinProductAndUser()
     {
         $result = [];

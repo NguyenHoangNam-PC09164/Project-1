@@ -92,7 +92,6 @@ Route::get('/admin/users', 'App\Controllers\Admin\UserController@index');
 // GET /product/{id} (lấy chi tiết loại người dùng với id cụ thể)
 Route::get('/admin/users/{id}', 'App\Controllers\Admin\UserController@edit');
 Route::put('/admin/users/{id}', 'App\Controllers\Admin\UserController@update');
-
 // DELETE /user/{id} (delete loại người dùng với id cụ thể)
 Route::delete('/admin/users/{id}', 'App\Controllers\Admin\UserController@delete');
 
@@ -105,17 +104,17 @@ Route::delete('/admin/users/{id}', 'App\Controllers\Admin\UserController@delete'
 
 
 //COMMENTS
-// GET /comment (lấy danh sách sản phẩm)
+//  *** Comment
+// GET /Comment (lấy danh sách  bình luận)
 Route::get('/admin/comment', 'App\Controllers\Admin\CommentController@index');
 
-// POST /comment (tạo mới một sản phẩm)
-Route::post('/admin/comment', 'App\Controllers\Admin\CommentController@store');
+// GET /comments/{id} (lấy chi tiết  bình luận với id cụ thể)
+Route::get('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@edit');
 
-// PUT /comment/{id} (update sản phẩm với id cụ thể)
-Route:: get('/admin/comment/1', 'App\Controllers\Admin\CommentController@edit');
+// PUT /comments/{id} (update  bình luận với id cụ thể)
+Route::put('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@update');
 
-// DELETE /comment/{id} (delete sản phẩm với id cụ thể)
+// DELETE /comments/{id} (delete  bình luận với id cụ thể)
 Route::delete('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@delete');
-
 
 Route::dispatch($_SERVER['REQUEST_URI']);

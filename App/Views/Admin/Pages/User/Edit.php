@@ -87,7 +87,6 @@ class Edit extends BaseView
                             </div>
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button type="reset" class="btn btn-danger text-white" name="">Làm lại</button>
                                     <button type="submit" class="btn btn-primary" name="">Cập nhật</button>
                                 </div>
                             </div>
