@@ -81,7 +81,6 @@ class ProductController
         }
 
         $name = $_POST['name'];
-        
         $price = $_POST['price'];
         $discount_price = $_POST['discount_price'];
         $description = $_POST['description'];
@@ -103,7 +102,6 @@ class ProductController
         // thực hiện thêm vào csdl
         $data=[
             'name'=>$name,
-            
             'price'=>$price,
             'discount_price'=>$discount_price,
             'description'=>$description,
@@ -112,7 +110,6 @@ class ProductController
             'status'=>$status,
             'category_id'=>$category_id,
         ];
-
         $is_upload =ProductValidation::uploadImage();
         if($is_upload){
             $data['image']=$is_upload;

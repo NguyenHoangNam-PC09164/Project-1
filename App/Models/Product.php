@@ -5,7 +5,7 @@ namespace App\Models;
 class Product extends BaseModel
 {
     protected $table = 'products';
-    protected $id = 'id';
+    protected $id = 'product_id';
 
     public function getAllProduct()
     {

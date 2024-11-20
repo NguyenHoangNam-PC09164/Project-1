@@ -39,10 +39,7 @@ class Create extends BaseView
                                 <label for="image" class="form-label">Hình ảnh</label>
                                 <input type="file" class="form-control" name="image" id="image">
                             </div>
-                            <div class="mb-3">
-                                <label for="quantity" class="form-label">Số lượng</label>
-                                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Nhập tên sản phẩm">
-                            </div>
+                            
                             <div class="mb-3">
                                 <label for="price" class="form-label">Giá</label>
                                 <input type="text" class="form-control" name="price" id="price" placeholder="Nhập giá sản phẩm">
@@ -55,7 +52,10 @@ class Create extends BaseView
                                 <label for="description" class="form-label">Mô tả</label>
                                 <textarea type="text" class="form-control" name="description" id="description" placeholder="Nhập mô tả sản phẩm"></textarea>
                             </div>
-
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Số lượng</label>
+                                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Nhập tên sản phẩm">
+                            </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Trạng thái</label>
                                 <select name="status" id="status" class="form-control">

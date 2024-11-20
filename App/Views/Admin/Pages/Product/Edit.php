@@ -22,7 +22,7 @@ class Edit extends BaseView
         </div>
         </div>
         </div>
-        <form class="form">
+        <form class="form-horizontal" action="/admin/products/<?= $data['product']['id'] ?>" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="Product" class="form-label">Tên Sản phẩm</label>
                 <input type="text" class="form-control" name="Product" placeholder="">

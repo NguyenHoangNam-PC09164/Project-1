@@ -43,7 +43,7 @@ class Index extends BaseView
                     foreach ($data as $item) :
                     ?>
                         <tr>
-                            <th scope="row"><?= $item['id'] ?></th>
+                            <th scope="row"><?= $item['product_id'] ?></th>
                             <td>
                                 <img src="<?= APP_URL ?>/public/uploads/products/<?= $item['image'] ?>" alt="" width="100px">
                             </td>
