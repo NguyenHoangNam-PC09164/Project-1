@@ -20,7 +20,7 @@ class Index extends BaseView
                 </nav>
             </div>
         </div>
-    </div>
+        </div>
         <?php
         if (count($data)) :
         ?>
@@ -52,9 +52,12 @@ class Index extends BaseView
                             <td><?= number_format($item['quantity']) ?></td>
                             <td><?= $item['description'] ?></td>
                             <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
-                            <td colspan="2">
-                                <button class="btn btn-warning"><a href="" class="text-light">Sửa</a></button>
-                                <button class="btn btn-danger"><a href="" class="text-light">Xóa</a></button>
+                            <td>
+                                <a href="/admin/products/<?= $item['product_id'] ?>" class="btn btn-primary ">Sửa</a>
+                                <form action="/admin/products/<?= $item['product_id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn có muốn xóa?')">
+                                    <input type="hidden" name="method" value="DELETE" id="">
+                                    <button type="submit" class="btn btn-danger text-white">Xoá</button>
+                                </form>
                             </td>
                         </tr>
                     <?php

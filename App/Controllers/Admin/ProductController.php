@@ -72,61 +72,75 @@ class ProductController
     public static function store()
     {
         // validation
-        $is_valid= ProductValidation::create();
-
-        if(!$is_valid){
-            NotificationHelper::error('store','Thêm sản phẩm thất bại');
+        $is_valid = ProductValidation::create();
+    
+        if (!$is_valid) {
+            NotificationHelper::error('store', 'Thêm sản phẩm thất bại');
             header('location: /admin/products/create');
             exit;
         }
-
+    
         $name = $_POST['name'];
+        $quantity = $_POST['quantity'];
         $price = $_POST['price'];
         $discount_price = $_POST['discount_price'];
         $description = $_POST['description'];
-        $quantity=$_POST['quantity'];
         $is_feature = $_POST['is_feature'];
-        $status=$_POST['status'];
+        $status = $_POST['status'];
         $category_id = $_POST['category_id'];
-        
-        // kiểm tra tên sp có tồn tại chưa => không được trùng tên
-        $product=new Product();
-        $is_exist=$product->getOneProductByName($name);
-
-        if($is_exist){
-            NotificationHelper::error('store','Tên sản phẩm đã tồn tại');
+    
+        // Kiểm tra tên sản phẩm có tồn tại chưa
+        $product = new Product();
+        $is_exist = $product->getOneProductByName($name);
+    
+        if ($is_exist) {
+            NotificationHelper::error('store', 'Tên sản phẩm đã tồn tại');
             header('location: /admin/products/create');
             exit;
         }
-
-        // thực hiện thêm vào csdl
-        $data=[
-            'name'=>$name,
-            'price'=>$price,
-            'discount_price'=>$discount_price,
-            'description'=>$description,
-            'quantity'=>$quantity,
-            'is_feature'=>$is_feature,   
-            'status'=>$status,
-            'category_id'=>$category_id,
-        ];
-        $is_upload =ProductValidation::uploadImage();
-        if($is_upload){
-            $data['image']=$is_upload;
+    
+        // Xử lý upload hình ảnh nếu có
+        $image = null;
+        if (!empty($_FILES['image']['name'])) { // Kiểm tra xem người dùng có tải ảnh lên không
+            $is_upload = ProductValidation::uploadImage();
+    
+            if (!$is_upload) {
+                NotificationHelper::error('store', 'Thêm sản phẩm thất bại do lỗi upload ảnh');
+                header('location: /admin/products/create');
+                exit;
+            }
+            $image = $is_upload; // Lưu đường dẫn ảnh nếu upload thành công
         }
-
-        $result= $product->createProduct($data);
-
-        if($result){
-            NotificationHelper::success('store','Thêm sản phẩm thành công');
+    
+        // Thực hiện thêm vào cơ sở dữ liệu
+        $data = [
+            'name' => $name,
+            'quantity' => $quantity,
+            'price' => $price,
+            'discount_price' => $discount_price,
+            'description' => $description,
+            'is_feature' => $is_feature,
+            'status' => $status,
+            'category_id' => $category_id,
+        ];
+    
+        if ($image) {
+            $data['image'] = $image; // Chỉ thêm hình ảnh vào dữ liệu nếu có
+        }
+    
+        $result = $product->createProduct($data);
+    
+        if ($result) {
+            NotificationHelper::success('store', 'Thêm sản phẩm thành công');
             header('location: /admin/products');
             exit;
-        } else{
-            NotificationHelper::error('store','Thêm sản phẩm thất bại');
+        } else {
+            NotificationHelper::error('store', 'Thêm sản phẩm thất bại');
             header('location: /admin/products/create');
             exit;
         }
     }
+    
 
 
     // hiển thị chi tiết
@@ -187,12 +201,13 @@ class ProductController
         }
 
         $name = $_POST['name'];
+        $quantity = $_POST['quantity'];
         $price = $_POST['price'];
         $discount_price = $_POST['discount_price'];
-        $is_feature = $_POST['is_feature'];
-        $status=$_POST['status'];
-        $category_id = $_POST['category_id'];
         $description = $_POST['description'];
+        $is_feature = $_POST['is_feature'];
+        $status = $_POST['status'];
+        $category_id = $_POST['category_id'];
         // kiểm tra tên sp có tồn tại chưa => không được trùng tên
         $product=new Product();
         $is_exist=$product->getOneProductByName($name);
@@ -205,19 +220,33 @@ class ProductController
             }
         }
 
+        // Xử lý upload hình ảnh nếu có
+        $image = null;
+        if (!empty($_FILES['image']['name'])) { // Kiểm tra xem người dùng có tải ảnh lên không
+            $is_upload = ProductValidation::uploadImage();
+    
+            if (!$is_upload) {
+                NotificationHelper::error('store', 'Thêm sản phẩm thất bại do lỗi upload ảnh');
+                header('location: /admin/products/create');
+                exit;
+            }
+            $image = $is_upload; // Lưu đường dẫn ảnh nếu upload thành công
+        }
+
         // thực hiện cập nhật vào csdl
         $data=[
-            'name'=>$name,
-            'price'=>$price,
-            'discount_price'=>$discount_price,
-            'is_feature'=>$is_feature,
-            'status'=>$status,
-            'category_id'=>$category_id,
-            'description'=>$description
+            'name' => $name,
+            'quantity' => $quantity,
+            'price' => $price,
+            'discount_price' => $discount_price,
+            'description' => $description,
+            'is_feature' => $is_feature,
+            'status' => $status,
+            'category_id' => $category_id,
         ];
-        $is_upload =ProductValidation::uploadImage();
-        if($is_upload){
-            $data['image']=$is_upload;
+        
+        if ($image) {
+            $data['image'] = $image; // Chỉ thêm hình ảnh vào dữ liệu nếu có
         }
 
         $result= $product->updateProduct($id,$data);
