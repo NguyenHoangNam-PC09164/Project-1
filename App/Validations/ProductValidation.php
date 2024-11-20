@@ -15,6 +15,14 @@ class ProductValidation
             NotificationHelper::error('name','Tên loại không được để trống');
             $is_valid = false;
         }
+        //quantity
+        if(!isset($_POST['quantity'])|| $_POST['quantity']===''){
+            NotificationHelper::error('quantity','Số lượng không được để trống');
+            $is_valid = false;
+        } elseif((int) $_POST['quantity']<=0){
+            NotificationHelper::error('quantity','Số lượng phải lớn hơn 0');
+            $is_valid = false;
+        }
 
         //giá
         if(!isset($_POST['price'])|| $_POST['price']===''){
@@ -37,9 +45,22 @@ class ProductValidation
             $is_valid=false;
         }
 
+        //mô tả
+        if(!isset($_POST['description'])|| $_POST['description']===''){
+            NotificationHelper::error('description','Mô tả không được để trống');
+            $is_valid = false;
+        }
+
+
         // Loại sản phẩm
         if(!isset($_POST['category_id'])|| $_POST['category_id']===''){
             NotificationHelper::error('category_id','Loại sản phẩm không được để trống');
+            $is_valid = false;
+        }
+
+        // Trạng thái
+        if(!isset($_POST['status'])|| $_POST['status']===''){
+            NotificationHelper::error('status','Trạng thái không được để trống');
             $is_valid = false;
         }
 
@@ -49,11 +70,7 @@ class ProductValidation
             $is_valid = false;
         }
         
-        // Trạng thái
-        if(!isset($_POST['status'])|| $_POST['status']===''){
-            NotificationHelper::error('status','Trạng thái không được để trống');
-            $is_valid = false;
-        }
+        
         return $is_valid;
     }
 
