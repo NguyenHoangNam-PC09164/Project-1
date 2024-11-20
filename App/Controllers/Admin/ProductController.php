@@ -81,10 +81,11 @@ class ProductController
         }
 
         $name = $_POST['name'];
-        $quantity=$_POST['quantity'];
+        
         $price = $_POST['price'];
         $discount_price = $_POST['discount_price'];
         $description = $_POST['description'];
+        $quantity=$_POST['quantity'];
         $is_feature = $_POST['is_feature'];
         $status=$_POST['status'];
         $category_id = $_POST['category_id'];
@@ -102,10 +103,11 @@ class ProductController
         // thực hiện thêm vào csdl
         $data=[
             'name'=>$name,
-            'quantity'=>$quantity,
+            
             'price'=>$price,
             'discount_price'=>$discount_price,
             'description'=>$description,
+            'quantity'=>$quantity,
             'is_feature'=>$is_feature,   
             'status'=>$status,
             'category_id'=>$category_id,
