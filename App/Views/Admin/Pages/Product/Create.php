@@ -25,10 +25,8 @@ class Create extends BaseView
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
-
                     <form class="form" action="/admin/products" method="POST" enctype="multipart/form-data">
                         <div class="card-body">
-
                             <h3 class="card-title">Thêm sản phẩm</h3>
                             <input type="hidden" name="method" id="" value="POST">
                             <div class="mb-3">
