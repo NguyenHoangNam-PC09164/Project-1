@@ -4,12 +4,18 @@ namespace App\Views\Client;
 
 use App\Views\BaseView;
 
+use App\Models\Category;
+
+
 class Home extends BaseView
 {
     public static function render($data = null)
     {
+        $category = new Category();
+        $categories = (new Category())->getAll(); 
 ?>
         <div class="section">
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-xs-6">
@@ -58,21 +64,30 @@ class Home extends BaseView
                         <div class="section-title">
                             <h3 class="title">Sản phẩm mới</h3>
                             <div class="section-nav">
-                                <ul class="section-tab-nav tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#tab1">Nikon</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Canon</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Sony</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Insta360 X3</a></li>
+                            <ul class="section-tab-nav tab-nav">
+                                    <?php if (!empty($categories) && is_array($categories)) : ?>
+                                        <?php foreach ($categories as $item) : ?>
+                                            <li>
+                                                <a data-toggle="tab" href="/products/categories/<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
+                                                    <?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <li><span>Không có danh mục nào</span></li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>
                     </div>
+
 
                     <div class="col-md-12">
                         <div class="row">
                             <div class="products-tabs">
                                 <div id="tab1" class="tab-pane active">
                                     <div class="products-slick" data-nav="#slick-nav-1">
+                                        
                                         <div class="product">
                                             <div class="product-img">
                                                 <img src="../../../public/assets/client/img/product1.jpg" alt="">
@@ -218,7 +233,7 @@ class Home extends BaseView
             </div>
         </div>
         <div class="section">
-            <div class="container" >
+            <div class="container">
                 <div class="row" id="hot-deal">
 
                 </div>
@@ -395,37 +410,37 @@ class Home extends BaseView
 
 
 
-    <div class="container mt-4">
-        <div class="row text-center">
-        <div class="col-md-12 mb-4">
-                <div class="card product-card">
-                    <img src="../../../public/assets/client/img/banner_bottom_1.webp" class="card-img-top" alt="Sony Camera">
-                    
-                </div>
-            </div>
+        <div class="container mt-4">
+            <div class="row text-center">
+                <div class="col-md-12 mb-4">
+                    <div class="card product-card">
+                        <img src="../../../public/assets/client/img/banner_bottom_1.webp" class="card-img-top" alt="Sony Camera">
 
-            <div class="col-md-4 mb-4">
-                <div class="card product-card">
-                    <img src="../../../public/assets/client/img/banner_bottom_2.webp" class="card-img-top" alt="Sony Camera">
-                    
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card product-card">
-                    <img src="../../../public/assets/client/img/banner_bottom_3.webp" class="card-img-top" alt="Nikon Camera">
-                    
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="../../../public/assets/client/img/banner_bottom_2.webp" class="card-img-top" alt="Sony Camera">
+
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card product-card">
-                    <img src="../../../public/assets/client/img/banner_bottom_4.webp" class="card-img-top" alt="Fujifilm Camera">
-                    
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="../../../public/assets/client/img/banner_bottom_3.webp" class="card-img-top" alt="Nikon Camera">
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card product-card">
+                        <img src="../../../public/assets/client/img/banner_bottom_4.webp" class="card-img-top" alt="Fujifilm Camera">
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <div class="section">
             <div class="container">
