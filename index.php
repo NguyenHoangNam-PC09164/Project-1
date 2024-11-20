@@ -57,6 +57,9 @@ Route::put('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@u
 Route::delete('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@delete');
 
 
+
+
+
 //PRODUCTS
 // GET /product (lấy danh sách sản phẩm)
 Route::get('/admin/products', 'App\Controllers\Admin\ProductController@index');
@@ -76,15 +79,30 @@ Route::put('/admin/products/{id}', 'App\Controllers\Admin\ProductController@upda
 // DELETE /products/{id} (delete sản phẩm với id cụ thể)
 Route::delete('/admin/products/{id}', 'App\Controllers\Admin\ProductController@delete');
 
+
+
+
+
+
+
 //USERS
 // GET /user (lấy danh sách người dùng)
-Route::get('/admin/user', 'App\Controllers\Admin\UserController@index');
+Route::get('/admin/users', 'App\Controllers\Admin\UserController@index');
 
 // GET /product/{id} (lấy chi tiết loại người dùng với id cụ thể)
-Route::get('/admin/user/{id}', 'App\Controllers\Admin\UserController@edit');
+Route::get('/admin/users/{id}', 'App\Controllers\Admin\UserController@edit');
+Route::put('/admin/users/{id}', 'App\Controllers\Admin\UserController@update');
 
 // DELETE /user/{id} (delete loại người dùng với id cụ thể)
-Route::delete('/admin/user/{id}', 'App\Controllers\Admin\UserController@delete');
+Route::delete('/admin/users/{id}', 'App\Controllers\Admin\UserController@delete');
+
+
+
+
+
+
+
+
 
 //COMMENTS
 // GET /comment (lấy danh sách sản phẩm)
