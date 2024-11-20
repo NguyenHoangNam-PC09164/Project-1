@@ -41,7 +41,10 @@ class Register{
                                 <label for="name">Họ tên*</label>
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Nhập họ và tên" required>
                             </div>
-
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại*</label>
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="Nhập số điện thoại" required>
+                            </div>
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="remember" checked> Ghi nhớ đăng nhập

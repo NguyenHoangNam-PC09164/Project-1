@@ -29,8 +29,14 @@ Route::get('/introduce', 'App\Controllers\Client\HomeController@introduce');
 Route::get('/contact', 'App\Controllers\Client\HomeController@contact');
 Route::get('/news', 'App\Controllers\Client\HomeController@news');
 
-Route::get('/login', 'App\Controllers\Client\AuthController@login');
-Route::get('/register', 'App\Controllers\Client\AuthController@register');
+
+Route::get('/register','App\Controllers\Client\AuthController@register');
+Route::post('/register','App\Controllers\Client\AuthController@registerAction');
+
+Route::get('/login','App\Controllers\Client\AuthController@login');
+Route::post('/login','App\Controllers\Client\AuthController@loginAction');
+
+Route::get('/logout','App\Controllers\Client\AuthController@logout');
 
 
 // *** Admin
@@ -118,3 +124,4 @@ Route::put('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@updat
 Route::delete('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@delete');
 
 Route::dispatch($_SERVER['REQUEST_URI']);
+

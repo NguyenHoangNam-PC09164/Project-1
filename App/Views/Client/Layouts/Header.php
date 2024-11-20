@@ -9,7 +9,7 @@ class Header extends BaseView
 {
     public static function render($data = null)
     {
-
+        $is_login = AuthHelper::checkLogin();
 
 ?>
 
@@ -35,6 +35,25 @@ class Header extends BaseView
             <link rel="stylesheet" href="../public/assets/client/css/font-awesome.min.css">
 
             <link type="text/css" rel="stylesheet" href="../public/assets/client/css/style.css" />
+            <style>
+                .dropdown-menu {
+                    background-color: #000;
+                    color: #ff0000;
+                    padding: 10px;
+                }
+
+                .dropdown-menu a {
+                    display: block;
+                    color: #ff0000;
+                    padding: 5px 10px;
+                    text-decoration: none;
+                }
+
+                .dropdown-menu a:hover {
+                    background-color: #333;
+                    color: #ffffff;
+                }
+            </style>
         </head>
 
         <body>
@@ -47,9 +66,33 @@ class Header extends BaseView
                             <li><a href="#"><i class="fa fa-map-marker"></i> Cần Thơ</a></li>
                         </ul>
                         <ul class="header-links pull-right">
-                            <li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
-                            <li><a href="/login"><i class="fa fa-user-o"></i> Tài khoản</a></li>
-                        </ul>
+    <li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
+    <?php if ($is_login && isset($_SESSION['user'])) : ?>
+        <li class="nav-item">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-o"></i> Tài khoản
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/users/<?= htmlspecialchars($_SESSION['user']['id'] ?? '') ?>">
+                        <?= htmlspecialchars($_SESSION['user']['username'] ?? '') ?>
+                    </a>
+                    <a class="dropdown-item" href="/change-password">Đổi mật khẩu</a>
+                    <a class="dropdown-item" href="/logout">Đăng xuất</a>
+                </div>
+            </div>
+        </li>
+    <?php else : ?>
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/register">Đăng ký</a>
+        </li>
+    <?php endif; ?>
+</ul>
+
+
                     </div>
                 </div>
 
@@ -106,7 +149,7 @@ class Header extends BaseView
                                                     </div>
                                                     <button class="delete"><i class="fa fa-close"></i></button>
                                                 </div>
-                                        
+
 
                                                 <div class="product-widget">
                                                     <div class="product-img">
