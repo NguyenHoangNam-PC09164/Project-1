@@ -68,7 +68,7 @@ class Index extends BaseView
                                                     <td>
                                                         <a href="/admin/users/<?= $item['user_id'] ?>" class="btn btn-primary ">Sửa</a>
                                                         <?php
-                                                        if ($_SESSION['user']['id'] != $item['user_id']) :
+                                                        if ($_SESSION['user']['user_id'] != $item['user_id']) :
 
                                                         ?>
                                                             <form action="/admin/users/<?= $item['user_id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
