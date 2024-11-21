@@ -36,15 +36,16 @@ class Comment extends BaseModel
         return $this->getAllByStatus();
     }
 
-  
+
     public function getAllCommentJoinProductAndUser()
     {
         $result = [];
         try {
 
             $sql = "SELECT comments.*, products.name AS product_name, users.username 
-            FROM comments INNER JOIN products ON comments.product_id=products.id 
-            INNER JOIN users ON comments.user_id=users.id;";
+            FROM `comments` inner JOIN products ON comments.product_id = products.product_id 
+            INNER JOIN users on comments.user_id = users.user_id;";
+
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
@@ -60,8 +61,8 @@ class Comment extends BaseModel
             $sql = "SELECT comments.*, products.name AS product_name, users.username 
             FROM comments INNER JOIN products ON comments.product_id=products.id 
             INNER JOIN users ON comments.user_id=users.id
-            WHERE comments.id=?";          
-              $conn = $this->_conn->MySQLi();
+            WHERE comments.id=?";
+            $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
             $stmt->bind_param('i', $id);
@@ -78,12 +79,12 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            
+
             $sql = "SELECT comments.*,users.username, users.name, users.avatar 
             FROM comments INNER JOIN users ON comments.user_id=users.id 
-            WHERE comments.product_id=? AND comments.status=".self::STATUS_ENABLE   . " ORDER BY date DESC LIMIT 5;";
+            WHERE comments.product_id=? AND comments.status=" . self::STATUS_ENABLE   . " ORDER BY date DESC LIMIT 5;";
 
-              $conn = $this->_conn->MySQLi();
+            $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
             $stmt->bind_param('i', $id);

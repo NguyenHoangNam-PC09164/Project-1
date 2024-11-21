@@ -183,6 +183,5 @@ class CategoryController
             NotificationHelper::error('delete','Xóa loại sản phẩm thất bại');
         }
         header('location: /admin/categories');
-        
     }
 }

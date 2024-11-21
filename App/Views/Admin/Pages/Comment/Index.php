@@ -56,11 +56,11 @@ class Index extends BaseView
                                                 <tr>
                                                     <td><?= $item['id'] ?></td>
                                                     <td>
-                                                        <a href="/admin/users/<?= $item['user_id'] ?>"> </a>
+                                                        <a href="/admin/users/<?= $item['user_id'] ?>"> <?= $item['username'] ?></a>
 
                                                     </td>
                                                     <td>
-                                                        <a href="/admin/products/<?= $item['product_id'] ?>"></a>
+                                                        <a href="/admin/products/<?= $item['product_id'] ?>"><?= $item['product_name'] ?></a>
 
 
                                                     </td>

@@ -21,7 +21,7 @@ class CommentController
 
 
         $comment = new Comment();
-        $data = $comment->getAllComment();
+        $data = $comment->getAllCommentJoinProductAndUser();
 
         Header::render();
         Notification::render();
