@@ -31,6 +31,17 @@ Route::get('/news', 'App\Controllers\Client\HomeController@news');
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
 Route::get('/register', 'App\Controllers\Client\AuthController@register');
 
+Route::get('/users/{id}','App\Controllers\Client\AuthController@edit');//
+Route::put('/users/{id}','App\Controllers\Client\AuthController@update');
+
+Route::get('/change-password','App\Controllers\Client\AuthController@changePassword');
+Route::put('/change-password','App\Controllers\Client\AuthController@changePasswordAction');  
+
+Route::get('/forgot-password','App\Controllers\Client\AuthController@forgotPassword');
+Route::post('/forgot-password','App\Controllers\Client\AuthController@forgotPasswordAction');
+
+Route::get('/reset-password','App\Controllers\Client\AuthController@resetPassword');
+Route::put('/reset-password','App\Controllers\Client\AuthController@resetPasswordAction'); 
 
 // *** Admin
 
