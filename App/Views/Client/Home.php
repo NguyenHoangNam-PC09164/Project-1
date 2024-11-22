@@ -11,7 +11,6 @@ class Home extends BaseView
 {
     public static function render($data = null)
     {
-        $category = new Category();
         $categories = (new Category())->getAll(); 
 ?>
         <div class="section">

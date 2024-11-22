@@ -4,14 +4,16 @@ namespace App\Views\Client\Pages\Product;
 
 use App\Views\BaseView;
 
+
+
 class Detail extends BaseView
 {
-    public static function render($data = null)
-    {
-        // var_dump($_SESSION);
+	public static function render($data = null)
+	{
+
 ?>
 
-<div id="breadcrumb" class="section">
+		<div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -40,49 +42,34 @@ class Detail extends BaseView
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product1.jpg" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product2.jpg" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 
-							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product3.jpg" alt="">
-							</div>
 
-							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product4.jpg" alt="">
-							</div>
 						</div>
 					</div>
-					
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product1.jpg" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product2.jpg" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product3.jpg" alt="">
-							</div>
-
-							<div class="product-preview">
-								<img src="../../../public/assets/client/img/product4.jpg" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 						</div>
 					</div>
 					<!-- /Product thumb imgs -->
 
 					<!-- Product details -->
-					
+
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name"><?= $data['products']['name'] ?></h2>
+							<h2 class="product-name"><?= $data['product']['name'] ?></h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -94,23 +81,20 @@ class Detail extends BaseView
 								<a class="review-link" href="#">10 Review(s) | Thêm review</a>
 							</div>
 							<div>
-							<?php
-                                            if ($data['products']['discount_price'] > 0) :
-                                            ?>
-                                                
-										<h3 class="product-price"><strong class="text-danger"><?= number_format($data['products']['price'] - $data['products']['discount_price']) ?> đ</strong> <del class="product-old-price"><strike><?= number_format($data['products']['price']) ?> đ</strike> </del> </h3>
-										
-                                            <?php
-                                            else :
-                                            ?>
-                                                <h3 class="product-price"><?= number_format($data['products']['price']) ?> đ</h3>
+								<?php
+								if ($data['product']['discount_price'] > 0):
+								?>
+									<h3 class="product-price"><strong class="text-danger"><?= number_format($data['product']['price'] - $data['product']['discount_price']) ?> đ</strong> <del class="product-old-price"><strike><?= number_format($data['product']['price']) ?> đ</strike> </del> </h3>
+								<?php
+								else :
+								?>
+									<h3 class="product-price"><?= number_format($data['product']['price']) ?> đ</h3>
 
-                                            <?php
-                                            endif;
-                                            ?>
-								<span class="product-available">Còn hàng</span>
+								<?php
+								endif;
+								?>
 							</div>
-							<p><?= $data['products']['description'] ?></p>
+							<p><?= $data['product']['description'] ?></p>
 
 							<div class="product-options">
 								<label>
@@ -167,7 +151,6 @@ class Detail extends BaseView
 							<!-- product tab nav -->
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
-								<li><a data-toggle="tab" href="#tab2">Chi tiết</a></li>
 								<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
 							</ul>
 							<!-- /product tab nav -->
@@ -178,7 +161,7 @@ class Detail extends BaseView
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											<p><?= $data['product']['long_description'] ?></p>
 										</div>
 									</div>
 								</div>
@@ -285,8 +268,11 @@ class Detail extends BaseView
 										<div class="col-md-6">
 											<div id="reviews">
 												<ul class="reviews">
+
 													<li>
 														<div class="review-heading">
+
+
 															<h5 class="name">John</h5>
 															<p class="date">27 DEC 2018, 8:0 PM</p>
 															<div class="review-rating">
@@ -301,8 +287,11 @@ class Detail extends BaseView
 															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 														</div>
 													</li>
+
 													<li>
 														<div class="review-heading">
+
+
 															<h5 class="name">John</h5>
 															<p class="date">27 DEC 2018, 8:0 PM</p>
 															<div class="review-rating">
@@ -317,22 +306,7 @@ class Detail extends BaseView
 															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
 														</div>
 													</li>
-													<li>
-														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
-															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
+
 												</ul>
 												<ul class="reviews-pagination">
 													<li class="active">1</li>
@@ -397,7 +371,7 @@ class Detail extends BaseView
 
 					<!-- product -->
 
-					
+
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
@@ -423,7 +397,7 @@ class Detail extends BaseView
 							</div>
 						</div>
 					</div>
-					
+
 					<!-- /product -->
 					<div class="col-md-3 col-xs-6">
 						<div class="product">
@@ -449,7 +423,8 @@ class Detail extends BaseView
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
 							</div>
 						</div>
-					</div><div class="col-md-3 col-xs-6">
+					</div>
+					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
 								<img src="../../../public/assets/client/img/product13.jpg" alt="">
@@ -473,7 +448,8 @@ class Detail extends BaseView
 								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
 							</div>
 						</div>
-					</div><div class="col-md-3 col-xs-6">
+					</div>
+					<div class="col-md-3 col-xs-6">
 						<div class="product">
 							<div class="product-img">
 								<img src="../../../public/assets/client/img/product12.jpg" alt="">
@@ -503,19 +479,19 @@ class Detail extends BaseView
 				<!-- /row -->
 			</div>
 			<!-- /container -->
-        </div>
+		</div>
 
 
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 
 
 
 <?php
 
-    }
+	}
 }
