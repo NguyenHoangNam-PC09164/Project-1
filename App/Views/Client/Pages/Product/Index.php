@@ -194,76 +194,51 @@ class Index extends BaseView
 						<!-- store products -->
 
 						<div class="row">
-							<?php if (isset($products) && count($products)) : ?>
-								<?php foreach ($products as $item) : ?>
-									<!-- Product -->
-									<div class="col-md-4 col-xs-6">
-										<div class="product">
-											<!-- Product Image -->
-											<div class="product-img">
-												<img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>"	class="card-img-top" alt="<?= htmlspecialchars($item['name']) ?>">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<!-- /Product Image -->
+						<?php
+                    if (count($data) && count($data['products'])) :
+                    ?>
+					<?php
+                            foreach ($data['products'] as $item) :
+                            ?>
+							<!-- product -->
+							<div class="col-md-4 col-xs-6">
+								<div class="product">
+									<div class="product-img">
+										<img src="<?= APP_URL ?>/public/uploads/products/<?= $item['image'] ?>" alt="">
+										<div class="product-label">
+											<span class="sale">-30%</span>
+											<span class="new">NEW</span>
+										</div>
+									</div>
+									<div class="product-body">
+										<p class="product-category">Danh mục</p>
+										<h3 class="product-name"><a href="/products/<?= $item['id'] ?>"><?= $item['name'] ?></a></h3>
+										<?php
+                                            if ($item['discount_price'] > 0) :
+                                            ?>
+                                                
+										<h4 class="product-price"><strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong> <del class="product-old-price"><strike><?= number_format($item['price']) ?> đ</strike> </del> </h4>
+										
+                                            <?php
+                                            else :
+                                            ?>
+                                                <h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
 
-											<!-- Product Body -->
-											<div class="product-body">
-												<h3 class="product-name">
-													<a href="/products/<?= htmlspecialchars($item['product_id']) ?>">
-														<?= htmlspecialchars($item['name']) ?>
-													</a>
-												</h3>
-
-												<!-- Product Price -->
-												<?php if ($item['discount_price'] > 0) : ?>
-													<h4 class="product-price">
-														<strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong>
-														<del class="product-old-price"><?= number_format($item['price']) ?> đ</del>
-													</h4>
-												<?php else : ?>
-													<h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
-												<?php endif; ?>
-												<!-- /Product Price -->
-
-												<!-- Product Rating -->
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<!-- /Product Rating -->
-
-												<!-- Product Buttons -->
-												<div class="product-btns">
-													<button class="add-to-wishlist">
-														<i class="fa fa-heart-o"></i>
-														<span class="tooltipp">Thêm yêu thích</span>
-													</button>
-													<button class="add-to-compare">
-														<i class="fa fa-exchange"></i>
-														<span class="tooltipp">Thêm so sánh</span>
-													</button>
-													<button class="quick-view">
-														<i class="fa fa-eye"></i>
-														<a href="/products/<?= htmlspecialchars($item['product_id']) ?>" class="tooltipp">Xem thêm</a>
-													</button>
-												</div>
-												<!-- /Product Buttons -->
-											</div>
-											<!-- /Product Body -->
-
-											<!-- Add to Cart -->
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">
-													<i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
-												</button>
-											</div>
-											<!-- /Add to Cart -->
+                                            <?php
+                                            endif;
+                                            ?>
+										
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
 										</div>
 									</div>
 									<!-- /Product -->
