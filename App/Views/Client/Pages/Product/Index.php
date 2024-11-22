@@ -201,9 +201,7 @@ class Index extends BaseView
 										<div class="product">
 											<!-- Product Image -->
 											<div class="product-img">
-												<img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>"
-													class="card-img-top"
-													alt="<?= htmlspecialchars($item['name']) ?>">
+												<img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>"	class="card-img-top" alt="<?= htmlspecialchars($item['name']) ?>">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>

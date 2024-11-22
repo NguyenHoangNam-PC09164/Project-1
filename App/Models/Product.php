@@ -92,12 +92,13 @@ class Product extends BaseModel
             $stmt->bind_param('i', $id);
             $stmt->execute();
             return $stmt->get_result()->fetch_assoc();
-        } catch (\Throwable $th) {  
+        } catch (\Throwable $th) {
             error_log('Lỗi khi hiển thị chi tiết dữ liệu: ' . $th->getMessage());
             return $result;
         }
     }
-    public function countTotalProduct(){
+    public function countTotalProduct()
+    {
         return $this->countTotal();
     }
 
@@ -120,7 +121,7 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " AND products.is_feature=" . self::STATUS_ENABLE . "";    
+            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " AND products.is_feature=" . self::STATUS_ENABLE . "";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -135,7 +136,7 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " ORDER by id DESC LIMIT 4";
+            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " ORDER by date DESC LIMIT 4";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -145,4 +146,5 @@ class Product extends BaseModel
             return $result;
         }
     }
+    
 }

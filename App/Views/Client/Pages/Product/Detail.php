@@ -78,7 +78,7 @@ class Detail extends BaseView
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star-o"></i>
 								</div>
-								<a class="review-link" href="#">10 Review(s) | Thêm review</a>
+								<a class="review-link" href="#">10 Đánh giá | Thêm đánh giá</a>
 							</div>
 							<div>
 								<?php
@@ -134,7 +134,7 @@ class Detail extends BaseView
 							</ul>
 
 							<ul class="product-links">
-								<li>Share:</li>
+								<li>Chia sẻ:</li>
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -151,7 +151,7 @@ class Detail extends BaseView
 							<!-- product tab nav -->
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
-								<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+								<li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
