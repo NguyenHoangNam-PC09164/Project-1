@@ -92,7 +92,7 @@ class Product extends BaseModel
             $stmt->bind_param('i', $id);
             $stmt->execute();
             return $stmt->get_result()->fetch_assoc();
-        } catch (\Throwable $th) {  
+        } catch (\Throwable $th) {
             error_log('Lỗi khi hiển thị chi tiết dữ liệu: ' . $th->getMessage());
             return $result;
         }
