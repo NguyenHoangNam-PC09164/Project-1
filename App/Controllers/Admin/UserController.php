@@ -74,8 +74,12 @@ class UserController
         $user = new User();
         //      //thuc hien them cap nhat
         $data = [
+            'username' => $_POST['username'],
+            'email' => $_POST['email'],
+            'name' => $_POST['name'],
+            'phone' => $_POST['phone'],
             'status' => $_POST['status'],
-            'role' => $_POST['role'],
+            'role' => $_POST['role']
         ];
 
        
