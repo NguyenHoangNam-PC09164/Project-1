@@ -128,7 +128,7 @@ class AuthHelper{
         }
 
         $data=$_SESSION['user'];
-        $user_id=$data['user_id'];
+        $user_id=$data['id'];
 
         if($user_id!=$id){
             NotificationHelper::error('user_id','Không có quyền xem thông tin tài khoản này');
