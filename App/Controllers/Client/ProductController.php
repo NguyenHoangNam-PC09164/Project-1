@@ -14,6 +14,7 @@ use App\Views\Client\Pages\Product\Category as ProductCategory;
 use App\Views\Client\Pages\Product\Detail;
 use App\Views\Client\Pages\Product\Index;
 use App\Views\Client\Pages\Shop\Checkout;
+use App\Views\Client\Pages\Shop\Cart;
 
 class ProductController
 {
@@ -157,6 +158,11 @@ class ProductController
     public static function checkout(){
         Header::render();
         Checkout::render();
+        Footer::render();
+    }
+    public static function cart(){
+        Header::render();
+        Cart::render();
         Footer::render();
     }
 }

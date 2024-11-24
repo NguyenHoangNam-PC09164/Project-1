@@ -16,13 +16,11 @@ class Home extends BaseView
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
-                                <div class="page-breadcrumb">
+                                  <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                            <!-- <li class="breadcrumb-item active" aria-current="page"><a href="/admin/categories" class="">Loại sản phẩm</a></li> -->
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển 1</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Loại sản phẩm</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -30,8 +28,8 @@ class Home extends BaseView
                         </div>
                     </div>
 
-                    <div class="ecommerce-widget">
-                        <!-- <div class="row">
+                                    <div class="ecommerce-widget">
+                                        <!-- <div class="row">
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -89,7 +87,7 @@ class Home extends BaseView
                                 </div>
                             </div>
                         </div> -->
-                        <!-- <div class="row">
+                                        <!-- <div class="row">
 
                             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
@@ -189,7 +187,7 @@ class Home extends BaseView
                                     <div class="card-body">
                                         <h5 class="text-muted">Bán hàng</h5>
                                         <div class="metric-value d-inline-block">
-                                            <h1 class="mb-1">12,000,000</h1>
+                                            <h1 class="mb-1">1,209,900</h1>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                                             <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">5.86%</span>
@@ -243,313 +241,24 @@ class Home extends BaseView
                         </div>
                         <div class="row">
 
-                            <div class="col-xl-6 col-lg-5 col-md-12 col-sm-12 col-12">
+                            <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Doanh thu theo danh mục</h5>
-                                    <!-- <div class="card-body">
+                                    <div class="card-body">
                                         <div id="c3chart_category" style="height: 420px;"></div>
-                                    </div> -->
-                                    <div id="c3chart_category" style="height: 460px;position: relative;" class="c3">
-                                        <svg width="292.3636474609375" height="420" style="overflow: hidden;">
-                                            <defs>
-                                                <clipPath id="c3-1731510706108-clip">
-                                                    <rect width="292.3636474609375" height="376"></rect>
-                                                </clipPath>
-                                                <clipPath id="c3-1731510706108-clip-xaxis">
-                                                    <rect x="-31" y="-20" width="354.3636474609375" height="60"></rect>
-                                                </clipPath>
-                                                <clipPath id="c3-1731510706108-clip-yaxis">
-                                                    <rect x="-29" y="-4" width="20" height="400"></rect>
-                                                </clipPath>
-                                                <clipPath id="c3-1731510706108-clip-grid">
-                                                    <rect width="292.3636474609375" height="376"></rect>
-                                                </clipPath>
-                                                <clipPath id="c3-1731510706108-clip-subchart">
-                                                    <rect width="292.3636474609375" height="0"></rect>
-                                                </clipPath>
-                                            </defs>
-                                            <g transform="translate(0.5,4.5)">
-                                                <text class="c3-text c3-empty" text-anchor="middle" dominant-baseline="middle" x="146.18182373046875" y="188" style="opacity: 0;"></text>
-                                                <g clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip)" class="c3-regions" style="visibility: hidden;"></g>
-                                                <g clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip-grid)" class="c3-grid" style="visibility: hidden;">
-                                                    <g class="c3-xgrid-focus">
-                                                        <line class="c3-xgrid-focus" x1="-10" x2="-10" y1="0" y2="376" style="visibility: hidden;"></line>
-                                                    </g>
-                                                </g>
-                                                <g clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip)" class="c3-chart">
-                                                    <g class="c3-chart-bars">
-                                                        <g class="c3-chart-bar c3-target c3-target-Men" style="pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Men c3-bars c3-bars-Men" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-bar c3-target c3-target-Women" style="pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Women c3-bars c3-bars-Women" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-bar c3-target c3-target-Accessories" style="pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Accessories c3-bars c3-bars-Accessories" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-bar c3-target c3-target-Children" style="pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Children c3-bars c3-bars-Children" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-bar c3-target c3-target-Apperal" style="pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Apperal c3-bars c3-bars-Apperal" style="cursor: pointer;"></g>
-                                                        </g>
-                                                    </g>
-                                                    <g class="c3-chart-lines">
-                                                        <g class="c3-chart-line c3-target c3-target-Men" style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Men c3-lines c3-lines-Men"></g>
-                                                            <g class=" c3-shapes c3-shapes-Men c3-areas c3-areas-Men"></g>
-                                                            <g class=" c3-selected-circles c3-selected-circles-Men"></g>
-                                                            <g class=" c3-shapes c3-shapes-Men c3-circles c3-circles-Men" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-line c3-target c3-target-Women" style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Women c3-lines c3-lines-Women"></g>
-                                                            <g class=" c3-shapes c3-shapes-Women c3-areas c3-areas-Women"></g>
-                                                            <g class=" c3-selected-circles c3-selected-circles-Women"></g>
-                                                            <g class=" c3-shapes c3-shapes-Women c3-circles c3-circles-Women" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-line c3-target c3-target-Accessories" style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Accessories c3-lines c3-lines-Accessories"></g>
-                                                            <g class=" c3-shapes c3-shapes-Accessories c3-areas c3-areas-Accessories"></g>
-                                                            <g class=" c3-selected-circles c3-selected-circles-Accessories"></g>
-                                                            <g class=" c3-shapes c3-shapes-Accessories c3-circles c3-circles-Accessories" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-line c3-target c3-target-Children" style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Children c3-lines c3-lines-Children"></g>
-                                                            <g class=" c3-shapes c3-shapes-Children c3-areas c3-areas-Children"></g>
-                                                            <g class=" c3-selected-circles c3-selected-circles-Children"></g>
-                                                            <g class=" c3-shapes c3-shapes-Children c3-circles c3-circles-Children" style="cursor: pointer;"></g>
-                                                        </g>
-                                                        <g class="c3-chart-line c3-target c3-target-Apperal" style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-shapes c3-shapes-Apperal c3-lines c3-lines-Apperal"></g>
-                                                            <g class=" c3-shapes c3-shapes-Apperal c3-areas c3-areas-Apperal"></g>
-                                                            <g class=" c3-selected-circles c3-selected-circles-Apperal"></g>
-                                                            <g class=" c3-shapes c3-shapes-Apperal c3-circles c3-circles-Apperal" style="cursor: pointer;"></g>
-                                                        </g>
-                                                    </g>
-                                                    <g class="c3-chart-arcs" transform="translate(146.18182373046875,183)"><text class="c3-chart-arcs-title" style="text-anchor: middle; opacity: 1;"></text>
-                                                        <g class="c3-chart-arc c3-target c3-target-Men">
-                                                            <g class=" c3-shapes c3-shapes-Men c3-arcs c3-arcs-Men">
-                                                                <path class=" c3-shape c3-shape c3-arc c3-arc-Men" transform="" style="fill: rgb(89, 105, 255); cursor: pointer;" d="M8.503502369939456e-15,-138.87273254394532A138.87273254394532,138.87273254394532,0,0,1,114.94343287060791,77.9335812351917L68.96605972236475,46.76014874111501A83.32363952636719,83.32363952636719,0,0,0,5.102101421963673e-15,-83.32363952636719Z"></path>
-                                                            </g><text dy=".35em" class="" transform="translate(98.1565854781655,-52.03932808530274)" style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
-                                                        </g>
-                                                        <g class="c3-chart-arc c3-target c3-target-Women">
-                                                            <g class=" c3-shapes c3-shapes-Women c3-arcs c3-arcs-Women">
-                                                                <path class=" c3-shape c3-shape c3-arc c3-arc-Women" transform="" style="fill: rgb(255, 64, 123); cursor: pointer;" d="M114.94343287060791,77.9335812351917A138.87273254394532,138.87273254394532,0,0,1,-95.50270301996736,100.82097777795097L-57.30162181198041,60.492586666770585A83.32363952636719,83.32363952636719,0,0,0,68.96605972236475,46.76014874111501Z"></path>
-                                                            </g><text dy=".35em" class="" transform="translate(12.011826822801584,110.44692370854527)" style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
-                                                        </g>
-                                                        <g class="c3-chart-arc c3-target c3-target-Accessories">
-                                                            <g class=" c3-shapes c3-shapes-Accessories c3-arcs c3-arcs-Accessories">
-                                                                <path class=" c3-shape c3-shape c3-arc c3-arc-Accessories" transform="" style="fill: rgb(37, 213, 242); cursor: pointer;" d="M-95.50270301996736,100.82097777795097A138.87273254394532,138.87273254394532,0,0,1,-133.8108204038426,-37.15239140449445L-80.28649224230554,-22.29143484269667A83.32363952636719,83.32363952636719,0,0,0,-57.30162181198041,60.492586666770585Z"></path>
-                                                            </g><text dy=".35em" class="" transform="translate(-107.04865632307404,29.721913123595684)" style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
-                                                        </g>
-                                                        <g class="c3-chart-arc c3-target c3-target-Children">
-                                                            <g class=" c3-shapes c3-shapes-Children c3-arcs c3-arcs-Children">
-                                                                <path class=" c3-shape c3-shape c3-arc c3-arc-Children" transform="" style="fill: rgb(255, 199, 80); cursor: pointer;" d="M-133.8108204038426,-37.15239140449445A138.87273254394532,138.87273254394532,0,0,1,-58.31114689909616,-126.03747851942373L-34.98668813945769,-75.62248711165424A83.32363952636719,83.32363952636719,0,0,0,-80.28649224230554,-22.29143484269667Z"></path>
-                                                            </g><text dy=".35em" class="" transform="translate(-84.67482178950722,-71.92344190330009)" style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
-                                                        </g>
-                                                        <g class="c3-chart-arc c3-target c3-target-Apperal">
-                                                            <g class=" c3-shapes c3-shapes-Apperal c3-arcs c3-arcs-Apperal">
-                                                                <path class=" c3-shape c3-shape c3-arc c3-arc-Apperal" transform="" style="fill: rgb(46, 197, 81); cursor: pointer;" d="M-58.31114689909616,-126.03747851942373A138.87273254394532,138.87273254394532,0,0,1,-2.5510507109818365e-14,-138.87273254394532L-1.5306304265891017e-14,-83.32363952636719A83.32363952636719,83.32363952636719,0,0,0,-34.98668813945769,-75.62248711165424Z"></path>
-                                                            </g><text dy=".35em" class="" transform="translate(-23.882825958623815,-108.50077218403689)" style="opacity: 1; text-anchor: middle; pointer-events: none;"></text>
-                                                        </g>
-                                                    </g>
-                                                    <g class="c3-chart-texts">
-                                                        <g class="c3-chart-text c3-target c3-target-Men  " style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-texts c3-texts-Men"></g>
-                                                        </g>
-                                                        <g class="c3-chart-text c3-target c3-target-Women  " style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-texts c3-texts-Women"></g>
-                                                        </g>
-                                                        <g class="c3-chart-text c3-target c3-target-Accessories  " style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-texts c3-texts-Accessories"></g>
-                                                        </g>
-                                                        <g class="c3-chart-text c3-target c3-target-Children  " style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-texts c3-texts-Children"></g>
-                                                        </g>
-                                                        <g class="c3-chart-text c3-target c3-target-Apperal  " style="opacity: 1; pointer-events: none;">
-                                                            <g class=" c3-texts c3-texts-Apperal"></g>
-                                                        </g>
-                                                    </g>
-                                                    <g class="c3-event-rects" style="fill-opacity: 0;">
-                                                        <rect class="c3-event-rect" x="0" y="0" width="292.3636474609375" height="376"></rect>
-                                                    </g>
-                                                </g>
-                                                <g clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip-grid)" class="c3-grid c3-grid-lines">
-                                                    <g class="c3-xgrid-lines"></g>
-                                                    <g class="c3-ygrid-lines"></g>
-                                                </g>
-                                                <g class="c3-axis c3-axis-x" clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip-xaxis)" transform="translate(0,376)" style="visibility: visible; opacity: 0;"><text class="c3-axis-x-label" transform="" style="text-anchor: end;" x="292.3636474609375" dx="-0.5em" dy="-0.5em"></text>
-                                                    <g class="tick" transform="translate(147, 0)" style="opacity: 1;">
-                                                        <line x1="0" x2="0" y2="6"></line><text x="0" y="9" transform="" style="text-anchor: middle; display: block;">
-                                                            <tspan x="0" dy=".71em" dx="0">0</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <path class="domain" d="M0,6V0H292.3636474609375V6"></path>
-                                                </g>
-                                                <g class="c3-axis c3-axis-y" clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip-yaxis)" transform="translate(0,0)" style="visibility: visible; opacity: 0;"><text class="c3-axis-y-label" transform="rotate(-90)" style="text-anchor: end;" x="0" dx="-0.5em" dy="1.2em"></text>
-                                                    <g class="tick" transform="translate(0,345)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">20</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,306)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">30</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,267)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">40</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,228)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">50</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,189)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">60</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,150)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">70</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,111)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">80</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,72)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">90</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,33)" style="opacity: 1;">
-                                                        <line x2="-6"></line><text x="-9" y="0" style="text-anchor: end;">
-                                                            <tspan x="-9" dy="3">100</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <path class="domain" d="M-6,1H0V376H-6"></path>
-                                                </g>
-                                                <g class="c3-axis c3-axis-y2" transform="translate(292.3636474609375,0)" style="visibility: hidden; opacity: 0;"><text class="c3-axis-y2-label" transform="rotate(-90)" style="text-anchor: end;" x="0" dx="-0.5em" dy="-0.5em"></text>
-                                                    <g class="tick" transform="translate(0,376)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,339)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.1</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,301)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.2</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,264)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.3</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,226)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.4</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,189)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.5</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,151)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.6</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,114)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.7</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,76)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.8</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,39)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">0.9</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <g class="tick" transform="translate(0,1)" style="opacity: 1;">
-                                                        <line x2="6"></line><text x="9" y="0" style="text-anchor: start;">
-                                                            <tspan x="9" dy="3">1</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <path class="domain" d="M6,1H0V376H6"></path>
-                                                </g>
-                                            </g>
-                                            <g transform="translate(0.5,420.5)" style="visibility: hidden;">
-                                                <g clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip-subchart)" class="c3-chart">
-                                                    <g class="c3-chart-bars"></g>
-                                                    <g class="c3-chart-lines"></g>
-                                                </g>
-                                                <g clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip)" class="c3-brush" fill="none" pointer-events="all" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                                                    <rect class="overlay" pointer-events="all" cursor="crosshair" x="0" y="0" width="292.3636474609375" height="0"></rect>
-                                                    <rect class="selection" cursor="move" fill="#777" fill-opacity="0.3" stroke="#fff" shape-rendering="crispEdges" style="display: none;"></rect>
-                                                    <rect class="handle handle--e" cursor="ew-resize" style="display: none;"></rect>
-                                                    <rect class="handle handle--w" cursor="ew-resize" style="display: none;"></rect>
-                                                </g>
-                                                <g class="c3-axis-x" transform="translate(0,0)" clip-path="url(http://127.0.0.1:8080/admin#c3-1731510706108-clip-xaxis)" style="opacity: 0;">
-                                                    <g class="tick" transform="translate(147, 0)" style="opacity: 1;">
-                                                        <line x1="0" x2="0" y2="6"></line><text x="0" y="9" transform="" style="text-anchor: middle; display: block;">
-                                                            <tspan x="0" dy=".71em" dx="0">0</tspan>
-                                                        </text>
-                                                    </g>
-                                                    <path class="domain" d="M0,6V0H292.3636474609375V6"></path>
-                                                </g>
-                                            </g>
-                                            <g transform="translate(0,380)">
-                                                <g class="c3-legend-item c3-legend-item-Men" style="visibility: visible; cursor: pointer;"><text x="54.81249809265137" y="9" style="pointer-events: none;">Men</text>
-                                                    <rect class="c3-legend-item-event" x="40.81249809265137" y="-5" width="50.67045593261719" height="19.272727966308594" style="fill-opacity: 0;"></rect>
-                                                    <line class="c3-legend-item-tile" x1="38.81249809265137" y1="4" x2="48.81249809265137" y2="4" stroke-width="10" style="stroke: rgb(89, 105, 255); pointer-events: none;"></line>
-                                                </g>
-                                                <g class="c3-legend-item c3-legend-item-Women" style="visibility: visible; cursor: pointer;"><text x="105.48295402526855" y="9" style="pointer-events: none;">Women</text>
-                                                    <rect class="c3-legend-item-event" x="91.48295402526855" y="-5" width="68.20454788208008" height="19.272727966308594" style="fill-opacity: 0;"></rect>
-                                                    <line class="c3-legend-item-tile" x1="89.48295402526855" y1="4" x2="99.48295402526855" y2="4" stroke-width="10" style="stroke: rgb(255, 64, 123); pointer-events: none;"></line>
-                                                </g>
-                                                <g class="c3-legend-item c3-legend-item-Accessories" style="visibility: visible; cursor: pointer;"><text x="173.68750190734863" y="9" style="pointer-events: none;">Accessories</text>
-                                                    <rect class="c3-legend-item-event" x="159.68750190734863" y="-5" width="91.8636474609375" height="19.272727966308594" style="fill-opacity: 0;"></rect>
-                                                    <line class="c3-legend-item-tile" x1="157.68750190734863" y1="4" x2="167.68750190734863" y2="4" stroke-width="10" style="stroke: rgb(37, 213, 242); pointer-events: none;"></line>
-                                                </g>
-                                                <g class="c3-legend-item c3-legend-item-Children" style="visibility: visible; cursor: pointer;"><text x="93.13636779785156" y="28.272727966308594" style="pointer-events: none;">Children</text>
-                                                    <rect class="c3-legend-item-event" x="79.13636779785156" y="14.272727966308594" width="74" height="19.272727966308594" style="fill-opacity: 0;"></rect>
-                                                    <line class="c3-legend-item-tile" x1="77.13636779785156" y1="23.272727966308594" x2="87.13636779785156" y2="23.272727966308594" stroke-width="10" style="stroke: rgb(255, 199, 80); pointer-events: none;"></line>
-                                                </g>
-                                                <g class="c3-legend-item c3-legend-item-Apperal" style="visibility: visible; cursor: pointer;"><text x="167.13636779785156" y="28.272727966308594" style="pointer-events: none;">Apperal</text>
-                                                    <rect class="c3-legend-item-event" x="153.13636779785156" y="14.272727966308594" width="60.090911865234375" height="19.272727966308594" style="fill-opacity: 0;"></rect>
-                                                    <line class="c3-legend-item-tile" x1="151.13636779785156" y1="23.272727966308594" x2="161.13636779785156" y2="23.272727966308594" stroke-width="10" style="stroke: rgb(46, 197, 81); pointer-events: none;"></line>
-                                                </g>
-                                            </g><text class="c3-title" x="146.18182373046875" y="0"></text>
-                                        </svg>
-                                        <div class="c3-tooltip-container" style="position: absolute; pointer-events: none; display: none;"></div>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 col-12">
+                            <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Tổng doanh thu</h5>
                                     <div class="card-body">
                                         <div id="morris_totalrevenue"></div>
                                     </div>
                                     <div class="card-footer">
-                                        <p class="display-7 font-weight-bold"><span class="text-primary d-inline-block">$26,000</span><span class="text-success float-right">+9.45%</span></p>
+                                        <p class="display-7 font-weight-bold"><span class="text-primary d-inline-block">26,000,000</span><span class="text-success float-right">+9.45%</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -656,54 +365,54 @@ class Home extends BaseView
                                                     <tr>
                                                         <td>1</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh1.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh1.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 1</td>
-                                                        <td>id000001</td>
+                                                        <td>Máy ảnh Sony </td>
+                                                        <td>id000001 </td>
                                                         <td>20</td>
-                                                        <td>800000</td>
-                                                        <td>27-08-2024 01:22:12</td>
-                                                        <td>Nguyễn Văn A</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã thanh toán</td>
+                                                        <td>800.000</td>
+                                                        <td>27-08-2018 01:22:12</td>
+                                                        <td>Patricia J. King </td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>Đang giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh2.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh2.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 2</td>
+                                                        <td>Máy ảnh phim </td>
                                                         <td>id000002 </td>
                                                         <td>12</td>
-                                                        <td>1800000</td>
-                                                        <td>25-08-2024 21:12:56</td>
-                                                        <td>Quang Thọ</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã thanh toán </td>
+                                                        <td>180.000</td>
+                                                        <td>25-08-2018 21:12:56</td>
+                                                        <td>Rachel J. Wicker </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh3.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh3.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 3</td>
-                                                        <td>id000003</td>
+                                                        <td>Máy ảnh Nikon  </td>
+                                                        <td>id000003 </td>
                                                         <td>23</td>
-                                                        <td>820000</td>
-                                                        <td>24-08-2024 14:12:77</td>
-                                                        <td>Hoàng Nam</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã thanh toán </td>
+                                                        <td>820.000</td>
+                                                        <td>24-08-2018 14:12:77</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td>4</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh3.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh3.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 4 </td>
+                                                        <td>Máy ảnh Canon </td>
                                                         <td>id000004 </td>
                                                         <td>34</td>
-                                                        <td>340000</td>
-                                                        <td>23-08-2024 09:12:35</td>
-                                                        <td>Nhật Huy</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã thanh toán </td>
+                                                        <td>340.000</td>
+                                                        <td>23-08-2018 09:12:35</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="9"><a href="#" class="btn btn-outline-light float-right">Xem chi tiết</a></td>
@@ -715,7 +424,7 @@ class Home extends BaseView
                                 </div>
                             </div>
 
-                            <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Customer Acquisition</h5>
                                     <div class="card-body">
@@ -751,7 +460,8 @@ class Home extends BaseView
                                                         <th class="border-0">Mã sản phẩm</th>
                                                         <th class="border-0">Số lượng</th>
                                                         <th class="border-0">Giá</th>
-                                                        <th class="border-0">Mô tả</th>
+                                                        <th class="border-0">Thời gian đặt hàng</th>
+                                                        <th class="border-0">Khách hàng</th>
                                                         <th class="border-0">Trạng thái</th>
                                                     </tr>
                                                 </thead>
@@ -759,50 +469,54 @@ class Home extends BaseView
                                                     <tr>
                                                         <td>1</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh1.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh1.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 1 </td>
+                                                        <td>Máy ảnh Sony </td>
                                                         <td>id000001 </td>
                                                         <td>20</td>
-                                                        <td>800000</td>
-                                                        <td>Mô tả 1</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Hiển thị </td>
+                                                        <td>800.000</td>
+                                                        <td>27-08-2018 01:22:12</td>
+                                                        <td>Patricia J. King </td>
+                                                        <td><span class="badge-dot badge-brand mr-1"></span>Đang giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh2.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh2.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 2 </td>
+                                                        <td>Máy ảnh phim </td>
                                                         <td>id000002 </td>
                                                         <td>12</td>
-                                                        <td>1800000</td>
-                                                        <td>Mô tả 2</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Hiển thị </td>
+                                                        <td>180.000</td>
+                                                        <td>25-08-2018 21:12:56</td>
+                                                        <td>Rachel J. Wicker </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh3.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh3.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 3 </td>
+                                                        <td>Máy ảnh Nikon  </td>
                                                         <td>id000003 </td>
                                                         <td>23</td>
-                                                        <td>820000</td>
-                                                        <td>Mô tả 3</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Hiển thị </td>
+                                                        <td>820.000</td>
+                                                        <td>24-08-2018 14:12:77</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td>4</td>
                                                         <td>
-                                                            <div class="m-r-10"><img src="../../../public/uploads/products/anh1.jpg" alt="user" class="rounded" width="45"></div>
+                                                            <div class="m-r-10"><img src="../../../../../public/uploads/products/anh3.jpg" alt="user" class="rounded" width="45"></div>
                                                         </td>
-                                                        <td>Product 4 </td>
+                                                        <td>Máy ảnh Canon </td>
                                                         <td>id000004 </td>
                                                         <td>34</td>
-                                                        <td>340000</td>
-                                                        <td>Mô tả 4</td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Hiển thị</td>
+                                                        <td>340.000</td>
+                                                        <td>23-08-2018 09:12:35</td>
+                                                        <td>Michael K. Ledford </td>
+                                                        <td><span class="badge-dot badge-success mr-1"></span>Đã giao </td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="9"><a href="#" class="btn btn-outline-light float-right">Xem chi tiết</a></td>
@@ -834,15 +548,15 @@ class Home extends BaseView
                                 </div>
                             </div> -->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-    <?php
+                            <?php
 
-    }
-}
+                        }
+                    }
 
-    ?>
+                            ?>

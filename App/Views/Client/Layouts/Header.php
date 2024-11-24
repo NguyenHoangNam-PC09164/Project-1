@@ -9,7 +9,7 @@ class Header extends BaseView
 {
     public static function render($data = null)
     {
-
+        $is_login = AuthHelper::checkLogin();
 
 ?>
 
@@ -35,6 +35,25 @@ class Header extends BaseView
             <link rel="stylesheet" href="../public/assets/client/css/font-awesome.min.css">
 
             <link type="text/css" rel="stylesheet" href="../public/assets/client/css/style.css" />
+            <style>
+                .dropdown-menu {
+                    background-color: #000;
+                    color: #ff0000;
+                    padding: 10px;
+                }
+
+                .dropdown-menu a {
+                    display: block;
+                    color: #ff0000;
+                    padding: 5px 10px;
+                    text-decoration: none;
+                }
+
+                .dropdown-menu a:hover {
+                    background-color: #333;
+                    color: #ffffff;
+                }
+            </style>
         </head>
 
         <body>
@@ -55,8 +74,8 @@ class Header extends BaseView
                                             <i class="fa fa-user-o"></i> Tài khoản
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="/users/<?= $_SESSION['user']['user_id'] ?>">
-                                            <?= $_SESSION['user']['username'] ?>
+                                            <a class="dropdown-item" href="/users/<?= htmlspecialchars($_SESSION['user']['id'] ?? '') ?>">
+                                                <?= htmlspecialchars($_SESSION['user']['username'] ?? '') ?>
                                             </a>
                                             <a class="dropdown-item" href="/change-password">Đổi mật khẩu</a>
                                             <a class="dropdown-item" href="/logout">Đăng xuất</a>
@@ -130,7 +149,7 @@ class Header extends BaseView
                                                     </div>
                                                     <button class="delete"><i class="fa fa-close"></i></button>
                                                 </div>
-                                        
+
 
                                                 <div class="product-widget">
                                                     <div class="product-img">
@@ -148,7 +167,7 @@ class Header extends BaseView
                                                 <h5>Tổng: 2.940.000đ</h5>
                                             </div>
                                             <div class="cart-btns">
-                                                <a href="#">Xem giỏ hàng</a>
+                                                <a href="/cart">Xem giỏ hàng</a>
                                                 <a href="/checkout">Thanh toán <i class="fa fa-arrow-circle-right"></i></a>
                                             </div>
                                         </div>
