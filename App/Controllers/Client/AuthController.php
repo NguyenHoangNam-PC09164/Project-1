@@ -7,6 +7,7 @@ use App\Views\Client\Layouts\Header;
 use App\Views\Client\Pages\Auth\Login;
 use App\Views\Client\Pages\Auth\Register;
 
+
 class AuthController
 {
     public function  login() {
