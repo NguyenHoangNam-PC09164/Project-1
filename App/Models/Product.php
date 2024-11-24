@@ -162,4 +162,20 @@ class Product extends BaseModel
             return $result;
         }
     }
+    public function get5ProductCategoryRelate()
+    {
+        $result = [];
+        try {
+            $sql = "SELECT * FROM `products`  WHERE category_id=1;";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+    
+    
 }

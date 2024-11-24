@@ -3,6 +3,7 @@
 namespace App\Views\Client\Pages\Product;
 
 use App\Views\BaseView;
+use App\Models\Product;
 
 
 
@@ -10,6 +11,7 @@ class Detail extends BaseView
 {
 	public static function render($data = null)
 	{
+		$products = (new Product())->get5ProductCategoryRelate();
 
 ?>
 
@@ -355,127 +357,77 @@ class Detail extends BaseView
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
+		<div class="col-md-12">
+			<div class="section-title text-center">
+				<h3 class="title">Sản phẩm liên quan</h3>
+			</div>
+		</div>
 
 		<!-- Section -->
 		<div class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
-				<div class="row">
+				<div class="col-md-12">
+                        <div class="row">
+                            <div class="products-tabs">
+                                <div id="tab1" class="tab-pane active">
+                                    <div class="products-slick" data-nav="#slick-nav-1">
 
-					<div class="col-md-12">
-						<div class="section-title text-center">
-							<h3 class="title">Sản phẩm liên quan</h3>
-						</div>
-					</div>
+                                        <?php if (isset($products) && count($products)) : ?>
+                                            <?php foreach ($products as $item) : ?>
+                                                <div class="product">
 
-					<!-- product -->
+                                                    <div class="product-img">
+                                                        <img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                                                        <div class="product-label">
+                                                            <span class="sale">-30%</span>
+                                                            <span class="Mới">Mới</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <h3 class="product-name"><a href="/products/<?= htmlspecialchars($item['product_id']) ?>">
+                                                                <?= htmlspecialchars($item['name']) ?>
+                                                            </a></h3>
+                                                        <?php if ($item['discount_price'] > 0) : ?>
+                                                            <h4 class="product-price">
+                                                                <strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong>
+                                                                <del class="product-old-price"><?= number_format($item['price']) ?> đ</del>
+                                                            </h4>
+                                                        <?php else : ?>
+                                                            <h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
+                                                        <?php endif; ?> <div class="product-rating">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <div class="product-btns">
+                                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
+                                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
+                                                            <button class="quick-view"><i class="fa fa-eye"></i><a href="/products/<?= htmlspecialchars($item['product_id']) ?>" class="tooltipp">Xem thêm</a></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add-to-cart">
+                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                                    </div>
+
+                                                </div>
+                                            <?php endforeach; ?>
+                                        <?php else : ?>
+                                            <!-- No Products Found -->
+                                            <h3 class="text-center text-danger">Không có sản phẩm</h3>
+                                        <?php endif; ?>
 
 
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../../../public/assets/client/img/product11.jpg" alt="">
-								<div class="product-label">
-									<span class="sale">-30%</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-Danh mục">Danh mục</p>
-								<h3 class="product-name"><a href="#">Sản phẩm 1</a></h3>
-								<h4 class="product-price">980.000đ <del class="product-old-price">990.000đ</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-							</div>
-						</div>
-					</div>
 
-					<!-- /product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../../../public/assets/client/img/product14.jpg" alt="">
-								<div class="product-label">
-									<span class="sale">-30%</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-Danh mục">Danh mục</p>
-								<h3 class="product-name"><a href="#">Sản phẩm 1</a></h3>
-								<h4 class="product-price">980.000đ <del class="product-old-price">990.000đ</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../../../public/assets/client/img/product13.jpg" alt="">
-								<div class="product-label">
-									<span class="sale">-30%</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-Danh mục">Danh mục</p>
-								<h3 class="product-name"><a href="#">Sản phẩm 1</a></h3>
-								<h4 class="product-price">980.000đ <del class="product-old-price">990.000đ</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-img">
-								<img src="../../../public/assets/client/img/product12.jpg" alt="">
-								<div class="product-label">
-									<span class="sale">-30%</span>
-								</div>
-							</div>
-							<div class="product-body">
-								<p class="product-Danh mục">Danh mục</p>
-								<h3 class="product-name"><a href="#">Sản phẩm 1</a></h3>
-								<h4 class="product-price">980.000đ <del class="product-old-price">990.000đ</del></h4>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-							</div>
-						</div>
-					</div>
-
-				</div>
+                                    </div>
+                                    <div id="slick-nav-1" class="products-slick-nav"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
