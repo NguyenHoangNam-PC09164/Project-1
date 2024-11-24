@@ -109,14 +109,9 @@ class Header extends BaseView
 
                             <div class="col-md-6">
                                 <div class="header-search">
-                                    <form>
-                                        <select class="input-select">
-                                            <option value="0">Danh mục</option>
-                                            <option value="1">Danh mục 1</option>
-                                            <option value="1">Danh mục 2</option>
-                                        </select>
-                                        <input class="input" placeholder="Search here">
-                                        <button class="search-btn">Tìm kiếm</button>
+                                    <form action="/search" method="get">
+                                        <input type="text" name="keyword" class="input-select" placeholder="Tìm kiếm sản phẩm..." value="<?= htmlspecialchars($data['keyword'] ?? '') ?>">
+                                        <button type="submit" class="search-btn">Tìm kiếm</button>
                                     </form>
                                 </div>
                             </div>

@@ -13,6 +13,7 @@ use App\Views\Client\Layouts\Header;
 use App\Views\Client\Pages\Product\Category as ProductCategory;
 use App\Views\Client\Pages\Product\Detail;
 use App\Views\Client\Pages\Product\Index;
+use App\Views\Client\Pages\Product\Search;
 
 class ProductController
 {
@@ -81,6 +82,29 @@ class ProductController
         ];
         Header::render();
         ProductCategory::render($data);
+        Footer::render();
+    }
+
+    public static function search()
+    {
+        // Lấy từ khóa từ query string
+        $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+        $products = [];
+
+        // Kiểm tra nếu có từ khóa
+        if (!empty($keyword)) {
+            $productModel = new Product();
+            $products = $productModel->getSearch($keyword);
+        }
+
+        // Truyền dữ liệu vào view
+        $data = [
+            'products' => $products,
+            'keyword' => $keyword
+        ];
+
+        Header::render();
+        Search::render($data); // Dùng view hiển thị danh sách sản phẩm
         Footer::render();
     }
 }

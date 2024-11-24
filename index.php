@@ -50,6 +50,8 @@ Route::post('/forgot-password','App\Controllers\Client\AuthController@forgotPass
 Route::get('/reset-password','App\Controllers\Client\AuthController@resetPassword');
 Route::put('/reset-password','App\Controllers\Client\AuthController@resetPasswordAction'); 
 
+Route::get('/search', 'App\Controllers\Client\ProductController@search');
+
 // *** Admin
 
 Route::get('/admin', 'App\Controllers\Admin\HomeController@index');

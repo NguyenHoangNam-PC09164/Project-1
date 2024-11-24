@@ -146,5 +146,20 @@ class Product extends BaseModel
             return $result;
         }
     }
-    
+    public function getSearch($keyword)
+    {
+        $result = [];
+        try {
+            $sql = "SELECT * FROM `products` WHERE `name` LIKE ?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $searchTerm = '%' . $keyword . '%';
+            $stmt->bind_param('s', $searchTerm);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi tìm kiếm sản phẩm: ' . $th->getMessage());
+            return $result;
+        }
+    }
 }
