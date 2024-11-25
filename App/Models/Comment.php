@@ -3,8 +3,6 @@
 namespace App\Models;
 
 class Comment extends BaseModel
-
-
 {
     protected $table = 'comments';
     protected $id = 'id';
@@ -35,17 +33,14 @@ class Comment extends BaseModel
     {
         return $this->getAllByStatus();
     }
-
-
+    
     public function getAllCommentJoinProductAndUser()
     {
         $result = [];
         try {
-
-            $sql = "SELECT comments.*, products.name AS product_name, users.username 
-            FROM `comments` inner JOIN products ON comments.product_id = products.product_id 
-            INNER JOIN users on comments.user_id = users.user_id;";
-
+            $sql = "SELECT comments.*,products.name as product_name, users.name AS user_name 
+            FROM `comments` INNER JOIN products ON comments.product_id=products.id 
+            INNER JOIN users ON comments.user_id=users.id;";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
@@ -58,10 +53,10 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT comments.*, products.name AS product_name, users.username 
-            FROM comments INNER JOIN products ON comments.product_id=products.id 
-            INNER JOIN users ON comments.user_id=users.id
-            WHERE comments.id=?";
+            $sql = "SELECT comments.*,products.name as product_name, users.name AS user_name 
+            FROM `comments` INNER JOIN products ON comments.product_id=products.id 
+            INNER JOIN users ON comments.user_id=users.id 
+            WHERE comments.id=?;";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
@@ -74,16 +69,14 @@ class Comment extends BaseModel
         }
     }
 
-
-    public function get5CommentNewestByProductAndStatus(int $id)
+    public function get5CommentNewsByProductAndStatus(int $id)
     {
         $result = [];
         try {
-
-            $sql = "SELECT comments.*,users.username, users.name, users.avatar 
-            FROM comments INNER JOIN users ON comments.user_id=users.id 
-            WHERE comments.product_id=? AND comments.status=" . self::STATUS_ENABLE   . " ORDER BY date DESC LIMIT 5;";
-
+            $sql = "SELECT comments.*, users.username, users.name, users.avatar FROM `comments` 
+            INNER JOIN users ON comments.user_id= users.id 
+            WHERE comments.product_id=? AND comments.status=" . self::STATUS_ENABLE . "
+            ORDER by date DESC limit 5";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
@@ -95,19 +88,38 @@ class Comment extends BaseModel
             return $result;
         }
     }
-    public function countTotalComment()
-    {
+    public function countTotalComment(){
         return $this->countTotal();
     }
+
     public function countCommentByProduct()
     {
         $result = [];
         try {
-            $sql = "SELECT COUNT(*) AS count,products.name FROM comments INNER JOIN products ON comments.product_id = products.id GROUP BY comments.product_id ORDER BY count DESC LIMIT 5;";
+            $sql = "SELECT COUNT(*) AS count, products.name FROM comments 
+            INNER JOIN products ON comments.product_id=products.id 
+            GROUP by comments.product_id 
+            ORDER BY count DESC LIMIT 5";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
             error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+    public function get5CommentNewsByUser()
+    {
+        $result = [];
+        try {
+            $sql = "SELECT comments.*, users.name FROM comments 
+            INNER JOIN users ON comments.user_id = users.id 
+            ORDER BY comments.id DESC LIMIT 5;";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị 5 comment dữ liệu: ' . $th->getMessage());
             return $result;
         }
     }
