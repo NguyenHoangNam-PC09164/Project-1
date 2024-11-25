@@ -14,7 +14,6 @@ class Detail extends BaseView
 		$products = (new Product())->get5ProductCategoryRelate();
 
 ?>
-
 		<div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
