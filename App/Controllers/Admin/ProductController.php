@@ -212,13 +212,13 @@ class ProductController
         $product=new Product();
         $is_exist=$product->getOneProductByName($name);
 
-        if($is_exist){
-            if($is_exist['id']!=$id){
-                NotificationHelper::error('update','Tên loại sản phẩm đã tồn tại');
-                header("location: /admin/products/$id");
-                exit;
-            }
-        }
+        // if($is_exist){
+        //     if($is_exist['id']!=$id){
+        //         NotificationHelper::error('update','Tên loại sản phẩm đã tồn tại');
+        //         header("location: /admin/products/$id");
+        //         exit;
+        //     }
+        // }
 
         // Xử lý upload hình ảnh nếu có
         $image = null;

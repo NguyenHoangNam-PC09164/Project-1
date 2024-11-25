@@ -194,89 +194,91 @@ class Index extends BaseView
 						<!-- store products -->
 
 						<div class="row">
-						<?php
-                    if (count($data) && count($data['products'])) :
-                    ?>
-					<?php
-                            foreach ($data['products'] as $item) :
-                            ?>
-							<!-- product -->
-							<div class="col-md-4 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="<?= APP_URL ?>/public/uploads/products/<?= $item['image'] ?>" alt="">
-										<div class="product-label">
-											<span class="sale">-30%</span>
-											<span class="new">NEW</span>
+							<?php
+							if (count($data) && count($data['products'])) :
+							?>
+								<?php
+								foreach ($data['products'] as $item) :
+								?>
+									<!-- product -->
+									<div class="col-md-4 col-xs-6">
+										<div class="product">
+											<div class="product-img">
+												<img src="<?= APP_URL ?>/public/uploads/products/<?= $item['image'] ?>" alt="">
+												<div class="product-label">
+													<span class="sale">-30%</span>
+													<span class="new">NEW</span>
+												</div>
+											</div>
+											<div class="product-body">
+												<p class="product-category">Danh mục</p>
+												<h3 class="product-name"><a href="/products/<?= $item['product_id'] ?>"><?= $item['name'] ?></a></h3>
+												<?php
+												if ($item['discount_price'] > 0) :
+												?>
+
+													<h4 class="product-price"><strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong> <del class="product-old-price"><strike><?= number_format($item['price']) ?> đ</strike> </del> </h4>
+
+												<?php
+												else :
+												?>
+													<h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
+
+												<?php
+												endif;
+												?>
+
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
+													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
+												</div>
+											</div>
+											<!-- /Product -->
 										</div>
 									</div>
-									<div class="product-body">
-										<p class="product-category">Danh mục</p>
-										<h3 class="product-name"><a href="/products/<?= $item['id'] ?>"><?= $item['name'] ?></a></h3>
-										<?php
-                                            if ($item['discount_price'] > 0) :
-                                            ?>
-                                                
-										<h4 class="product-price"><strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong> <del class="product-old-price"><strike><?= number_format($item['price']) ?> đ</strike> </del> </h4>
-										
-                                            <?php
-                                            else :
-                                            ?>
-                                                <h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
+										<?php endforeach; ?>
+									<?php else : ?>
+										<!-- No Products Found -->
+										<h3 class="text-center text-danger">Không có sản phẩm</h3>
+									<?php endif; ?>
+										</div>
 
-                                            <?php
-                                            endif;
-                                            ?>
-										
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+										<!-- /store products -->
+
+										<!-- store bottom filter -->
+										<div class="store-filter clearfix">
+
+											<ul class="store-pagination">
+												<li class="active">1</li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+											</ul>
 										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
-										</div>
+										<!-- /store bottom filter -->
 									</div>
-									<!-- /Product -->
-								<?php endforeach; ?>
-							<?php else : ?>
-								<!-- No Products Found -->
-								<h3 class="text-center text-danger">Không có sản phẩm</h3>
-							<?php endif; ?>
+									<!-- /STORE -->
 						</div>
-
-						<!-- /store products -->
-
-						<!-- store bottom filter -->
-						<div class="store-filter clearfix">
-
-							<ul class="store-pagination">
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
-						</div>
-						<!-- /store bottom filter -->
+						<!-- /row -->
 					</div>
-					<!-- /STORE -->
+					<!-- /container -->
 				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
 
 
 
 
 
 
-<?php
+		<?php
 
 	}
 }
