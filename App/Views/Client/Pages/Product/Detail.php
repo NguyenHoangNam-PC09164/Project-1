@@ -12,7 +12,6 @@ class Detail extends BaseView
 	public static function render($data = null)
 	{
 		$products = (new Product())->get5ProductCategoryRelate();
-
 ?>
 		<div id="breadcrumb" class="section">
 			<!-- container -->
