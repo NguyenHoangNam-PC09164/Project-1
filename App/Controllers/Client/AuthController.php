@@ -142,7 +142,7 @@ class AuthController
             }
             if(isset($_SESSION['error']['user_id'])){
                 $data=$_SESSION['user'];
-                $user_id=$data['id'];
+                $user_id=$data['user_id'];
                 header("Location: /users/$user_id");
                 exit;
             }

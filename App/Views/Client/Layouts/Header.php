@@ -74,8 +74,8 @@ class Header extends BaseView
                                             <i class="fa fa-user-o"></i> Tài khoản
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="/users/<?= htmlspecialchars($_SESSION['user']['id'] ?? '') ?>">
-                                                <?= htmlspecialchars($_SESSION['user']['username'] ?? '') ?>
+                                            <a class="dropdown-item" href="/users/<?= ($_SESSION['user']['user_id'] ?? '') ?>">
+                                                <?= ($_SESSION['user']['username'] ?? '') ?>
                                             </a>
                                             <a class="dropdown-item" href="/change-password">Đổi mật khẩu</a>
                                             <a class="dropdown-item" href="/logout">Đăng xuất</a>

@@ -281,7 +281,6 @@ class Detail extends BaseView
 																	else :
 																	?>
 																		<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="rounded-circle">
-
 																	<?php
 																	endif;
 																	?>
