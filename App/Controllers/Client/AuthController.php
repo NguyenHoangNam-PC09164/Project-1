@@ -118,7 +118,8 @@ class AuthController
         if($result){
             // var_dump('Thêm ok');
             NotificationHelper::success('login', 'Đăng nhập thành công');
-            header('Location: /');
+            header('Location: /login');
+            exit();
         }else{
             // var_dump('Thêm lỗi');
             NotificationHelper::error('login', 'Đăng nhập thất bại');
@@ -129,7 +130,7 @@ class AuthController
     public static function logout(){
         AuthHelper::logout();
         NotificationHelper::success('logout','Đăng xuất thành công');
-        header('Location: /');
+        header('Location: /login');
     }
 
     public static function edit($id){
