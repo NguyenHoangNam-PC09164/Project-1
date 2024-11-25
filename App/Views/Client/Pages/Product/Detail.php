@@ -176,7 +176,7 @@ class Detail extends BaseView
 								<div id="tab3" class="tab-pane fade in">
 									<div class="row">
 										<!-- Rating -->
-										<div class="col-md-4">
+										<!-- <div class="col-md-4">
 											<div id="rating">
 												<div class="rating-avg">
 													<span>4.5</span>
@@ -189,7 +189,7 @@ class Detail extends BaseView
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<div class="col-md-8">
 											<!-- <div class="col-lg-12">
 												<div class="card"> -->
@@ -222,9 +222,8 @@ class Detail extends BaseView
 																		<span class="m-b-15 d-block"><?= $item['content'] ?></span>
 																		<div class="comment-footer">
 																			<span class="text-muted float-right"><?= $item['date'] ?></span>
-
 																			<?php
-																			if (isset($data) && $is_login && ($_SESSION['user']['id'] == $item['user_id'])) :
+																			if (isset($data) && $is_login && ($_SESSION['user']['user_id'] == $item['user_id'])) :
 
 																			?>
 
