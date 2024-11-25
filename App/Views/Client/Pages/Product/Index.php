@@ -238,7 +238,7 @@ class Index extends BaseView
 												<div class="product-btns">
 													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem thêm</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp"><a href="/products/<?=$item['product_id']?>">Xem thêm</a></span></button>
 												</div>
 											</div>
 											<!-- /Product -->

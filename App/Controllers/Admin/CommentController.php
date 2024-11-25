@@ -53,7 +53,7 @@ class CommentController
 
         if (!$data) {
             NotificationHelper::error('edit', 'Không thể xem bình luận này');
-            header('location: /admin/comment');
+            header('location: /admin/comments');
             exit;
         }
 
@@ -76,7 +76,7 @@ class CommentController
         if (!$is_valid) {
 
             NotificationHelper::error('update', 'Cập nhật bình luận thất bại');
-            header("location: /admin/comment/$id");
+            header("location: /admin/comments/$id");
             exit;
         }
 
@@ -101,11 +101,11 @@ class CommentController
 
         if ($result) {
             NotificationHelper::success('update', 'Cập nhật bình luận thành công');
-            header('location: /admin/comment');
+            header('location: /admin/comments');
             exit;
         } else {
             NotificationHelper::error('update', 'Cập nhật bình luận thất bại');
-            header("location: /admin/comment/$id");
+            header("location: /admin/comments/$id");
         }
     }
 
@@ -119,10 +119,10 @@ class CommentController
         // var_dump($result);
         if($result) {
             NotificationHelper::success('delete', 'Xoá bình luận thành công');
-            header('location: /admin/comment');
+            header('location: /admin/comments');
         } else{
             NotificationHelper::error('delete', 'Xoá bình luận thất bại');
-            header('location: /admin/comment');
+            header('location: /admin/comments');
         }
     }
 }

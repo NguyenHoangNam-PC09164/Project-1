@@ -22,6 +22,10 @@ Route::get('/', 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 
+Route::post('/comments','App\Controllers\Client\CommentController@store');
+Route::put('/comments/{id}','App\Controllers\Client\CommentController@update');
+Route::delete('/comments/{id}','App\Controllers\Client\CommentController@delete');
+
 Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
 Route::get('/cart', 'App\Controllers\Client\ProductController@cart');
 
@@ -125,16 +129,16 @@ Route::delete('/admin/users/{id}', 'App\Controllers\Admin\UserController@delete'
 //COMMENTS
 //  *** Comment
 // GET /Comment (lấy danh sách  bình luận)
-Route::get('/admin/comment', 'App\Controllers\Admin\CommentController@index');
+Route::get('/admin/comments', 'App\Controllers\Admin\CommentController@index');
 
 // GET /comments/{id} (lấy chi tiết  bình luận với id cụ thể)
-Route::get('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@edit');
+Route::get('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@edit');
 
 // PUT /comments/{id} (update  bình luận với id cụ thể)
-Route::put('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@update');
+Route::put('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@update');
 
 // DELETE /comments/{id} (delete  bình luận với id cụ thể)
-Route::delete('/admin/comment/{id}', 'App\Controllers\Admin\CommentController@delete');
+Route::delete('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@delete');
 
 Route::dispatch($_SERVER['REQUEST_URI']);
 

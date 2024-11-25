@@ -26,7 +26,7 @@ class Edit extends BaseView
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <form class="form-horizontal" action="/admin/comment/<?= $data['id'] ?>" method="POST">
+                        <form class="form-horizontal" action="/admin/comments/<?= $data['id'] ?>" method="POST">
                             <div class="card-body">
                                 <h4 class="card-title">Sửa bình luận</h4>
                                 <input type="hidden" name="method" id="" value="PUT">
@@ -61,7 +61,7 @@ class Edit extends BaseView
                             </div>
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button type="submit" class="btn btn-primary" name="">Cập nhật</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
                         </form>

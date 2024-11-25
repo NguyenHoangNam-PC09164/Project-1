@@ -4,13 +4,16 @@ namespace App\Views\Client\Pages\Product;
 
 use App\Views\BaseView;
 use App\Models\Product;
-
+use App\Helpers\AuthHelper;
+use App\Views\Client\Components\Category;
 
 
 class Detail extends BaseView
 {
+
 	public static function render($data = null)
 	{
+		$is_login = AuthHelper::checkLogin();
 		$products = (new Product())->get5ProductCategoryRelate();
 
 ?>
@@ -153,7 +156,7 @@ class Detail extends BaseView
 							<!-- product tab nav -->
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
-								<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+								<li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -169,21 +172,11 @@ class Detail extends BaseView
 								</div>
 								<!-- /tab1  -->
 
-								<!-- tab2  -->
-								<div id="tab2" class="tab-pane fade in">
-									<div class="row">
-										<div class="col-md-12">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-										</div>
-									</div>
-								</div>
-								<!-- /tab2  -->
-
 								<!-- tab3  -->
 								<div id="tab3" class="tab-pane fade in">
 									<div class="row">
 										<!-- Rating -->
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<div id="rating">
 												<div class="rating-avg">
 													<span>4.5</span>
@@ -195,166 +188,232 @@ class Detail extends BaseView
 														<i class="fa fa-star-o"></i>
 													</div>
 												</div>
-												<ul class="rating">
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-														</div>
-														<div class="rating-progress">
-															<div style="width: 80%;"></div>
-														</div>
-														<span class="sum">3</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div style="width: 60%;"></div>
-														</div>
-														<span class="sum">2</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div></div>
-														</div>
-														<span class="sum">0</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div></div>
-														</div>
-														<span class="sum">0</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div></div>
-														</div>
-														<span class="sum">0</span>
-													</li>
-												</ul>
 											</div>
 										</div>
-										<!-- /Rating -->
+										<div class="col-md-8">
+											<!-- <div class="col-lg-12">
+												<div class="card"> -->
+													<div class="card-body">
+														<h4 class="card-title">Bình luận mới nhất</h4>
+													</div>
+													<div class="comment-widgets">
+														<?php
+														// var_dump($data);
+														if (isset($data) && isset($data['comments']) && $data && $data['comments']) :
+															foreach ($data['comments'] as $item) :
+														?>
+																<!-- Comment Row -->
+																<div class="d-flex flex-row comment-row m-t-0">
+																	<div class="p-2">
+																		<?php
+																		if ($item['avatar']) :
+																		?>
+																			<img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="user" width="50" class="rounded-circle">
+																		<?php
+																		else :
+																		?>
+																			<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="rounded-circle">
+																		<?php
+																		endif;
+																		?>
+																	</div>
+																	<div class="comment-text w-100">
+																		<h6 class="font-medium"><?= $item['name'] ?> - <?= $item['username'] ?></h6>
+																		<span class="m-b-15 d-block"><?= $item['content'] ?></span>
+																		<div class="comment-footer">
+																			<span class="text-muted float-right"><?= $item['date'] ?></span>
 
-										<!-- Reviews -->
-										<div class="col-md-6">
-											<div id="reviews">
-												<ul class="reviews">
+																			<?php
+																			if (isset($data) && $is_login && ($_SESSION['user']['id'] == $item['user_id'])) :
 
-													<li>
-														<div class="review-heading">
+																			?>
 
+																				<button type="button" class="btn btn-primary mb-3" data-toggle="collapse" data-target="#<?= $item['username'] ?><?= $item['user_id'] ?>" aria-expanded="false" aria-controls="<?= $item['username'] ?><?= $item['user_id'] ?>">Sửa</button>
+																				<form action="/comments/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Chắc chưa?')" style="display: inline-block">
+																					<input type="hidden" name="method" value="DELETE" id="">
+																					<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>" id="">
+																					<button type="submit" class="btn btn-danger mb-3">Xoá</button>
 
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
+																				</form>
+																				<div class="collapse" id="<?= $item['username']?><?= $item['user_id'] ?>">
+																					<div class="card card-body mt-5">
+																						<form action="/comments/<?= $item['id'] ?>" method="post">
+																							<input type="hidden" name="method" value="PUT" id="">
+																							<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>" id="">
+																							<div class="form-group">
+																								<label for="">Bình luận</label>
+																								<textarea class="form-control rounded-0" name="content" id="" rows="3" placeholder="Nhập bình luận..."><?= $item['content'] ?></textarea>
+																							</div>
+																							<div class="comment-footer">
+																								<button type="submit" class="btn btn-primary">Gửi</button>
+																							</div>
+																						</form>
+
+																					</div>
+																				</div>
+																			<?php
+																			endif;
+																			?>
+																		</div>
+																	</div>
+																</div>
+															<?php
+															endforeach;
+														else :
+															?>
+															<h6 class="text-center text-danger">Chưa có bình luận</h6>
+														<?php
+														endif;
+														?>
+														<?php
+														if (isset($data) && $is_login) :
+
+														?>
+															<div class="d-flex flex-row comment-row">
+
+																<div class="p-2">
+
+																	<?php
+																	if ($_SESSION['user']['avatar']) :
+																	?>
+																		<img src="<?= APP_URL ?>/public/uploads/users/<?= $_SESSION['user']['avatar'] ?>" alt="user" width="50" class="rounded-circle">
+																	<?php
+																	else :
+																	?>
+																		<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="rounded-circle">
+
+																	<?php
+																	endif;
+																	?>
+																</div>
+																<div class="comment-text w-100">
+																	<h6 class="font-medium"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h6>
+																	<form action="/comments" method="post">
+																		<input type="hidden" name="method" value="POST" id="" required>
+																		<input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
+																		<input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
+																		<div class="form-group">
+																			<label for="content">Bình luận</label>
+																			<textarea class="form-control rounded-0" name="content" id="content" rows="3" placeholder="Nhập bình luận..."></textarea>
+																		</div>
+																		<div class="comment-footer">
+																			<button type="submit" class="btn btn-primary">Gửi</button>
+																		</div>
+																	</form>
+																</div>
 															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
-
-													<li>
-														<div class="review-heading">
 
 
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-															<div class="review-rating">
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star"></i>
-																<i class="fa fa-star-o empty"></i>
-															</div>
-														</div>
-														<div class="review-body">
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-														</div>
-													</li>
+														<?php
+														else :
+														?>
 
-												</ul>
-												<ul class="reviews-pagination">
-													<li class="active">1</li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#">4</a></li>
-													<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-												</ul>
+															<h6 class="text-center text-danger">Vui lòng đăng nhập để bình luận</h6>
+														<?php
+														endif;
+														?>
+													</div>
+												</div>
 											</div>
 										</div>
-										<!-- /Reviews -->
+									</div>
+									<!-- <li>
+												<div class="rating-stars">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star-o"></i>
+													<i class="fa fa-star-o"></i>
+													<i class="fa fa-star-o"></i>
+												</div>
+												<div class="rating-progress">
+													<div></div>
+												</div>
+												<span class="sum">0</span>
+											</li>
+											<li>
+												<div class="rating-stars">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star-o"></i>
+													<i class="fa fa-star-o"></i>
+													<i class="fa fa-star-o"></i>
+													<i class="fa fa-star-o"></i>
+												</div> -->
+									<!-- <div class="rating-progress">
+													<div></div>
+												</div> -->
+									<!-- <span class="sum">0</span> -->
+									<!-- </li>
+										</ul> -->
+								</div>
+								<!-- /Rating -->
 
-										<!-- Review Form -->
-										<div class="col-md-3">
-											<div id="review-form">
-												<form class="review-form">
-													<input class="input" type="text" placeholder="Họ tên">
-													<input class="input" type="email" placeholder="Email">
-													<textarea class="input" placeholder="Nội dung"></textarea>
-													<div class="input-rating">
-														<span>Đánh giá: </span>
-														<div class="stars">
-															<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-															<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-															<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-															<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-															<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+								<!-- Reviews -->
+								<!-- <div class="col-md-9">
+										<div id="reviews">
+											<ul class="reviews">
+
+												<li>
+													<div class="review-heading">
+
+
+														<h5 class="name">John</h5>
+														<p class="date">27 DEC 2018, 8:0 PM</p>
+														<div class="review-rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o empty"></i>
 														</div>
 													</div>
-													<button class="primary-btn">Gửi</button>
-												</form>
-											</div>
+													<div class="review-body">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+													</div>
+												</li>
+
+												<li>
+													<div class="review-heading">
+
+
+														<h5 class="name">John</h5>
+														<p class="date">27 DEC 2018, 8:0 PM</p>
+														<div class="review-rating">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o empty"></i>
+														</div>
+													</div>
+													<div class="review-body">
+														<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+													</div>
+												</li>
+
+											</ul>
+											<ul class="reviews-pagination">
+												<li class="active">1</li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+											</ul>
 										</div>
-										<!-- /Review Form -->
-									</div>
-								</div>
-								<!-- /tab3  -->
+									</div> -->
+								<!-- /Reviews -->
 							</div>
-							<!-- /product tab content  -->
 						</div>
+						
+							<!-- /tab3 -->
 					</div>
-					<!-- /product tab -->
+					<!-- /product tab content  -->
 				</div>
-				<!-- /row -->
 			</div>
-			<!-- /container -->
+			<!-- /product tab -->
+		</div>
+		<!-- /row -->
+		</div>
+		<!-- /container -->
 		</div>
 		<!-- /SECTION -->
 		<div class="col-md-12">
@@ -369,65 +428,65 @@ class Detail extends BaseView
 			<div class="container">
 				<!-- row -->
 				<div class="col-md-12">
-                        <div class="row">
-                            <div class="products-tabs">
-                                <div id="tab1" class="tab-pane active">
-                                    <div class="products-slick" data-nav="#slick-nav-1">
+					<div class="row">
+						<div class="products-tabs">
+							<div id="tab1" class="tab-pane active">
+								<div class="products-slick" data-nav="#slick-nav-1">
 
-                                        <?php if (isset($products) && count($products)) : ?>
-                                            <?php foreach ($products as $item) : ?>
-                                                <div class="product">
+									<?php if (isset($products) && count($products)) : ?>
+										<?php foreach ($products as $item) : ?>
+											<div class="product">
 
-                                                    <div class="product-img">
-                                                        <img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
-                                                        <div class="product-label">
-                                                            <span class="sale">-30%</span>
-                                                            <span class="Mới">Mới</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="/products/<?= htmlspecialchars($item['product_id']) ?>">
-                                                                <?= htmlspecialchars($item['name']) ?>
-                                                            </a></h3>
-                                                        <?php if ($item['discount_price'] > 0) : ?>
-                                                            <h4 class="product-price">
-                                                                <strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong>
-                                                                <del class="product-old-price"><?= number_format($item['price']) ?> đ</del>
-                                                            </h4>
-                                                        <?php else : ?>
-                                                            <h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
-                                                        <?php endif; ?> <div class="product-rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                        <div class="product-btns">
-                                                            <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
-                                                            <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-                                                            <button class="quick-view"><i class="fa fa-eye"></i><a href="/products/<?= htmlspecialchars($item['product_id']) ?>" class="tooltipp">Xem thêm</a></button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="add-to-cart">
-                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                                    </div>
+												<div class="product-img">
+													<img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+													<div class="product-label">
+														<span class="sale">-30%</span>
+														<span class="Mới">Mới</span>
+													</div>
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="/products/<?= htmlspecialchars($item['product_id']) ?>">
+															<?= htmlspecialchars($item['name']) ?>
+														</a></h3>
+													<?php if ($item['discount_price'] > 0) : ?>
+														<h4 class="product-price">
+															<strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong>
+															<del class="product-old-price"><?= number_format($item['price']) ?> đ</del>
+														</h4>
+													<?php else : ?>
+														<h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
+													<?php endif; ?> <div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><a href="/products/<?= htmlspecialchars($item['product_id']) ?>" class="tooltipp">Xem thêm</a></button>
+													</div>
+												</div>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+												</div>
 
-                                                </div>
-                                            <?php endforeach; ?>
-                                        <?php else : ?>
-                                            <!-- No Products Found -->
-                                            <h3 class="text-center text-danger">Không có sản phẩm</h3>
-                                        <?php endif; ?>
+											</div>
+										<?php endforeach; ?>
+									<?php else : ?>
+										<!-- No Products Found -->
+										<h3 class="text-center text-danger">Không có sản phẩm</h3>
+									<?php endif; ?>
 
 
 
-                                    </div>
-                                    <div id="slick-nav-1" class="products-slick-nav"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+								</div>
+								<div id="slick-nav-1" class="products-slick-nav"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->

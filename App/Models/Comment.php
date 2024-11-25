@@ -39,8 +39,8 @@ class Comment extends BaseModel
         $result = [];
         try {
             $sql = "SELECT comments.*,products.name as product_name, users.name AS user_name 
-            FROM `comments` INNER JOIN products ON comments.product_id=products.id 
-            INNER JOIN users ON comments.user_id=users.id;";
+            FROM `comments` INNER JOIN products ON comments.product_id=products.product_id 
+            INNER JOIN users ON comments.user_id=users.user_id;";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {

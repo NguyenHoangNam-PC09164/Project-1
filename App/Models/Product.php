@@ -166,12 +166,12 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM `products`  WHERE category_id=1;";
+            $sql = "SELECT * FROM `products`  WHERE category_id=1";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        } catch (\Throwable $th) {
+        } catch (\Throwable $th){
             error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
             return $result;
         }

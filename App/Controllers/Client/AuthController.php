@@ -155,7 +155,7 @@ class AuthController
 
         //giao diện thông tin user
 
-        // Edit::render($data);php
+        Edit::render($data);
         // var_dump($data);
         Footer::render();
     }

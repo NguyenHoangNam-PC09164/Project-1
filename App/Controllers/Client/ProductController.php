@@ -50,7 +50,7 @@ class ProductController
         }
 
         $comment=new Comment();
-        $comments=$comment->get5CommentNewestByProductAndStatus($id);
+        $comments=$comment->get5CommentNewsByProductAndStatus($id);
 
         $data = [
             'product' => $product_detail,
