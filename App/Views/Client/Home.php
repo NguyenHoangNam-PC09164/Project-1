@@ -71,8 +71,8 @@ class Home extends BaseView
                                     <?php if (!empty($categories) && is_array($categories)) : ?>
                                         <?php foreach ($categories as $item) : ?>
                                             <li>
-                                                <a data-toggle="tab" href="/products/categories/<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
-                                                    <?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>
+                                                <a data-toggle="tab" href="/products/categories/<?= ($item['id']) ?>">
+                                                    <?= ($item['name']) ?>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
@@ -96,15 +96,15 @@ class Home extends BaseView
                                                 <div class="product">
 
                                                     <div class="product-img">
-                                                        <img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+                                                        <img src="<?= APP_URL ?>/public/uploads/products/<?= ($item['image']) ?>" alt="<?= ($item['name']) ?>">
                                                         <div class="product-label">
                                                             <span class="sale">-30%</span>
                                                             <span class="Mới">Mới</span>
                                                         </div>
                                                     </div>
                                                     <div class="product-body">
-                                                        <h3 class="product-name"><a href="/products/<?= htmlspecialchars($item['product_id']) ?>">
-                                                                <?= htmlspecialchars($item['name']) ?>
+                                                        <h3 class="product-name"><a href="/products/<?= ($item['product_id']) ?>">
+                                                                <?= ($item['name']) ?>
                                                             </a></h3>
                                                         <?php if ($item['discount_price'] > 0) : ?>
                                                             <h4 class="product-price">
@@ -123,7 +123,7 @@ class Home extends BaseView
                                                         <div class="product-btns">
                                                             <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
                                                             <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-                                                            <button class="quick-view"><i class="fa fa-eye"></i><a href="/products/<?= htmlspecialchars($item['product_id']) ?>" class="tooltipp">Xem thêm</a></button>
+                                                            <button class="quick-view"><i class="fa fa-eye"></i><a href="/products/<?= ($item['product_id']) ?>" class="tooltipp">Xem thêm</a></button>
                                                         </div>
                                                     </div>
                                                     <div class="add-to-cart">
@@ -170,8 +170,8 @@ class Home extends BaseView
                                     <?php if (!empty($categories) && is_array($categories)) : ?>
                                         <?php foreach ($categories as $item) : ?>
                                             <li>
-                                                <a data-toggle="tab" href="/products/categories/<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
-                                                    <?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>
+                                                <a data-toggle="tab" href="/products/categories/<?= ($item['id']) ?>">
+                                                    <?= ($item['name']) ?>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
@@ -198,15 +198,15 @@ class Home extends BaseView
                                                 <div class="product">
 
                                                     <div class="product-img">
-                                                        <img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item_isFeature['image']) ?>" alt="<?= htmlspecialchars($item_isFeature['name']) ?>">
+                                                        <img src="<?= APP_URL ?>/public/uploads/products/<?= ($item_isFeature['image']) ?>" alt="<?= ($item_isFeature['name']) ?>">
                                                         <div class="product-label">
                                                             <span class="sale">-30%</span>
                                                             <span class="Mới">Mới</span>
                                                         </div>
                                                     </div>
                                                     <div class="product-body">
-                                                        <h3 class="product-name"><a href="/products/<?= htmlspecialchars($item_isFeature['product_id']) ?>">
-                                                                <?= htmlspecialchars($item_isFeature['name']) ?>
+                                                        <h3 class="product-name"><a href="/products/<?= ($item_isFeature['product_id']) ?>">
+                                                                <?= ($item_isFeature['name']) ?>
                                                             </a></h3>
                                                         <?php if ($item_isFeature['discount_price'] > 0) : ?>
                                                             <h4 class="product-price">
@@ -225,7 +225,7 @@ class Home extends BaseView
                                                         <div class="product-btns">
                                                             <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
                                                             <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-                                                            <button class="quick-view"><i class="fa fa-eye"></i><a href="/products/<?= htmlspecialchars($item_isFeature['product_id']) ?>" class="tooltipp">Xem thêm</a></button>
+                                                            <button class="quick-view"><i class="fa fa-eye"></i><a href="/products/<?= ($item_isFeature['product_id']) ?>" class="tooltipp">Xem thêm</a></button>
                                                         </div>
                                                     </div>
                                                     <div class="add-to-cart">
