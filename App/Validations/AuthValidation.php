@@ -102,11 +102,13 @@ class AuthValidation{
             $is_valid = false;
         }
 
-        if(!isset($_POST['phone'])|| $_POST['phone']===''){
-            NotificationHelper::error('phone','Số điện không được để trống');
+        if (!isset($_POST['phone']) || $_POST['phone'] === '') {
+            NotificationHelper::error('phone', 'Số điện thoại không được để trống');
+            $is_valid = false;
+        } elseif (!ctype_digit($_POST['phone'])) { 
+            NotificationHelper::error('phone', 'Số điện thoại chỉ được chứa số');
             $is_valid = false;
         }
-
         
         return $is_valid;
     }
