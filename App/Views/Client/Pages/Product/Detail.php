@@ -15,9 +15,7 @@ class Detail extends BaseView
 	{
 		$is_login = AuthHelper::checkLogin();
 		$products = (new Product())->get5ProductCategoryRelate();
-
 ?>
-
 		<div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
@@ -176,7 +174,7 @@ class Detail extends BaseView
 								<div id="tab3" class="tab-pane fade in">
 									<div class="row">
 										<!-- Rating -->
-										<!-- <div class="col-md-4">
+										<div class="col-md-3">
 											<div id="rating">
 												<div class="rating-avg">
 													<span>4.5</span>
@@ -188,128 +186,148 @@ class Detail extends BaseView
 														<i class="fa fa-star-o"></i>
 													</div>
 												</div>
+												<ul class="rating">
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+														</div>
+														<div class="rating-progress">
+															<div style="width: 80%;"></div>
+														</div>
+														<span class="sum">3</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div style="width: 60%;"></div>
+														</div>
+														<span class="sum">2</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div></div>
+														</div>
+														<span class="sum">0</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div></div>
+														</div>
+														<span class="sum">0</span>
+													</li>
+													<li>
+														<div class="rating-stars">
+															<i class="fa fa-star"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+															<i class="fa fa-star-o"></i>
+														</div>
+														<div class="rating-progress">
+															<div></div>
+														</div>
+														<span class="sum">0</span>
+													</li>
+												</ul>
 											</div>
-										</div> -->
-										<div class="col-md-8">
-											<!-- <div class="col-lg-12">
-												<div class="card"> -->
-													<div class="card-body">
-														<h4 class="card-title">Bình luận mới nhất</h4>
-													</div>
-													<div class="comment-widgets">
-														<?php
-														// var_dump($data);
-														if (isset($data) && isset($data['comments']) && $data && $data['comments']) :
-															foreach ($data['comments'] as $item) :
-														?>
-																<!-- Comment Row -->
-																<div class="d-flex flex-row comment-row m-t-0">
-																	<div class="p-2">
-																		<?php
-																		if ($item['avatar']) :
-																		?>
-																			<img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="user" width="50" class="rounded-circle">
-																		<?php
-																		else :
-																		?>
-																			<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="rounded-circle">
-																		<?php
-																		endif;
-																		?>
-																	</div>
-																	<div class="comment-text w-100">
-																		<h6 class="font-medium"><?= $item['name'] ?> - <?= $item['username'] ?></h6>
-																		<span class="m-b-15 d-block"><?= $item['content'] ?></span>
-																		<div class="comment-footer">
-																			<span class="text-muted float-right"><?= $item['date'] ?></span>
-																			<?php
-																			if (isset($data) && $is_login && ($_SESSION['user']['user_id'] == $item['user_id'])) :
+										</div>
+										<!-- /Rating -->
 
-																			?>
+										<!-- Reviews -->
+										<div class="col-md-6">
+											<div id="reviews">
+												<ul class="reviews">
 
-																				<button type="button" class="btn btn-primary mb-3" data-toggle="collapse" data-target="#<?= $item['username'] ?><?= $item['user_id'] ?>" aria-expanded="false" aria-controls="<?= $item['username'] ?><?= $item['user_id'] ?>">Sửa</button>
-																				<form action="/comments/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Chắc chưa?')" style="display: inline-block">
-																					<input type="hidden" name="method" value="DELETE" id="">
-																					<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>" id="">
-																					<button type="submit" class="btn btn-danger mb-3">Xoá</button>
+													<li>
+														<div class="review-heading">
 
-																				</form>
-																				<div class="collapse" id="<?= $item['username']?><?= $item['user_id'] ?>">
-																					<div class="card card-body mt-5">
-																						<form action="/comments/<?= $item['id'] ?>" method="post">
-																							<input type="hidden" name="method" value="PUT" id="">
-																							<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>" id="">
-																							<div class="form-group">
-																								<label for="">Bình luận</label>
-																								<textarea class="form-control rounded-0" name="content" id="" rows="3" placeholder="Nhập bình luận..."><?= $item['content'] ?></textarea>
-																							</div>
-																							<div class="comment-footer">
-																								<button type="submit" class="btn btn-primary">Gửi</button>
-																							</div>
-																						</form>
 
-																					</div>
-																				</div>
-																			<?php
-																			endif;
-																			?>
-																		</div>
-																	</div>
-																</div>
-															<?php
-															endforeach;
-														else :
-															?>
-															<h6 class="text-center text-danger">Chưa có bình luận</h6>
-														<?php
-														endif;
-														?>
-														<?php
-														if (isset($data) && $is_login) :
-
-														?>
-															<div class="d-flex flex-row comment-row">
-
-																<div class="p-2">
-
-																	<?php
-																	if ($_SESSION['user']['avatar']) :
-																	?>
-																		<img src="<?= APP_URL ?>/public/uploads/users/<?= $_SESSION['user']['avatar'] ?>" alt="user" width="50" class="rounded-circle">
-																	<?php
-																	else :
-																	?>
-																		<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="rounded-circle">
-																	<?php
-																	endif;
-																	?>
-																</div>
-																<div class="comment-text w-100">
-																	<h6 class="font-medium"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h6>
-																	<form action="/comments" method="post">
-																		<input type="hidden" name="method" value="POST" id="" required>
-																		<input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
-																		<input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
-																		<div class="form-group">
-																			<label for="content">Bình luận</label>
-																			<textarea class="form-control rounded-0" name="content" id="content" rows="3" placeholder="Nhập bình luận..."></textarea>
-																		</div>
-																		<div class="comment-footer">
-																			<button type="submit" class="btn btn-primary">Gửi</button>
-																		</div>
-																	</form>
-																</div>
+															<h5 class="name">John</h5>
+															<p class="date">27 DEC 2018, 8:0 PM</p>
+															<div class="review-rating">
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star-o empty"></i>
 															</div>
+														</div>
+														<div class="review-body">
+															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+														</div>
+													</li>
+
+													<li>
+														<div class="review-heading">
 
 
-														<?php
-														else :
-														?>
+															<h5 class="name">John</h5>
+															<p class="date">27 DEC 2018, 8:0 PM</p>
+															<div class="review-rating">
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star"></i>
+																<i class="fa fa-star-o empty"></i>
+															</div>
+														</div>
+														<div class="review-body">
+															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+														</div>
+													</li>
 
-															<h6 class="text-center text-danger">Vui lòng đăng nhập để bình luận</h6>
-														<?php
-														endif;
-														?>
+												</ul>
+												<ul class="reviews-pagination">
+													<li class="active">1</li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#">4</a></li>
+													<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+												</ul>
+											</div>
+										</div>
+										<!-- /Reviews -->
+
+										<!-- Review Form -->
+										<div class="col-md-3">
+											<div id="review-form">
+												<form class="review-form">
+													<input class="input" type="text" placeholder="Họ tên">
+													<input class="input" type="email" placeholder="Email">
+													<textarea class="input" placeholder="Nội dung"></textarea>
+													<div class="input-rating">
+														<span>Đánh giá: </span>
+														<div class="stars">
+															<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
+															<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
+															<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
+															<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
+															<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -317,10 +335,7 @@ class Detail extends BaseView
 									</div>
 									
 								</div>
-								<!-- /Rating -->
-
-								<!-- Reviews -->
-								
+								<!-- /tab3  -->
 							</div>
 						</div>
 						

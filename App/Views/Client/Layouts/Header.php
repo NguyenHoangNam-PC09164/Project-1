@@ -35,6 +35,8 @@ class Header extends BaseView
             <link rel="stylesheet" href="../public/assets/client/css/font-awesome.min.css">
 
             <link type="text/css" rel="stylesheet" href="../public/assets/client/css/style.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
             <style>
                 .dropdown-menu {
                     background-color: #000;

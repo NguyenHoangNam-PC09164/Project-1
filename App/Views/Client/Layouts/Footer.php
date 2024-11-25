@@ -102,6 +102,7 @@ class Footer extends BaseView
         <script src="../public/assets/client/js/nouislider.min.js"></script>
         <script src="../public/assets/client/js/jquery.zoom.min.js"></script>
         <script src="../public/assets/client/js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         </body>
 
 

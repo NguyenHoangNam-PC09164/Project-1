@@ -92,8 +92,8 @@ class AuthHelper{
             $user = $_COOKIE['user'];
             $user_data = (array) json_decode($user, true);
     
-            if (isset($user_data['id'])) {
-                self::updateCookie($user_data['id']);
+            if (isset($user_data['user_id'])) {
+                self::updateCookie($user_data['user_id']);
                 return true;
             } else {
                 setcookie('user', '', time() - 3600, '/'); 
@@ -101,8 +101,8 @@ class AuthHelper{
         }
     
         if (isset($_SESSION['user'])) {
-            if (isset($_SESSION['user']['id'])) {
-                self::updateSession($_SESSION['user']['id']);
+            if (isset($_SESSION['user']['user_id'])) {
+                self::updateSession($_SESSION['user']['user_id']);
                 return true;
             }
         }

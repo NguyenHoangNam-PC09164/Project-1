@@ -27,7 +27,7 @@ Route::put('/comments/{id}','App\Controllers\Client\CommentController@update');
 Route::delete('/comments/{id}','App\Controllers\Client\CommentController@delete');
 
 Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
-Route::get('/cart', 'App\Controllers\Client\ProductController@cart');
+Route::get('/cart', 'App\Controllers\Client\CartController@index');
 
 Route::get('/introduce', 'App\Controllers\Client\HomeController@introduce');
 Route::get('/contact', 'App\Controllers\Client\HomeController@contact');
