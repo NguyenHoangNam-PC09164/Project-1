@@ -346,6 +346,13 @@ class Detail extends BaseView
 									</div>
 								</div>
 								<!-- /tab3  -->
+									</div>
+									
+								</div>
+								<!-- /Rating -->
+
+								<!-- Reviews -->
+								
 							</div>
 							<!-- /product tab content  -->
 						</div>
