@@ -85,7 +85,7 @@ class Product extends BaseModel
         $result = [];
         try {
             $sql = "SELECT products.*,categories.name as category_name FROM `products` INNER JOIN categories ON products.category_id=categories.id 
-            WHERE products.status=" . self::STATUS_ENABLE . " AND categories.status=" . self::STATUS_ENABLE . " AND products.id=?";
+            WHERE products.status=" . self::STATUS_ENABLE . " AND categories.status=" . self::STATUS_ENABLE . " AND products.product_id=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
@@ -97,7 +97,8 @@ class Product extends BaseModel
             return $result;
         }
     }
-    public function countTotalProduct(){
+    public function countTotalProduct()
+    {
         return $this->countTotal();
     }
 
@@ -120,7 +121,7 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " AND products.is_feature=" . self::STATUS_ENABLE . "";    
+            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " AND products.is_feature=" . self::STATUS_ENABLE . "";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -135,7 +136,7 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " ORDER by id DESC LIMIT 4";
+            $sql = "SELECT * FROM products WHERE products.status=" . self::STATUS_ENABLE . " ORDER by date DESC LIMIT 4";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -145,4 +146,5 @@ class Product extends BaseModel
             return $result;
         }
     }
+    
 }

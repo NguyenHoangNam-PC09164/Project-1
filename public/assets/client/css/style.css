@@ -1998,9 +1998,10 @@ textarea.input {
 }
 
 .copyright {
-  margin-top: 30px;
+  
   display: block;
   font-size: 12px;
+  margin: 10px 0 10px 0;
 }
 
 .footer-payments li {
@@ -2185,11 +2186,10 @@ textarea.input {
 .news-content p {
   font-size: 14px;
   color: #666;
-}
-.btn-danger {
+} .btn-danger {
   background-color: #D10024;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .contacts{
   margin: 20px 0 20px 0;

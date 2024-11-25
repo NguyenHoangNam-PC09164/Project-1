@@ -75,7 +75,7 @@ class Footer extends BaseView
 
             </div>
 
-            <div id="bottom-footer" class="section">
+            <div id="bottom-footer">
                 <div class="container">
 
                     <div class="row">
@@ -83,9 +83,9 @@ class Footer extends BaseView
 
                             <span class="copyright">
 
-                                Copyright &copy;<script>
+                                Bản quyền &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.facebook.com/nh4thuyzx" target="_blank">ahaha</a>
+                                </script>  | Được thiết kế <i class="fa fa-heart-o" aria-hidden="true"></i> bởi <a href="" target="_blank">Photo Hub</a>
 
                             </span>
                         </div>

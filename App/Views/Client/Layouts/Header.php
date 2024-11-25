@@ -66,31 +66,31 @@ class Header extends BaseView
                             <li><a href="#"><i class="fa fa-map-marker"></i> Cần Thơ</a></li>
                         </ul>
                         <ul class="header-links pull-right">
-    <li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
-    <?php if ($is_login && isset($_SESSION['user'])) : ?>
-        <li class="nav-item">
-            <div class="dropdown">
-                <a href="#" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user-o"></i> Tài khoản
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/users/<?= htmlspecialchars($_SESSION['user']['id'] ?? '') ?>">
-                        <?= htmlspecialchars($_SESSION['user']['username'] ?? '') ?>
-                    </a>
-                    <a class="dropdown-item" href="/change-password">Đổi mật khẩu</a>
-                    <a class="dropdown-item" href="/logout">Đăng xuất</a>
-                </div>
-            </div>
-        </li>
-    <?php else : ?>
-        <li class="nav-item">
-            <a class="nav-link" href="/login">Đăng nhập</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/register">Đăng ký</a>
-        </li>
-    <?php endif; ?>
-</ul>
+                            <li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
+                            <?php if ($is_login && isset($_SESSION['user'])) : ?>
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user-o"></i> Tài khoản
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="/users/<?= htmlspecialchars($_SESSION['user']['id'] ?? '') ?>">
+                                                <?= htmlspecialchars($_SESSION['user']['username'] ?? '') ?>
+                                            </a>
+                                            <a class="dropdown-item" href="/change-password">Đổi mật khẩu</a>
+                                            <a class="dropdown-item" href="/logout">Đăng xuất</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            <?php else : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Đăng nhập</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register">Đăng ký</a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
 
 
                     </div>

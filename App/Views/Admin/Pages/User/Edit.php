@@ -44,26 +44,26 @@ class Edit extends BaseView
 
                                 <div class="form-group">
                                     <label for="username">Tên đăng nhập</label>
-                                    <input type="text" class="form-control" id="username" name="username" value="<?= $data['username'] ?>" disabled>
+                                    <input type="text" class="form-control" id="username" name="username" value="<?= $data['username'] ?>" >
                                 </div>
 
 
                                 <div class="form-group">
                                     <label for="email">Email*</label>
-                                    <input type="text" class="form-control" id="email" placeholder="Nhập email người dùng..." name="email" value="<?= $data['email'] ?>" disabled>
+                                    <input type="text" class="form-control" id="email" placeholder="Nhập email người dùng..." name="email" value="<?= $data['email'] ?>" >
                                 </div>
 
 
                                 <div class="form-group">
                                     <label for="name">Họ và tên*</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Nhập tên người dùng..." name="name" value="<?= $data['name'] ?>" disabled>
+                                    <input type="text" class="form-control" id="name" placeholder="Nhập tên người dùng..." name="name" value="<?= $data['name'] ?>" >
                                 </div>
 
 
 
                                 <div class="form-group">
                                     <label for="name">Số điện thoại*</label>
-                                    <input type="text" class="form-control" id="phone" placeholder="Nhập tên người dùng..." name="phone" value="<?= $data['phone'] ?>" disabled>
+                                    <input type="text" class="form-control" id="phone" placeholder="Nhập tên người dùng..." name="phone" value="<?= $data['phone'] ?>" >
                                 </div>
 
                                 <div class="form-group">

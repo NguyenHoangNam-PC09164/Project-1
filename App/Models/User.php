@@ -52,7 +52,7 @@ class User extends BaseModel
             return $result;
         }
     }
-
+    
     public function updateUserByUsernameAndEmail(array $data)
     {
         try {
