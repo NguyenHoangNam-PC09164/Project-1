@@ -57,4 +57,18 @@ class Database
         }
         return $conn;
     }
+
+        // lọc giá sản phẩm
+
+    // public function MySQLi()
+    // {
+    //     $conn = new mysqli($this->_host, $this->_username, $this->_password, $this->_database);
+
+    //     if ($conn->connect_error) {
+    //         error_log("MySQLi Connection failed: " . $conn->connect_error);
+    //         throw new \Exception("Failed to connect to database.");
+    //     }
+
+    //     return $conn;
+    // }
 }

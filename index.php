@@ -23,6 +23,8 @@ AuthHelper::middleware();
 Route::get('/', 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
+Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
+
 
 Route::post('/comments','App\Controllers\Client\CommentController@store');
 Route::put('/comments/{id}','App\Controllers\Client\CommentController@update');

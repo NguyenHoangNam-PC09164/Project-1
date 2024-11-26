@@ -4,8 +4,9 @@ namespace App\Views\Client\Pages\Product;
 
 use App\Views\BaseView;
 use App\Models\Product;
+use App\Models\Category;
 use App\Helpers\AuthHelper;
-use App\Views\Client\Components\Category;
+
 
 
 class Detail extends BaseView
@@ -13,8 +14,8 @@ class Detail extends BaseView
 
 	public static function render($data = null)
 	{
-		$is_login = AuthHelper::checkLogin();
-		$products = (new Product())->get5ProductCategoryRelate();
+		// $is_login = AuthHelper::checkLogin();
+		$products = (new Product())->getProductCategoryRelate();
 ?>
 		<div id="breadcrumb" class="section">
 			<!-- container -->
@@ -376,21 +377,20 @@ class Detail extends BaseView
 						<div class="products-tabs">
 							<div id="tab1" class="tab-pane active">
 								<div class="products-slick" data-nav="#slick-nav-1">
-
 									<?php if (isset($products) && count($products)) : ?>
 										<?php foreach ($products as $item) : ?>
 											<div class="product">
 
 												<div class="product-img">
-													<img src="<?= APP_URL ?>/public/uploads/products/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
+													<img src="<?= APP_URL ?>/public/uploads/products/<?= ($item['image']) ?>" alt="<?= ($item['name']) ?>">
 													<div class="product-label">
 														<span class="sale">-30%</span>
 														<span class="Mới">Mới</span>
 													</div>
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="/products/<?= htmlspecialchars($item['product_id']) ?>">
-															<?= htmlspecialchars($item['name']) ?>
+													<h3 class="product-name"><a href="/products/<?= ($item['product_id']) ?>">
+															<?= ($item['name']) ?>
 														</a></h3>
 													<?php if ($item['discount_price'] > 0) : ?>
 														<h4 class="product-price">

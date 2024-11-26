@@ -14,7 +14,7 @@ use App\Views\Client\Pages\Product\Category as ProductCategory;
 use App\Views\Client\Pages\Product\Detail;
 use App\Views\Client\Pages\Product\Index;
 use App\Views\Client\Pages\Product\Search;
-
+use App\Views\Client\Pages\Product\CategoryView;
 class ProductController
 {
     // hiển thị danh sách
@@ -42,6 +42,7 @@ class ProductController
     {
         $product=new Product();
         $product_detail=$product->getOneProductByStatus($id);
+        
 
         if(!$product_detail){
             NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này');
@@ -60,8 +61,7 @@ class ProductController
         // $view_result=ViewProductHelper::cookieView($id, $product_detail['view']);
         // var_dump($view_result);
 
-        // echo '<pre>';
-        // var_dump($data);
+      
         Header::render();
         Notification::render();
         NotificationHelper::unset();
@@ -69,21 +69,8 @@ class ProductController
         Footer::render();
     }
 
-    public static function getProductByCategory($id)
-    {
-        $category= new Category();
-        $categories=$category->getAllCategoryByStatus();
-        $product=new Product();
-        $products=$product->getAllProductByCategoryAndStatus($id);
+   
 
-        $data = [
-            'products' => $products,
-            'categories' => $categories
-        ];
-        Header::render();
-        ProductCategory::render($data);
-        Footer::render();
-    }
 
     public static function search()
     {
@@ -105,6 +92,24 @@ class ProductController
 
         Header::render();
         Search::render($data); // Dùng view hiển thị danh sách sản phẩm
+        Footer::render();
+    }
+    public static function getProductByCategory($id)
+    {
+        $category= new Category();
+        $categories=$category->getAllByStatus();
+
+        $product= new Product();
+        $products=$product->getAllProductByCategoryAndStatus($id);
+
+        $data = [
+            'products' => $products,
+            'categories' => $categories
+        ];
+        Header::render();
+        Notification::render();
+        NotificationHelper::unset();
+        CategoryView::render($data);
         Footer::render();
     }
 }

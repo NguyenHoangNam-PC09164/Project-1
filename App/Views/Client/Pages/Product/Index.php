@@ -11,7 +11,9 @@ class Index extends BaseView
 	public static function render($data = null)
 	{
 		$categories = (new Category())->getAll();
-		$products = (new Product())->getAll();
+		$products = (new Product())->getAllProductJoinCategory();
+		$products_Views = (new Product())->getAllManyViews();
+
 		// var_dump($products);
 ?>
 		<div class="section">
@@ -25,15 +27,13 @@ class Index extends BaseView
 						<div class="aside">
 							<h3 class="aside-title">Danh mục</h3>
 							<div class="checkbox-filter">
-
 								<?php if (!empty($categories) && is_array($categories)) : ?>
 									<?php foreach ($categories as $item) : ?>
 										<div class="input-checkbox">
 											<input type="checkbox" id="category-1">
 											<label for="category-1">
 												<span></span>
-												<a data-toggle="tab" href="/products/categories/<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
-													<?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>
+												<a class="nav-link text-cate text-dark" href="/products/categories/<?= $item['id'] ?>"><?= $item['name'] ?></a>
 												</a> <small>(3)</small>
 											</label>
 										</div>
@@ -41,13 +41,11 @@ class Index extends BaseView
 								<?php else : ?>
 									<li><span>Không có danh mục nào</span></li>
 								<?php endif; ?>
-
-
 							</div>
 						</div>
 						<!-- /aside Widget -->
-
 						<!-- aside Widget -->
+						<!--// lọc giá sản phẩm  -->
 						<div class="aside">
 							<h3 class="aside-title">Giá</h3>
 							<div class="price-filter">
@@ -57,6 +55,7 @@ class Index extends BaseView
 									<span class="qty-up">+</span>
 									<span class="qty-down">-</span>
 								</div>
+
 								<span>-</span>
 								<div class="input-number price-max">
 									<input id="price-max" type="number">
@@ -65,104 +64,30 @@ class Index extends BaseView
 								</div>
 							</div>
 						</div>
-						<!-- /aside Widget -->
 
-						<!-- aside Widget -->
-						<!-- <div class="aside">
-							<h3 class="aside-title">Thương hiệu</h3>
-							<div class="checkbox-filter">
-								<div class="input-checkbox">
-									<input type="checkbox" id="brand-1">
-									<label for="brand-1">
-										<span></span>
-										SONY
-										<small>(578)</small>
-									</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="brand-2">
-									<label for="brand-2">
-										<span></span>
-										CANON
-										<small>(125)</small>
-									</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="brand-3">
-									<label for="brand-3">
-										<span></span>
-										NIKON
-										<small>(755)</small>
-									</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="brand-4">
-									<label for="brand-4">
-										<span></span>
-										SAMSUNG
-										<small>(578)</small>
-									</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="brand-5">
-									<label for="brand-5">
-										<span></span>
-										LG
-										<small>(125)</small>
-									</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="brand-6">
-									<label for="brand-6">
-										<span></span>
-										SONY
-										<small>(755)</small>
-									</label>
-								</div>
-							</div>
-						</div> -->
-						<!-- /aside Widget -->
-
-						<!-- aside Widget -->
 						<div class="aside">
-							<h3 class="aside-title">Bán chạy nhất</h3>
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="../../../public/assets/client/img/product01.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">Sản phẩm 1</a></h3>
-									<h4 class="product-price">980.000đ <del class="product-old-price">990.000đ</del></h4>
-								</div>
-							</div>
 
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="../../../public/assets/client/img/product02.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">Sản phẩm 1</a></h3>
-									<h4 class="product-price">980.000đ<del class="product-old-price">990.000đ</del></h4>
-								</div>
-							</div>
-
-							<div class="product-widget">
-								<div class="product-img">
-									<img src="../../../public/assets/client/img/product03.png" alt="">
-								</div>
-								<div class="product-body">
-									<p class="product-category">Category</p>
-									<h3 class="product-name"><a href="#">Sản phẩm 1</a></h3>
-									<h4 class="product-price">980.000đ <del class="product-old-price">990.000đ</del></h4>
-								</div>
-							</div>
+							<h3 class="aside-title">Nhiều lượt xem nhất</h3>
+							<?php if (isset($products_Views) && count($products_Views)) : ?>
+								<?php foreach ($products_Views as $item) : ?>
+									<div class="product-widget">
+										<div class="product-img">
+											<img src="<?= APP_URL ?>/public/uploads/products/<?= $item['image'] ?>" alt="">
+										</div>
+										<div class="product-body">
+											<h3 class="product-name"><a href="/products/<?= $item['product_id'] ?>"><?= $item['name'] ?></a></h3>
+											<h4 class="product-price"><?= number_format($item['price'] - $item['discount_price']) ?> đ <del class="product-old-price"><strike><?= number_format($item['price']) ?> đ</strike></del></h4>
+										</div>
+									</div>
+								<?php endforeach; ?>
+							<?php else : ?>
+								<!-- No Products Found -->
+								<h3 class="text-center text-danger">Không có sản phẩm</h3>
+							<?php endif; ?>
 						</div>
 						<!-- /aside Widget -->
 					</div>
 					<!-- /ASIDE -->
-
 					<!-- STORE -->
 					<div id="store" class="col-md-9">
 						<!-- store top filter -->
@@ -190,15 +115,13 @@ class Index extends BaseView
 							</ul>
 						</div>
 						<!-- /store top filter -->
-
 						<!-- store products -->
-
 						<div class="row">
 							<?php
-							if (count($data) && count($data['products'])) :
+							if (count($products) && count($data['products'])) :
 							?>
 								<?php
-								foreach ($data['products'] as $item) :
+								foreach ($products as $item) :
 								?>
 									<!-- product -->
 									<div class="col-md-4 col-xs-6">
@@ -211,7 +134,7 @@ class Index extends BaseView
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category">Danh mục</p>
+												<p class="product-category"><?= $item['category_name'] ?></p>
 												<h3 class="product-name"><a href="/products/<?= $item['product_id'] ?>"><?= $item['name'] ?></a></h3>
 												<?php
 												if ($item['discount_price'] > 0) :
@@ -227,7 +150,6 @@ class Index extends BaseView
 												<?php
 												endif;
 												?>
-
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -249,7 +171,9 @@ class Index extends BaseView
 													<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
 												</form>
 											</div>
-											<!-- /Product -->
+											<div class="add-to-cart">
+												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+											</div>
 										</div>
 									</div>
 								<?php endforeach; ?>
@@ -258,12 +182,9 @@ class Index extends BaseView
 								<h3 class="text-center text-danger">Không có sản phẩm</h3>
 							<?php endif; ?>
 						</div>
-
 						<!-- /store products -->
-
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
-
 							<ul class="store-pagination">
 								<li class="active">1</li>
 								<li><a href="#">2</a></li>
@@ -280,7 +201,6 @@ class Index extends BaseView
 			</div>
 			<!-- /container -->
 		</div>
-
 <?php
 
 	}

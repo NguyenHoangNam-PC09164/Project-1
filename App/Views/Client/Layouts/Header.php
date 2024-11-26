@@ -25,16 +25,16 @@ class Header extends BaseView
             <!-- Bootstrap CSS -->
             <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-            <link type="text/css" rel="stylesheet" href="../public/assets/client/css/bootstrap.min.css" />
+            <link type="text/css" rel="stylesheet" href="../../public/assets/client/css/bootstrap.min.css" />
 
-            <link type="text/css" rel="stylesheet" href="../public/assets/client/css/slick.css" />
-            <link type="text/css" rel="stylesheet" href="../public/assets/client/css/slick-theme.css" />
+            <link type="text/css" rel="stylesheet" href="../../public/assets/client/css/slick.css" />
+            <link type="text/css" rel="stylesheet" href="../../public/assets/client/css/slick-theme.css" />
 
-            <link type="text/css" rel="stylesheet" href="../public/assets/client/css/nouislider.min.css" />
+            <link type="text/css" rel="stylesheet" href="../../public/assets/client/css/nouislider.min.css" />
 
-            <link rel="stylesheet" href="../public/assets/client/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../public/assets/client/css/font-awesome.min.css">
 
-            <link type="text/css" rel="stylesheet" href="../public/assets/client/css/style.css" />
+            <link type="text/css" rel="stylesheet" href="../../public/assets/client/css/style.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
             <style>

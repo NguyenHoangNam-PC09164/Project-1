@@ -40,5 +40,17 @@ class Category extends BaseModel
     public function countTotalCategory(){
         return $this->countTotal();
     }
+    public function get3Category()
+    {
+        $result = [];
+        try {
+            $sql = "SELECT * FROM $this->table limit 3";
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
     
 }

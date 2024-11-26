@@ -159,4 +159,9 @@ abstract class BaseModel implements CrudInterface
             return $result;
         }
     } 
+    // lọc giá sản phẩm
+    // public function getConnection()
+    // {
+    //     return $this->_conn->MySQLi();
+    // }
 }

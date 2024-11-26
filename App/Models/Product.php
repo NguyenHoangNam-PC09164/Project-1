@@ -162,7 +162,8 @@ class Product extends BaseModel
             return $result;
         }
     }
-    public function get5ProductCategoryRelate()
+    // sản phẩm liên quan
+    public function getProductCategoryRelate()
     {
         $result = [];
         try {
@@ -176,6 +177,39 @@ class Product extends BaseModel
             return $result;
         }
     }
+
+
+    public function getAllManyViews()
+    {
+        $result = [];
+        try {
+            $sql = "SELECT * FROM `products` ORDER BY view desc limit 4;";
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+
+
+    // lọc giá tiền
+
+    // public function getProductByPriceRange($minPrice, $maxPrice)
+    // {
+    //     try {
+    //         $conn = $this->getConnection(); // Sử dụng getConnection
+    //         $stmt = $conn->prepare("SELECT * FROM {$this->table} WHERE Price BETWEEN ? AND ?");
+    //         $stmt->bind_param("ii", $minPrice, $maxPrice);
+    //         $stmt->execute();
+
+    //         $result = $stmt->get_result();
+    //         return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    //     } catch (\Throwable $th) {
+    //         error_log("Error in getProductByPriceRange(): " . $th->getMessage());
+    //         return [];
+    //     }
+    // }
     
     
 }

@@ -86,7 +86,6 @@ class Footer extends BaseView
                                 Bản quyền &copy;<script>
                                     document.write(new Date().getFullYear());
                                 </script>  | Được thiết kế <i class="fa fa-heart-o" aria-hidden="true"></i> bởi <a href="" target="_blank">Photo Hub</a>
-
                             </span>
                         </div>
                     </div>
@@ -96,12 +95,12 @@ class Footer extends BaseView
             </div>
 
         </footer>
-        <script src="../public/assets/client/js/jquery.min.js"></script>
-        <script src="../public/assets/client/js/bootstrap.min.js"></script>
-        <script src="../public/assets/client/js/slick.min.js"></script>
-        <script src="../public/assets/client/js/nouislider.min.js"></script>
-        <script src="../public/assets/client/js/jquery.zoom.min.js"></script>
-        <script src="../public/assets/client/js/main.js"></script>
+        <script src="../../public/assets/client/js/jquery.min.js"></script>
+        <script src="../../public/assets/client/js/bootstrap.min.js"></script>
+        <script src="../../public/assets/client/js/slick.min.js"></script>
+        <script src="../../public/assets/client/js/nouislider.min.js"></script>
+        <script src="../../public/assets/client/js/jquery.zoom.min.js"></script>
+        <script src="../../public/assets/client/js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         </body>
 

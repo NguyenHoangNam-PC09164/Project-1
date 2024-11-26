@@ -12,50 +12,32 @@ class Home extends BaseView
 {
     public static function render($data = null)
     {
-        $categories = (new Category())->getAll();
+        $categories = (new Category())->get3Category();
         $products = (new Product())->get5ProductNew();
         $products_isFeature = (new Product())->getAllProductByCategoryAndStatusAndIsFeature();
-
 ?>
         <div class="section">
-
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-xs-6">
-                        <div class="shop">
-                            <div class="shop-img">
-                                <img src="../../../public/assets/client/img/product8.jpg" alt="" width="360px">
-                            </div>
-                            <div class="shop-body">
-                                <h3>Nikon<br>Bộ sưu tập</h3>
-                                <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-xs-6">
-                        <div class="shop">
-                            <div class="shop-img">
-                                <img src="../../../public/assets/client/img/product16.jpg" alt="">
-                            </div>
-                            <div class="shop-body">
-                                <h3>Canon<br>Bộ sưu tập</h3>
-                                <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-xs-6">
-                        <div class="shop">
-                            <div class="shop-img">
-                                <img src="../../../public/assets/client/img/product21.jpg" alt="">
-                            </div>
-                            <div class="shop-body">
-                                <h3>Insta360 X3<br>Bộ sưu tập</h3>
-                                <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    
+                        <?php if (!empty($categories) && is_array($categories)) : ?>
+                            <?php foreach ($categories as $item) : ?>
+                                <div class="col-md-4 col-xs-6">
+                                <div class="shop">
+                                    <div class="shop-img"><a></a>
+                                        <img   src="../../../public/assets/client/img/product8.jpg" alt="" width="360px">
+                                    </div>
+                                    <div class="shop-body">
+                                        <h3  href="/products/categories/<?= ($item['id']) ?>"><?= ($item['name']) ?><br></h3>
+                                        <a  href="/products/categories/<?= ($item['id']) ?>" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <li><span>Không có danh mục nào</span></li>
+                        <?php endif; ?>
+                   
                 </div>
             </div>
         </div>
@@ -71,8 +53,7 @@ class Home extends BaseView
                                     <?php if (!empty($categories) && is_array($categories)) : ?>
                                         <?php foreach ($categories as $item) : ?>
                                             <li>
-                                                <a data-toggle="tab" href="/products/categories/<?= ($item['id']) ?>">
-                                                    <?= ($item['name']) ?>
+                                                <a data-toggle="" href="/products/categories/<?= ($item['id']) ?>"><?= ($item['name']) ?>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
@@ -113,7 +94,8 @@ class Home extends BaseView
                                                             </h4>
                                                         <?php else : ?>
                                                             <h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
-                                                        <?php endif; ?> <div class="product-rating">
+                                                        <?php endif; ?> 
+                                                        <div class="product-rating">
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
@@ -174,8 +156,7 @@ class Home extends BaseView
                                     <?php if (!empty($categories) && is_array($categories)) : ?>
                                         <?php foreach ($categories as $item) : ?>
                                             <li>
-                                                <a data-toggle="tab" href="/products/categories/<?= ($item['id']) ?>">
-                                                    <?= ($item['name']) ?>
+                                                <a data-toggle="" href="/products/categories/<?= ($item['id']) ?>"><?= ($item['name']) ?>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
