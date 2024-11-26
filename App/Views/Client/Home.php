@@ -127,7 +127,11 @@ class Home extends BaseView
                                                         </div>
                                                     </div>
                                                     <div class="add-to-cart">
-                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                                        <form action="/cart/add" method="post">
+                                                            <input type="hidden" name="method" id="" value="POST">
+                                                            <input type="hidden" name="id" id="" value="<?= $item['product_id'] ?>" required>
+                                                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                                        </form>
                                                     </div>
 
                                                 </div>
@@ -229,7 +233,11 @@ class Home extends BaseView
                                                         </div>
                                                     </div>
                                                     <div class="add-to-cart">
-                                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                                        <form action="/cart/add" method="post">
+                                                            <input type="hidden" name="method" id="" value="POST">
+                                                            <input type="hidden" name="id" id="" value="<?= $item_isFeature['product_id'] ?>" required>
+                                                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+                                                        </form>
                                                     </div>
 
                                                 </div>

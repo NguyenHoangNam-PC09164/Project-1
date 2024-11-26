@@ -238,47 +238,50 @@ class Index extends BaseView
 												<div class="product-btns">
 													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp"><a href="/products/<?=$item['product_id']?>">Xem thêm</a></span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp"><a href="/products/<?= $item['product_id'] ?>">Xem thêm</a></span></button>
 												</div>
+
+											</div>
+											<div class="add-to-cart">
+												<form action="/cart/add" method="post">
+													<input type="hidden" name="method" id="" value="POST">
+													<input type="hidden" name="id" id="" value="<?= $item['product_id'] ?>" required>
+													<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+												</form>
 											</div>
 											<!-- /Product -->
 										</div>
 									</div>
-										<?php endforeach; ?>
-									<?php else : ?>
-										<!-- No Products Found -->
-										<h3 class="text-center text-danger">Không có sản phẩm</h3>
-									<?php endif; ?>
-										</div>
-
-										<!-- /store products -->
-
-										<!-- store bottom filter -->
-										<div class="store-filter clearfix">
-
-											<ul class="store-pagination">
-												<li class="active">1</li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-											</ul>
-										</div>
-										<!-- /store bottom filter -->
-									</div>
-									<!-- /STORE -->
+								<?php endforeach; ?>
+							<?php else : ?>
+								<!-- No Products Found -->
+								<h3 class="text-center text-danger">Không có sản phẩm</h3>
+							<?php endif; ?>
 						</div>
-						<!-- /row -->
+
+						<!-- /store products -->
+
+						<!-- store bottom filter -->
+						<div class="store-filter clearfix">
+
+							<ul class="store-pagination">
+								<li class="active">1</li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							</ul>
+						</div>
+						<!-- /store bottom filter -->
 					</div>
-					<!-- /container -->
+					<!-- /STORE -->
 				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
 
-
-
-
-
-
-		<?php
+<?php
 
 	}
 }

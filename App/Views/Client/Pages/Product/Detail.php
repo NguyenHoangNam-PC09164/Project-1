@@ -118,12 +118,21 @@ class Detail extends BaseView
 								<div class="qty-label">
 									Số lượng
 									<div class="input-number">
-										<input type="number">
+										<input type="number" name="quantity" id="quantity" value="1" min="1" required>
 										<span class="qty-up">+</span>
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+								<div class="add-to-cart">
+									<form action="/cart/add" method="post">
+										<input type="hidden" name="method" id="" value="POST">
+										<input type="hidden" name="id" id="" value="<?= $data['product']['product_id'] ?>" required>
+										<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+									</form>
+
+								</div>
+
+
 							</div>
 
 							<ul class="product-btns">
@@ -329,22 +338,22 @@ class Detail extends BaseView
 															<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
 														</div>
 													</div>
-												</div>
 											</div>
 										</div>
 									</div>
-									
 								</div>
-								<!-- /tab3  -->
+
 							</div>
+							<!-- /tab3  -->
 						</div>
-						
-							<!-- /tab3 -->
 					</div>
-					<!-- /product tab content  -->
+
+					<!-- /tab3 -->
 				</div>
+				<!-- /product tab content  -->
 			</div>
-			<!-- /product tab -->
+		</div>
+		<!-- /product tab -->
 		</div>
 		<!-- /row -->
 		</div>

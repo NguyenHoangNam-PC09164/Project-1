@@ -2200,6 +2200,21 @@ textarea.input {
   border: none;
   border-radius: 10px;
 }
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.quantity-input {
+  display: inline-block;
+  width: 60px; /* Adjust the width as needed */
+  margin-right: 10px;
+  vertical-align: middle; /* Ensures alignment with the button */
+}
+
+
 .text-danger{
   color: #D10024;
 

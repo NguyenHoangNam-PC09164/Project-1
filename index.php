@@ -6,6 +6,8 @@ error_reporting(E_ALL);
 ini_set('log_errors', TRUE); 
 ini_set('error_log', './logs/php/php-errors.log');
 
+ob_start();
+use App\Helpers\AuthHelper;
 use App\Route;
 
 require_once 'vendor/autoload.php';
@@ -15,7 +17,7 @@ $dotenv->load();
 
 require_once 'config.php';
 
-
+AuthHelper::middleware();
 
 // *** Client
 Route::get('/', 'App\Controllers\Client\HomeController@index');
@@ -55,6 +57,13 @@ Route::get('/reset-password','App\Controllers\Client\AuthController@resetPasswor
 Route::put('/reset-password','App\Controllers\Client\AuthController@resetPasswordAction'); 
 
 Route::get('/search', 'App\Controllers\Client\ProductController@search');
+
+
+Route::get('/cart', 'App\Controllers\Client\CartController@index');
+Route::post('/cart/add', 'App\Controllers\Client\CartController@add');
+
+Route::post('/cart/remove', 'App\Controllers\Client\CartController@remove');
+Route::post('/cart/update', 'App\Controllers\Client\CartController@update');
 
 // *** Admin
 
