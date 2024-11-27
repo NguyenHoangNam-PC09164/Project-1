@@ -14,7 +14,7 @@ class Detail extends BaseView
 
 	public static function render($data = null)
 	{
-		// $is_login = AuthHelper::checkLogin();
+		$is_login = AuthHelper::checkLogin();
 		$products = (new Product())->getProductCategoryRelate();
 ?>
 		<div id="breadcrumb" class="section"> 
