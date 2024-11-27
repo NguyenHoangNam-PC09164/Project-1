@@ -81,6 +81,32 @@ class Header extends BaseView
                                         <a class="nav-link active" href="/admin" data-toggle="" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Bảng điều khiển</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-0" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Quản lý loại biến thể</a>
+                                        <div id="submenu-0" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/variants">Danh sách loại biến thể</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/variants/create">Thêm loại biến thể</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Quản lý biến thể</a>
+                                        <div id="submenu-6" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/variant_options">Danh sách biến thể</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/variant_options/create">Thêm biến thể</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Quản lý loại sản phẩm</a>
                                         <div id="submenu-1" class="collapse submenu" style="">
                                             <ul class="nav flex-column">
@@ -93,6 +119,7 @@ class Header extends BaseView
                                             </ul>
                                         </div>
                                     </li>
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Quản lý sản phẩm</a>
                                         <div id="submenu-2" class="collapse submenu" style="">
@@ -131,7 +158,7 @@ class Header extends BaseView
                         </nav>
                     </div>
                 </div>
-<?php
+        <?php
 
     }
 }

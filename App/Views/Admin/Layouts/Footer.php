@@ -39,6 +39,7 @@ class Footer extends BaseView
                 <script src="../../../../public/assets/admin/template/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
                 <script src="../../../../public/assets/admin/template/assets/vendor/charts/c3charts/C3chartjs.js"></script>
                 <script src="../../../../public/assets/admin/template/assets/libs/js/dashboard-ecommerce.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
                 </body>
 
                 </html>

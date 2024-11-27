@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Admin\Pages\Category;
+namespace App\Views\Admin\Pages\Variant;
 
 use App\Views\BaseView;
 
@@ -18,7 +18,7 @@ class Edit extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-2" aria-current="page">Loại sản phẩm</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page">Loại biến thể</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -28,7 +28,7 @@ class Edit extends BaseView
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <form class="form" action="/admin/categories/<?= $data['id'] ?>" method="POST">
+                            <form class="form" action="/admin/variants/<?= $data['id'] ?>" method="POST">
                                 <div class="card-body">
                                     <input type="hidden" name="method" value="PUT">
                                     <div class="mb-3">
@@ -36,7 +36,7 @@ class Edit extends BaseView
                                         <input type="text" class="form-control" name="id" id="id" value="<?= $data['id'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Tên loại sản phẩm</label>
+                                        <label for="name" class="form-label">Tên Loại biến thể</label>
                                         <input type="text" class="form-control" name="name" id="name" value="<?= $data['name'] ?>">
                                     </div>
                                     <div class="mb-3">

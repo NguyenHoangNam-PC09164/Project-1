@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Admin\Pages\Category;
+namespace App\Views\Admin\Pages\Variant;
 
 use App\Views\BaseView;
 
@@ -18,14 +18,14 @@ class Index extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-2" aria-current="page">Loại sản phẩm</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page">Loại biến thể</li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- danh sach loai san pham -->
+                <!-- danh sach Loại biến thể-->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
@@ -36,7 +36,7 @@ class Index extends BaseView
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Tên loại sản phẩm</th>
+                                            <th scope="col">Tên Loại biến thể</th>
                                             <th scope="col">Trạng thái</th>
                                             <th scope="col">Thao tác</th>
                                         </tr>
@@ -50,8 +50,8 @@ class Index extends BaseView
                                                 <td><?= $item['name'] ?></td>
                                                 <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                                 <td>
-                                                    <a href="/admin/categories/<?= $item['id'] ?>" class="btn btn-warning ">Sửa</a>
-                                                    <form action="/admin/categories/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
+                                                    <a href="/admin/variants/<?= $item['id'] ?>" class="btn btn-warning ">Sửa</a>
+                                                    <form action="/admin/variants/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
                                                         <input type="hidden" name="method" value="DELETE" id="">
                                                         <button type="submit" class="btn btn-danger text-light">Xoá</button>
                                                     </form>

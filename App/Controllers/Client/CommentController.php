@@ -52,7 +52,7 @@ class CommentController
         if($result){
             NotificationHelper::success('store','Thêm bình luận thành công');
         } else{
-            NotificationHelper::error('store','Thêm bình luậnthất bại');
+            NotificationHelper::error('store','Thêm bình luận thất bại');
         }
         header("location: products/$product_id");
     }

@@ -30,26 +30,11 @@ class CommentController
         Index::render($data);
         Footer::render();
     }
-    // xử lý chức năng thêm
-    public static function store()
-    {
-    }
-
-    // hiển thị chi tiết
-    public static function show()
-    {
-    }
-
-
     // hiển thị giao diện form sửa
     public static function edit(int $id)
     {
-
-
         $comment = new Comment();
         $data = $comment->getOneComment($id);
-
-
 
         if (!$data) {
             NotificationHelper::error('edit', 'Không thể xem bình luận này');

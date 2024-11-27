@@ -74,12 +74,11 @@ class Comment extends BaseModel
         $result = [];
         try {
             $sql = "SELECT comments.*, users.username, users.name, users.avatar FROM `comments` 
-            INNER JOIN users ON comments.user_id= users.id 
+            INNER JOIN users ON comments.user_id= users.user_id 
             WHERE comments.product_id=? AND comments.status=" . self::STATUS_ENABLE . "
             ORDER by date DESC limit 5";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
-
             $stmt->bind_param('i', $id);
             $stmt->execute();
             return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);

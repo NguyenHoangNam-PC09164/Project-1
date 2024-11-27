@@ -2286,6 +2286,29 @@ textarea.input {
   
 }
 
+.float-right{
+  float: right !important;
+}
+
+.action{
+  /* float: right !important; */
+  padding: 5px;
+}
+
+.card{
+  border: solid 1px  rgb(200, 200, 200)!important;
+  border-radius: 2px  rgb(200, 200, 200)!important;
+  padding: 20px!important;
+}
+
+.container{
+  padding-left: 0px!important;
+}
+
+.btn-primary{
+
+}
+
 .forgot-password {
   margin-top: 20px;
 }

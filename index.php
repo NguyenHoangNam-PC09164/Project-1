@@ -91,6 +91,45 @@ Route::put('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@u
 Route::delete('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@delete');
 
 
+//  *** Variant
+// GET /categories (lấy danh sách loại sản phẩm)
+Route::get('/admin/variants', 'App\Controllers\Admin\VariantController@index');
+
+// GET /variants/create (hiển thị form thêm loại sản phẩm)
+Route::get('/admin/variants/create', 'App\Controllers\Admin\VariantController@create');
+
+// POST /variants (tạo mới một loại sản phẩm)
+Route::post('/admin/variants', 'App\Controllers\Admin\VariantController@store');
+
+// GET /variants/{id} (lấy chi tiết loại sản phẩm với id cụ thể)
+Route::get('/admin/variants/{id}', 'App\Controllers\Admin\VariantController@edit');
+
+// PUT /variants/{id} (update loại sản phẩm với id cụ thể)
+Route::put('/admin/variants/{id}', 'App\Controllers\Admin\VariantController@update');
+
+// DELETE /variants/{id} (delete loại sản phẩm với id cụ thể)
+Route::delete('/admin/variants/{id}', 'App\Controllers\Admin\VariantController@delete');
+
+
+//  *** Variantoption
+// GET /variant_options (lấy danh sách loại sản phẩm)
+Route::get('/admin/variant_options', 'App\Controllers\Admin\VariantOptionController@index');
+
+// GET /VariantOptions/create (hiển thị form thêm loại sản phẩm)
+Route::get('/admin/variant_options/create', 'App\Controllers\Admin\VariantOptionController@create');
+
+// POST /VariantOptions (tạo mới một loại sản phẩm)
+Route::post('/admin/variant_options', 'App\Controllers\Admin\VariantOptionController@store');
+
+// GET /VariantOptions/{id} (lấy chi tiết loại sản phẩm với id cụ thể)
+Route::get('/admin/variant_options/{id}', 'App\Controllers\Admin\VariantOptionController@edit');
+
+// PUT /VariantOptions/{id} (update loại sản phẩm với id cụ thể)
+Route::put('/admin/variant_options/{id}', 'App\Controllers\Admin\VariantOptionController@update');
+
+// DELETE /VariantOptions/{id} (delete loại sản phẩm với id cụ thể)
+Route::delete('/admin/variant_options/{id}', 'App\Controllers\Admin\VariantOptionController@delete');
+
 
 
 

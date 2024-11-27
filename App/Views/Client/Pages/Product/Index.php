@@ -11,9 +11,7 @@ class Index extends BaseView
 	public static function render($data = null)
 	{
 		$categories = (new Category())->getAll();
-		$products = (new Product())->getAllProductJoinCategory();
-		$products_Views = (new Product())->getAllManyViews();
-
+		$products = (new Product())->getAll();
 		// var_dump($products);
 ?>
 		<div class="section">
@@ -33,7 +31,8 @@ class Index extends BaseView
 											<input type="checkbox" id="category-1">
 											<label for="category-1">
 												<span></span>
-												<a class="nav-link text-cate text-dark" href="/products/categories/<?= $item['id'] ?>"><?= $item['name'] ?></a>
+												<a data-toggle="tab" href="/products/categories/<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
+													<?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>
 												</a> <small>(3)</small>
 											</label>
 										</div>
@@ -64,7 +63,65 @@ class Index extends BaseView
 								</div>
 							</div>
 						</div>
+						<!-- /aside Widget -->
 
+						<!-- aside Widget -->
+						<!-- <div class="aside">
+							<h3 class="aside-title">Thương hiệu</h3>
+							<div class="checkbox-filter">
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-1">
+									<label for="brand-1">
+										<span></span>
+										SONY
+										<small>(578)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-2">
+									<label for="brand-2">
+										<span></span>
+										CANON
+										<small>(125)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-3">
+									<label for="brand-3">
+										<span></span>
+										NIKON
+										<small>(755)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-4">
+									<label for="brand-4">
+										<span></span>
+										SAMSUNG
+										<small>(578)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-5">
+									<label for="brand-5">
+										<span></span>
+										LG
+										<small>(125)</small>
+									</label>
+								</div>
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-6">
+									<label for="brand-6">
+										<span></span>
+										SONY
+										<small>(755)</small>
+									</label>
+								</div>
+							</div>
+						</div> -->
+						<!-- /aside Widget -->
+
+						<!-- aside Widget -->
 						<div class="aside">
 
 							<h3 class="aside-title">Nhiều lượt xem nhất</h3>
@@ -134,7 +191,7 @@ class Index extends BaseView
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category"><?= $item['category_name'] ?></p>
+												<p class="product-category">Danh mục</p>
 												<h3 class="product-name"><a href="/products/<?= $item['product_id'] ?>"><?= $item['name'] ?></a></h3>
 												<?php
 												if ($item['discount_price'] > 0) :
@@ -145,7 +202,7 @@ class Index extends BaseView
 												<?php
 												else :
 												?>
-													<h4 class="product-price"><?= number_format($item['price']) ?> đ</h4>
+													<h4 class="product-price"><?= number_format($item['price']) ?>đ</h4>
 
 												<?php
 												endif;
@@ -176,32 +233,41 @@ class Index extends BaseView
 											</div>
 										</div>
 									</div>
-								<?php endforeach; ?>
-							<?php else : ?>
-								<!-- No Products Found -->
-								<h3 class="text-center text-danger">Không có sản phẩm</h3>
-							<?php endif; ?>
+										<?php endforeach; ?>
+									<?php else : ?>
+										<!-- No Products Found -->
+										<h3 class="text-center text-danger">Không có sản phẩm</h3>
+									<?php endif; ?>
+										</div>
+
+										<!-- /store products -->
+
+										<!-- store bottom filter -->
+										<div class="store-filter clearfix">
+
+											<ul class="store-pagination">
+												<li class="active">1</li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+											</ul>
+										</div>
+										<!-- /store bottom filter -->
+									</div>
+									<!-- /STORE -->
 						</div>
-						<!-- /store products -->
-						<!-- store bottom filter -->
-						<div class="store-filter clearfix">
-							<ul class="store-pagination">
-								<li class="active">1</li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							</ul>
-						</div>
-						<!-- /store bottom filter -->
+						<!-- /row -->
 					</div>
-					<!-- /STORE -->
+					<!-- /container -->
 				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-<?php
+
+
+
+
+
+
+		<?php
 
 	}
 }

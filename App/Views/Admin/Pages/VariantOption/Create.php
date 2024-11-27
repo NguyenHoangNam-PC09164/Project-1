@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Admin\Pages\Category;
+namespace App\Views\Admin\Pages\Variant;
 
 use App\Views\BaseView;
 
@@ -8,6 +8,7 @@ class Create extends BaseView
 {
     public static function render($data = null)
     {
+        var_dump($data);
 ?>
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
@@ -18,7 +19,7 @@ class Create extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-2" aria-current="page">Loại sản phẩm</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page">Biến thể</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -28,19 +29,25 @@ class Create extends BaseView
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <form class="form px-3" action="/admin/categories" method="POST">
+                            <form class="form px-3" action="/admin/variants" method="POST">
                                 <div class="card-body">
                                     <input type="hidden" id="" name="method" value="POST">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Tên loại sản phẩm</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên loại sản phẩm">
+                                        <label for="name" class="form-label">Tên biến thể</label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên  biến thể">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="status" class="form-label">Trạng thái</label>
-                                        <select class="form-control" name="status" id="status">
-                                            <option value="">Vui lòng chọn...</option>
-                                            <option value="1">Hiện</option>
-                                            <option value="0">Ẩn</option>
+                                        <label for="category_id" class="form-label">Loại sản phẩm*</label>
+                                        <select class="form-control" style="width: 100%; height:36px;" id="category_id" name="category_id">
+                                            <option value="" selected disabled>Vui lòng chọn...</option>
+                                            <?php
+                                            foreach ($data as $item):
+                                            ?>
+                                                <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                            <?php
+                                            endforeach;
+                                            ?>
+
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary ">Thêm</button>
