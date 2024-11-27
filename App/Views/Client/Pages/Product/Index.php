@@ -228,9 +228,6 @@ class Index extends BaseView
 													<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
 												</form>
 											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-											</div>
 										</div>
 									</div>
 										<?php endforeach; ?>
