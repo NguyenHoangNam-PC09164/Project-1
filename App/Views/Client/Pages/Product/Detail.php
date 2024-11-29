@@ -295,22 +295,22 @@ class Detail extends BaseView
 														endif;
 														?>
 													</div>
-												</div>
 											</div>
 										</div>
 									</div>
-									
 								</div>
-								<!-- /tab3  -->
+
 							</div>
+							<!-- /tab3  -->
 						</div>
-						
-							<!-- /tab3 -->
 					</div>
-					<!-- /product tab content  -->
+
+					<!-- /tab3 -->
 				</div>
+				<!-- /product tab content  -->
 			</div>
-			<!-- /product tab -->
+		</div>
+		<!-- /product tab -->
 		</div>
 		<!-- /row -->
 		</div>

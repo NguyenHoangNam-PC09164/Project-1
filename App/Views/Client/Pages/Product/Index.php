@@ -230,41 +230,36 @@ class Index extends BaseView
 											</div>
 										</div>
 									</div>
-										<?php endforeach; ?>
-									<?php else : ?>
-										<!-- No Products Found -->
-										<h3 class="text-center text-danger">Không có sản phẩm</h3>
-									<?php endif; ?>
-										</div>
-
-										<!-- /store products -->
-
-										<!-- store bottom filter -->
-										<div class="store-filter clearfix">
-
-											<ul class="store-pagination">
-												<li class="active">1</li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-											</ul>
-										</div>
-										<!-- /store bottom filter -->
-									</div>
-									<!-- /STORE -->
+								<?php endforeach; ?>
+							<?php else : ?>
+								<!-- No Products Found -->
+								<h3 class="text-center text-danger">Không có sản phẩm</h3>
+							<?php endif; ?>
 						</div>
-						<!-- /row -->
+
+						<!-- /store products -->
+
+						<!-- store bottom filter -->
+						<div class="store-filter clearfix">
+
+							<ul class="store-pagination">
+								<li class="active">1</li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							</ul>
+						</div>
+						<!-- /store bottom filter -->
 					</div>
-					<!-- /container -->
+					<!-- /STORE -->
 				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
 
-
-
-
-
-
-		<?php
+<?php
 
 	}
 }
