@@ -20,6 +20,8 @@ require_once 'config.php';
 AuthHelper::middleware();
 
 // *** Client
+
+
 Route::get('/', 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
@@ -69,6 +71,8 @@ Route::post('/cart/add', 'App\Controllers\Client\CartController@add');
 Route::post('/cart/remove', 'App\Controllers\Client\CartController@remove');
 Route::post('/cart/update', 'App\Controllers\Client\CartController@update');
 
+Route::get('/contact', 'App\Controllers\Client\ContactController@index');
+Route::post('/contact/send-email', 'App\Controllers\Client\ContactController@sendEmail');
 // *** Admin
 
 Route::get('/admin', 'App\Controllers\Admin\HomeController@index');

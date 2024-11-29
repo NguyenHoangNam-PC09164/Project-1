@@ -2,6 +2,7 @@
 
 namespace App\Validations;
 
+
 use App\Helpers\NotificationHelper;
 
 class AuthValidation{
@@ -230,4 +231,6 @@ class AuthValidation{
         
         return $is_valid;
     }
+
+ 
 }

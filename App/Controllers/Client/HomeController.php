@@ -20,9 +20,9 @@ class HomeController
     // hiển thị danh sách
     public static function index()
     {
-     
-       
-    
+
+
+
         Header::render();
         Home::render();
 
@@ -34,12 +34,8 @@ class HomeController
         Introduce::render();
         Footer::render();
     }
-    public static function contact()
-    {
-        Header::render();
-        Contact::render();
-        Footer::render();
-    }
+
+    
     public static function news()
     {
         Header::render();
@@ -47,3 +43,4 @@ class HomeController
         Footer::render();
     }
 }
+    

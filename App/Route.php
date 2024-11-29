@@ -77,7 +77,6 @@ class Route
 
             // Vd: $controller = App\Controllers\Client\CategoryController
             $controllerInstance = new $controller();
-
             // Vd: $method = index
             $controllerMethod = $controllerInstance->$method();
         }

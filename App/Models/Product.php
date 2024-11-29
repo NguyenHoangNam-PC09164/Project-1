@@ -199,7 +199,7 @@ class Product extends BaseModel
     // {
     //     try {
     //         $conn = $this->getConnection(); // Sử dụng getConnection
-    //         $stmt = $conn->prepare("SELECT * FROM {$this->table} WHERE Price BETWEEN ? AND ?");
+    //         $stmt = $conn->prepare("SELECT * FROM `products` WHERE price BETWEEN ? AND ?");
     //         $stmt->bind_param("ii", $minPrice, $maxPrice);
     //         $stmt->execute();
 
@@ -210,6 +210,4 @@ class Product extends BaseModel
     //         return [];
     //     }
     // }
-    
-    
 }
