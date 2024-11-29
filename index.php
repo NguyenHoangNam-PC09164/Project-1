@@ -30,7 +30,9 @@ Route::post('/comments','App\Controllers\Client\CommentController@store');
 Route::put('/comments/{id}','App\Controllers\Client\CommentController@update');
 Route::delete('/comments/{id}','App\Controllers\Client\CommentController@delete');
 
-Route::get('/checkout', 'App\Controllers\Client\ProductController@checkout');
+Route::get('/checkout', 'App\Controllers\Client\OrderController@checkout');
+Route::post('/checkoutAction', 'App\Controllers\Client\OrderController@checkoutAction');
+
 Route::get('/cart', 'App\Controllers\Client\CartController@index');
 
 Route::get('/introduce', 'App\Controllers\Client\HomeController@introduce');
