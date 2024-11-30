@@ -21,8 +21,9 @@ class Checkout extends BaseView
 
         <div class="section">
             <div class="container">
-                <form action="/checkoutAction" method="POST">
+                <form id="checkout-form" action="/checkoutAction" method="POST">
                     <input type="hidden" name="method" value="POST">
+                    <input type="hidden" id="payment_status" name="payment_status" value="0">
                     <div class="row">
                         <div class="col-md-7">
                             <!-- Thông tin khách hàng -->
@@ -31,16 +32,16 @@ class Checkout extends BaseView
                                     <h3 class="title">Địa chỉ thanh toán</h3>
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="text" name="name" placeholder="Họ tên">
+                                    <input class="input" type="text" name="name" placeholder="Họ tên" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="tel" name="phone" placeholder="Số điện thoại">
+                                    <input class="input" type="tel" name="phone" placeholder="Số điện thoại" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="email" name="email" placeholder="Email">
+                                    <input class="input" type="email" name="email" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="text" name="address" placeholder="Địa chỉ đầy đủ">
+                                    <input class="input" type="text" name="address" placeholder="Địa chỉ đầy đủ" required>
                                 </div>
                             </div>
                         </div>
@@ -86,36 +87,37 @@ class Checkout extends BaseView
                             <!-- PayPal SDK -->
                             <script src="https://www.paypal.com/sdk/js?client-id=AWTlwInXfZ-bN2g11sAM9n1dp9NL1cU6BmB1hxTz_Sg2z9BmaL5hgf04yTxTV0ClB6vwdrt1PUeZe0EF&buyer-country=US&currency=USD&components=buttons&disable-funding=venmo,paylater,card" data-sdk-integration-source="developer-studio"></script>
 
-                            <!-- JavaScript to render PayPal Button -->
+                            <!-- JavaScript -->
                             <script>
                                 document.addEventListener('DOMContentLoaded', function() {
-                                    const totalPrice = <?= json_encode($vnd_to_usd, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                                    const checkoutForm = document.getElementById('checkout-form');
+                                    const paymentStatusInput = document.getElementById('payment_status');
+                                    const totalPrice = <?= json_encode($vnd_to_usd, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>; // đảm bảo an toàn khi nhúng php vào js
 
-                                    // Check if the total price is valid
                                     if (totalPrice > 0) {
                                         paypal.Buttons({
                                             createOrder: function(data, actions) {
                                                 return actions.order.create({
                                                     purchase_units: [{
                                                         amount: {
-                                                            value: totalPrice.toFixed(2),
-                                                            // Ensure two decimal points
+                                                            value: totalPrice.toFixed(2) // USD Amount
                                                         }
                                                     }]
                                                 });
                                             },
                                             onApprove: function(data, actions) {
                                                 return actions.order.capture().then(function(details) {
-                                                    alert('Transaction completed by ' + details.payer.name.given_name);
-                                                    console.log('Transaction details:', details);
+                                                    alert('Thanh toán PayPal thành công!');
+                                                    paymentStatusInput.value = 1; // Set payment_status to 1
+                                                    checkoutForm.submit(); // Submit form
                                                 });
                                             },
                                             onError: function(err) {
-                                                console.error('PayPal Button Error:', err);
+                                                alert('Đã xảy ra lỗi trong quá trình thanh toán: ' + err);
                                             }
                                         }).render('#paypal-button-container');
                                     } else {
-                                        console.error('Invalid total price:', totalPrice);
+                                        console.error('Tổng giá trị không hợp lệ:', totalPrice);
                                     }
                                 });
                             </script>
@@ -128,6 +130,7 @@ class Checkout extends BaseView
                 </form>
             </div>
         </div>
+
 
 <?php
     }
