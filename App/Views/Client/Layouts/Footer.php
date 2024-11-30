@@ -85,7 +85,7 @@ class Footer extends BaseView
 
                                 Bản quyền &copy;<script>
                                     document.write(new Date().getFullYear());
-                                </script>  | Được thiết kế <i class="fa fa-heart-o" aria-hidden="true"></i> bởi <a href="" target="_blank">Photo Hub</a>
+                                </script> | Được thiết kế <i class="fa fa-heart-o" aria-hidden="true"></i> bởi <a href="" target="_blank">Photo Hub</a>
                             </span>
                         </div>
                     </div>
