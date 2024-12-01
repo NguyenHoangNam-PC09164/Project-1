@@ -149,11 +149,13 @@ class VariantOptionController
         $variantOption = new VariantOption();
         $is_exist = $variantOption->getOneVariantOptionByName($name);
         
-        if ($is_exist) {
+        if ($is_exist && $is_exist['id'] !=$id){
             NotificationHelper::error('update', 'Tên biến thể đã tồn tại');
             header("location: /admin/variant_options/$id");
             exit;
         }
+
+        // var_dump($is_exist);
 
         // thực hiện cập nhật vào csdl
         $data = [

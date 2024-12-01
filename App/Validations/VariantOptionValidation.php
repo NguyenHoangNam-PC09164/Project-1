@@ -7,7 +7,7 @@ use App\Helpers\NotificationHelper;
 class VariantOptionValidation
 {
 
-    public static function create(){
+    public static function create():bool{
         $is_valid = true;
         //tên biến thể
         if(!isset($_POST['name']) || $_POST['name'] ===''){
@@ -22,7 +22,7 @@ class VariantOptionValidation
         return $is_valid;
     }
 
-    public static function edit(){
+    public static function edit():bool{
         $is_valid = true;
         //tên biến thể
         if(!isset($_POST['name']) || $_POST['name'] ===''){

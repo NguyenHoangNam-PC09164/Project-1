@@ -36,8 +36,8 @@ class Create extends BaseView
                                     <h3 class="card-title">Thêm biến thể sản phẩm</h3>
                                     <input type="hidden" name="method" id="" value="POST">
                                     <div class="mb-3">
-                                        <label for="sku" class="form-label">Mã sản phẩm</label>
-                                        <input type="text" class="form-control" name="sku" id="sku" placeholder="Nhập mã sản phẩm">
+                                        <label for="sku_name" class="form-label">Mã sản phẩm</label>
+                                        <input type="text" class="form-control" name="sku_name" id="sku_name" placeholder="Nhập mã sản phẩm">
                                     </div>
                                    
                                     

@@ -40,8 +40,8 @@ class Edit extends BaseView
                                         <input type="text" class="form-control" name="id" id="id" placeholder="Nhập mã sản phẩm" value="<?=$data['data_sku']['id']?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="sku" class="form-label">Mã sản phẩm</label>
-                                        <input type="text" class="form-control" name="sku" id="sku" placeholder="Nhập mã sản phẩm" value="<?=$data['data_sku']['sku']?>" disabled>
+                                        <label for="sku_name" class="form-label">Mã sản phẩm</label>
+                                        <input type="text" class="form-control" name="sku_name" id="sku_name" placeholder="Nhập mã sản phẩm" value="<?=$data['data_sku']['sku_name']?>" disabled>
                                     </div>
                                     <div class="mb-3">
                                         <label for="variant_option_id" class="form-label">Biến thể*</label>

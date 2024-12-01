@@ -54,7 +54,7 @@ class Index extends BaseView
                                             ?>
                                                 <tr>
                                                     <th scope="row"><?= $item['id'] ?></th>
-                                                    <td><?= $item['sku'] ?></td>
+                                                    <td><?= $item['sku_name'] ?></td>
                                                     <td><?= $item['product_name'] ?></td>
                                                     <td><?= $item['product_variant_name'] ?></td>
                                                     <td><?= $item['product_variant_option_name'] ?></td>

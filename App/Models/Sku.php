@@ -30,9 +30,9 @@ class Sku extends BaseModel
         return $this->delete($id);
     }
 
-    public function getOneSkuByName($sku)
+    public function getOneSkuByName($sku_name)
     {
-        return $this->getOneByName($sku);
+        return $this->getOneByName($sku_name);
     }
 
     // public function getSkuByProduct()

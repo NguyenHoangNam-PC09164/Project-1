@@ -68,14 +68,14 @@ class SkuController
             exit;
         }
         
-        $sku = $_POST['sku'];
+        $sku_name = $_POST['sku_name'];
         // $product_variant_id = $_POST['product_variant_id'];
         $product_id = $_POST['product_id'];
         $price = $_POST['price'];
         $variant_option_id = $_POST['variant_option_id'];
         $stock_quantity = $_POST['stock_quantity'];
         $skus = new Sku();
-        $is_exist = $skus->getOneSkuByName($sku);
+        $is_exist = $skus->getOneSkuByName($sku_name);
     
         if ($is_exist) {
             NotificationHelper::error('store', 'Mã biến thể sản phẩm đã tồn tại');
@@ -85,7 +85,7 @@ class SkuController
 
 
         $data=[
-            'sku'=>$sku,
+            'sku_name'=>$sku_name,
             'product_id'=>$product_id,
             // 'product_variant_id'=>$product_variant_id,
             'price'=>$price,
@@ -156,11 +156,12 @@ class SkuController
             header("location: /admin/skus/$id");
             exit;
         }
+        $sku_name = $_POST['sku'];
         $price = $_POST['price'];
         $stock_quantity = $_POST['stock_quantity'];
         // kiểm tra tên có tồn tại chưa => không được trùng tên
         $sku=new Sku();
-        $is_exist=$sku->getOneSkuByName($sku);
+        $is_exist=$sku->getOneSkuByName($sku_name);
 
         if($is_exist){
             if($is_exist['id']!=$id){
