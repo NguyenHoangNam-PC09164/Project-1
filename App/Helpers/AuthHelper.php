@@ -295,4 +295,207 @@ class AuthHelper
         }
         header('location: /contact');
     }
+    public static function sendOrderEmail(string $to, string $name, string $order_details, string $address, int $order_id, int $total_price, int $payment_status, string $phone, string $email): bool
+    {   
+        $mail = new PHPMailer(true);
+        
+        try {
+            
+            $mail->SMTPDebug = SMTP::DEBUG_OFF; 
+            $mail->CharSet = 'UTF-8';
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'nam219021@gmail.com';
+            $mail->Password = 'tqns mvkl jdme zwlm'; 
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            // Gửi email đến khách hàng
+            $mail->setFrom('nam219021@gmail.com', 'Photo Hub');
+            $mail->addAddress($to, $name);
+            $mail->addReplyTo('nam219021@gmail.com', 'Photo Hub');
+            $mail->isHTML(true);
+            $mail->Subject = "Xác nhận đơn hàng #$order_id từ Photo Hub";
+            $mail->Body = "
+                <html lang='vi'>
+                <head>
+                    <meta charset='UTF-8'>
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                    <title>Đơn hàng xác nhận</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                        }
+                        .container {
+                            width: 100%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            background-color: #ffffff;
+                            padding: 20px;
+                            border-radius: 8px;
+                            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                        }
+                        .header {
+                            background-color: #007bff;
+                            color: white;
+                            padding: 15px;
+                            text-align: center;
+                            border-radius: 8px 8px 0 0;
+                        }
+                        .header h1 {
+                            margin: 0;
+                        }
+                        .order-summary {
+                            margin-top: 20px;
+                        }
+                        .order-summary table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        .order-summary th, .order-summary td {
+                            padding: 8px;
+                            border: 1px solid #ddd;
+                            text-align: left;
+                        }
+                        .order-summary th {
+                            background-color: #f2f2f2;
+                        }
+                        .footer {
+                            margin-top: 20px;
+                            text-align: center;
+                            font-size: 12px;
+                            color: #777;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <div class='header'>
+                            <h1>Đơn hàng xác nhận: #$order_id</h1>
+                        </div>
+                        <p>Chào $name,</p>
+                        <p>Cảm ơn bạn đã đặt hàng tại Photo Hub! Dưới đây là chi tiết đơn hàng của bạn:</p>
+                        
+                        <div class='order-summary'>
+                            <table>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                </tr>
+                                $order_details
+                            </table>
+                            <p><strong>Giao nhận hàng:</strong> Giao hàng miễn phí</p>
+                            <p><strong>Phương thức thanh toán:</strong> " . ($payment_status == 1 ? 'PayPal (Đã thanh toán)' : 'PayPal (Chưa thanh toán)') . "</p>
+                            <p><strong>Tổng cộng:</strong> $total_price đ</p>
+                        </div>
+                        <div class='footer'>
+                            <p>Chúng tôi sẽ liên hệ sớm nhất để xác nhận đơn hàng.</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            ";
+            $mail->AltBody = "Cảm ơn bạn đã đặt hàng. Chúng tôi sẽ liên hệ sớm nhất để xác nhận đơn hàng.";
+            $mail->send();
+
+            // Gửi email đến admin
+            $mail->clearAddresses();
+            $mail->addAddress('nam219021@gmail.com', 'Photo Hub Admin');
+            $mail->Subject = "Thông báo đơn hàng mới: #$order_id";
+            $mail->Body = "
+                <html lang='vi'>
+                <head>
+                    <meta charset='UTF-8'>
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                    <title>Thông báo đơn hàng mới</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                        }
+                        .container {
+                            width: 100%;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            background-color: #ffffff;
+                            padding: 20px;
+                            border-radius: 8px;
+                            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                        }
+                        .header {
+                            background-color: #007bff;
+                            color: white;
+                            padding: 15px;
+                            text-align: center;
+                            border-radius: 8px 8px 0 0;
+                        }
+                        .header h1 {
+                            margin: 0;
+                        }
+                        .order-summary {
+                            margin-top: 20px;
+                        }
+                        .order-summary table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        .order-summary th, .order-summary td {
+                            padding: 8px;
+                            border: 1px solid #ddd;
+                            text-align: left;
+                        }
+                        .order-summary th {
+                            background-color: #f2f2f2;
+                        }
+                        .footer {
+                            margin-top: 20px;
+                            text-align: center;
+                            font-size: 12px;
+                            color: #777;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <div class='header'>
+                            <h1>Đơn hàng mới: #$order_id</h1>
+                        </div>
+                        <p><strong>Thông tin khách:</strong></p>
+                        <p><strong>Tên khách hàng:</strong> $name</p>
+                        <p><strong>Email:</strong> $email</p>
+                        <p><strong>Số điện thoại:</strong> $phone</p>
+                        <p><strong>Địa chỉ:</strong> $address</p>
+                        
+                        <p><strong>Chi tiết đơn hàng:</strong></p>
+                        <table>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                            </tr>
+                            $order_details
+                        </table>
+                        <p><strong>Phương thức thanh toán:</strong> " . ($payment_status == 1 ? 'PayPal (Đã thanh toán)' : 'PayPal (Chưa thanh toán)') . "</p>
+                        <p><strong>Tổng cộng:</strong> " . number_format($total_price, 0, ',', '.') . " đ</p>
+                        
+                        <div class='footer'>
+                            <p>Xin cảm ơn!</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            ";
+            $mail->AltBody = "Thông báo đơn hàng mới đã được đặt. Mã đơn hàng: #$order_id.";
+            $mail->send();
+
+            return true;
+        } catch (Exception $e) {
+            error_log("Lỗi khi gửi email: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    
+    
 }
