@@ -20,7 +20,7 @@ class Home extends BaseView
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển 1</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Loại sản phẩm</li>
+                                            <li class="breadcrumb-item active mt-1" aria-current="page">Thống kê</li>
                                         </ol>
                                     </nav>
                                 </div>

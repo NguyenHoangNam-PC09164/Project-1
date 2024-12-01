@@ -18,7 +18,7 @@ class Index extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-2" aria-current="page">Loại biến thể</li>
+                                        <li class="breadcrumb-item active mt-1" aria-current="page">Loại biến thể</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -47,7 +47,6 @@ class Index extends BaseView
                                             <tr>
                                                 <td><?= $item['id'] ?></td>
                                                 <td><?= $item['name'] ?></td>
-                                                <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                                 <td>
                                                     <a href="/admin/variants/<?= $item['id'] ?>" class="btn btn-warning ">Sửa</a>
                                                     <form action="/admin/variants/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">

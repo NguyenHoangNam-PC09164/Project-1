@@ -68,7 +68,7 @@ class CategoryController
             header('location: /admin/categories/create');
             exit;
         }
-
+        
         // thực hiện thêm vào csdl
         $data=[
             'name'=>$name,
@@ -76,7 +76,7 @@ class CategoryController
         ];
 
         $result= $category->createCategory($data);
-
+        // var_dump($result);
         if($result){
             NotificationHelper::success('store','Thêm loại sản phẩm thành công');
             header('location: /admin/categories');

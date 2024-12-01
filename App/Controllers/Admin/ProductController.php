@@ -5,7 +5,9 @@ namespace App\Controllers\Admin;
 use App\Helpers\NotificationHelper;
 use App\Models\Category;
 use App\Models\Product;
+
 use App\Validations\ProductValidation;
+
 use App\Views\Admin\Layouts\Footer;
 use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
@@ -20,7 +22,6 @@ class ProductController
     // hiển thị danh sách
     public static function index()
     {
-
 
         $product = new Product();
         $data = $product->getAllProductJoinCategory();
@@ -244,7 +245,6 @@ class ProductController
         }
     }
 
-
     // thực hiện xoá
     public static function delete(int $id)
     {
@@ -259,4 +259,6 @@ class ProductController
         }
         header('location: /admin/products');
     }
+
+  
 }

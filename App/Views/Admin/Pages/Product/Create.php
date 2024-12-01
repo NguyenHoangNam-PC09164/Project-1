@@ -20,7 +20,7 @@ class Create extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-2" aria-current="page">Thêm sản phẩm</li>
+                                        <li class="breadcrumb-item active mt-1" aria-current="page">Thêm sản phẩm</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -36,9 +36,8 @@ class Create extends BaseView
                                     <h3 class="card-title">Thêm sản phẩm</h3>
                                     <input type="hidden" name="method" id="" value="POST">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Tên Sản phẩm</label>
+                                        <label for="name" class="form-label">Tên sản phẩm</label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên sản phẩm">
-                                        <span><?php echo NotificationHelper::error('name', 'Tên loại không được để trống') ?? ''; ?></span>
                                     </div>
                                     <div class="mb-3">
                                         <label for="image" class="form-label">Hình ảnh</label>
@@ -59,7 +58,7 @@ class Create extends BaseView
                                     </div>
                                     <div class="mb-3">
                                         <label for="quantity" class="form-label">Số lượng</label>
-                                        <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Nhập tên sản phẩm">
+                                        <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Nhập số lượng sản phẩm">
                                     </div>
                                     <div class="mb-3">
                                         <label for="status" class="form-label">Trạng thái</label>
@@ -92,7 +91,7 @@ class Create extends BaseView
 
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary ">Submit</button>
+                                    <button type="submit" class="btn btn-primary ">Thêm</button>
                                 </div>
                             </form>
                         </div>

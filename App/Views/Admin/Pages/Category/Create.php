@@ -18,7 +18,7 @@ class Create extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-2" aria-current="page">Loại sản phẩm</li>
+                                        <li class="breadcrumb-item active mt-1" aria-current="page">Loại sản phẩm</li>
                                     </ol>
                                 </nav>
                             </div>

@@ -19,6 +19,8 @@ class VariantValidation
     }
 
     public static function edit(){
+        $is_valid = true;
         self::create();
+        return $is_valid;
     }
 }

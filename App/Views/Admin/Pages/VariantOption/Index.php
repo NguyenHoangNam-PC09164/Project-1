@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Admin\Pages\Category;
+namespace App\Views\Admin\Pages\VariantOption;
 
 use App\Views\BaseView;
 
@@ -18,7 +18,7 @@ class Index extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Loại sản phẩm</li>
+                                        <li class="breadcrumb-item active mt-1" aria-current="page">Biến thể</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -36,8 +36,7 @@ class Index extends BaseView
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Tên loại sản phẩm</th>
-                                            <th scope="col">Trạng thái</th>
+                                            <th scope="col">Tên biến thể</th>
                                             <th scope="col">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -48,10 +47,9 @@ class Index extends BaseView
                                             <tr>
                                                 <td><?= $item['id'] ?></td>
                                                 <td><?= $item['name'] ?></td>
-                                                <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                                 <td>
-                                                    <a href="/admin/categories/<?= $item['id'] ?>" class="btn btn-warning ">Sửa</a>
-                                                    <form action="/admin/categories/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
+                                                    <a href="/admin/variant_options/<?= $item['id'] ?>" class="btn btn-warning ">Sửa</a>
+                                                    <form action="/admin/variant_options/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
                                                         <input type="hidden" name="method" value="DELETE" id="">
                                                         <button type="submit" class="btn btn-danger text-light">Xoá</button>
                                                     </form>

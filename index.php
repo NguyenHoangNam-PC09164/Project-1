@@ -159,6 +159,24 @@ Route::put('/admin/products/{id}', 'App\Controllers\Admin\ProductController@upda
 Route::delete('/admin/products/{id}', 'App\Controllers\Admin\ProductController@delete');
 
 
+//SKUS
+// GET /product (lấy danh sách sản phẩm)
+Route::get('/admin/skus', 'App\Controllers\Admin\SkuController@index');
+
+// GET /skus/create (hiển thị form thêm sản phẩm)
+Route::get('/admin/skus/create', 'App\Controllers\Admin\SkuController@create');
+
+// POST /skus (tạo mới một sản phẩm)
+Route::post('/admin/skus', 'App\Controllers\Admin\SkuController@store');
+
+// GET /skus/{id} (lấy chi tiết sản phẩm với id cụ thể)
+Route::get('/admin/skus/{id}', 'App\Controllers\Admin\SkuController@edit');
+
+// PUT /skus/{id} (update sản phẩm với id cụ thể)
+Route::put('/admin/skus/{id}', 'App\Controllers\Admin\SkuController@update');
+
+// DELETE /skus/{id} (delete sản phẩm với id cụ thể)
+Route::delete('/admin/skus/{id}', 'App\Controllers\Admin\SkuController@delete');
 
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Admin\Pages\Category;
+namespace App\Views\Admin\Pages\VariantOption;
 
 use App\Views\BaseView;
 
@@ -18,7 +18,7 @@ class Edit extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Loại sản phẩm</li>
+                                        <li class="breadcrumb-item active mt-1" aria-current="page">Biến thể</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -28,25 +28,31 @@ class Edit extends BaseView
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <form class="form" action="/admin/categories/<?= $data['id'] ?>" method="POST">
+                            <form class="form" action="/admin/variant_options/<?= $data['variant_option']['id'] ?>" method="POST">
                                 <div class="card-body">
                                     <input type="hidden" name="method" value="PUT">
                                     <div class="mb-3">
                                         <label for="id" class="form-label">ID</label>
-                                        <input type="text" class="form-control" name="id" id="id" value="<?= $data['id'] ?>" disabled>
+                                        <input type="text" class="form-control" name="id" id="id" value="<?= $data['variant_option']['id'] ?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Tên loại sản phẩm</label>
-                                        <input type="text" class="form-control" name="name" id="name" value="<?= $data['name'] ?>">
-                                    </div>
+                                        <label for="name" class="form-label">Tên biến thể</label>
+                                        <input type="text" class="form-control" name="name" id="name" value="<?= $data['variant_option']['name'] ?>">
+                                    </div>  
                                     <div class="mb-3">
-                                        <label for="status" class="form-label">Trạng thái</label>
-                                        <select class="form-control" name="status" id="status" value="<?= $data['status'] ?>">
-                                            <option value="1" <?= ($data['status'] == 0 ? 'selected' : '') ?>>Hiện</option>
-                                            <option value="0" <?= ($data['status'] == 0 ? 'selected' : '') ?>>Ẩn</option>
+                                        <label for="product_variant_id">Loại biến thể</label>
+                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="product_variant_id" name="product_variant_id" required>
+                                            <option value="" selected disabled>Vui lòng chọn...</option>
+                                            <?php
+                                            foreach ($data['variant'] as $item):
+                                            ?>
+                                                <option value="<?= $item['id'] ?>" <?= ($item['id'] == $data['variant_option']['product_variant_id']) ? 'selected' : '' ?>><?= $item['name'] ?></option>
+                                            <?php
+                                            endforeach;
+                                            ?>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary ">Submit</button>
+                                    <button type="submit" class="btn btn-primary ">Cật nhật</button>
                                 </div>
                             </form>
                         </div>
