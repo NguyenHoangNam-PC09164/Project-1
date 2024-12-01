@@ -256,6 +256,7 @@ class AuthHelper
         $mail = new PHPMailer(true);
         try {
             //Server settings
+            $mail->CharSet = 'UTF-8';
             $mail->SMTPDebug = SMTP::DEBUG_CLIENT;
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
@@ -276,7 +277,7 @@ class AuthHelper
 
             // Content
             $mail->isHTML($ishtml = true);   // Set email format to HTML
-            $mail->Subject = 'Contact fo photo hub'; //
+            $mail->Subject = 'Liên hệ với photo hub'; //
             $mail->Body = "<p>cảm ơn bạn đã liên hệ tới photo hub: chúng tôi sẽ liên hệ sớm nhất .</p><p><trong>lời nhắn của bạn:</trong>{$message}</p>";
             $mail->AltBody = "Cảm ơn vì đã liên hệ! lời nhắn của bạn:{$message} ";
             $mail->send();

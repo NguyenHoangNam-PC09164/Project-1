@@ -33,10 +33,10 @@ class ContactController
         ob_start(); // Start output buffering
     
         $auth = new AuthHelper();
-        $to = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
-        $message = htmlspecialchars($_POST['message'], ENT_QUOTES, 'UTF-8');
-        $phone = htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8');
+        $to = ($_POST['email']);
+        $name = ($_POST['name']);
+        $message = ($_POST['message']);
+        $phone = ($_POST['phone']);
     
         try {
             $data = $auth->sendEmail($to, $name, $message, $phone);
@@ -44,12 +44,12 @@ class ContactController
                 NotificationHelper::success('email', 'giử liên hệ thành công');
                 header('Location: /contact');
             } else {
-                NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này');
-                header('Location: error.php');
+                NotificationHelper::error('product_detail', 'giử liên hệ thất bại');
+                header('Location: /contact');
             }
         } catch (\Exception $e) {
             error_log($e->getMessage()); // Log error for debugging
-            header('Location: error.php');
+            header('Location: /contact/send-email');
                 
         } finally {
             ob_end_clean(); // Discard any buffered output
