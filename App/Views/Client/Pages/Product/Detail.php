@@ -4,7 +4,7 @@ namespace App\Views\Client\Pages\Product;
 
 use App\Views\BaseView;
 use App\Models\Product;
-use App\Models\Category;
+use App\Models\Sku;
 use App\Helpers\AuthHelper;
 
 
@@ -16,8 +16,12 @@ class Detail extends BaseView
 	{
 		$is_login = AuthHelper::checkLogin();
 		$products = (new Product())->getProductCategoryRelate();
+		$sku = (new Sku())->getSkuByInnerJoinVariantAndVariantOption();
+		// var_dump($sku);
+
+		// var_dump($data);
 ?>
-		<div id="breadcrumb" class="section"> 
+		<div id="breadcrumb" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
@@ -46,11 +50,11 @@ class Detail extends BaseView
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
 							</div>
 
 
@@ -59,11 +63,11 @@ class Detail extends BaseView
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
 							</div>
 						</div>
 					</div>
@@ -73,7 +77,7 @@ class Detail extends BaseView
 
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name"><?= $data['product']['name'] ?></h2>
+							<h2 class="product-name"><?= $sku[0]['name'] ?></h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -86,34 +90,82 @@ class Detail extends BaseView
 							</div>
 							<div>
 								<?php
-								if ($data['product']['discount_price'] > 0):
+								if ($sku[0]['discount_price'] > 0):
 								?>
-									<h3 class="product-price"><strong class="text-danger"><?= number_format($data['product']['price'] - $data['product']['discount_price']) ?> đ</strong> <del class="product-old-price"><strike><?= number_format($data['product']['price']) ?> đ</strike> </del> </h3>
+									<h3 class="product-price" id="price-display"><strong class="text-danger"> <?= number_format($sku[0]['prices'] - $sku[0]['discount_price']) ?>đ</strong> <del class="product-old-price" id="discount_price-display"><strike><?= number_format($sku[0]['prices']) ?> đ</strike> </del> </h3>
 								<?php
 								else :
 								?>
-									<h3 class="product-price"><?= number_format($data['product']['price']) ?> đ</h3>
+									<h3 class="product-price"><?= number_format($sku[0]['prices']) ?> đ</h3>
 
 								<?php
 								endif;
 								?>
 							</div>
-							<p><?= $data['product']['description'] ?></p>
+							<p><?= $sku[0]['description'] ?></p>
 
 							<div class="product-options">
-								<label>
-									Kích thước
-									<select class="input-select">
-										<option value="0">X</option>
-									</select>
-								</label>
-								<label>
-									Chất lượng
-									<select class="input-select">
-										<option value="0">Full HD</option>
-									</select>
-								</label>
+								<?php if (!empty($sku) && is_array($sku)) : ?>
+									<?php
+									// Nhóm các biến thể theo `product_variant_name`
+									$groupedOptions = [];
+									foreach ($sku as $item) {
+										$groupedOptions[$item['product_variant_name']][] = [
+											'id' => $item['variant_option_id'],
+											'name' => $item['product_variant_option_name'],
+											'price' => $item['prices']
+										];
+									}
+									?>
+									<?php foreach ($groupedOptions as $variantName => $options) : ?>
+										<label>
+											<span><?= htmlspecialchars($variantName) ?>:</span>
+											<select class="input-select variant-select" data-variant="<?= htmlspecialchars($variantName) ?>">
+												<?php foreach ($options as $option) : ?>
+													<option value="<?= htmlspecialchars($option['id']) ?>" data-price="<?= htmlspecialchars($option['price']) ?>">
+														<?= htmlspecialchars($option['name']) ?>
+													</option>
+												<?php endforeach; ?>
+											</select>
+										</label>
+									<?php endforeach; ?>
+								<?php else : ?>
+									<li><span>Không có biến thể nào</span></li>
+								<?php endif; ?>
 							</div>
+
+							<script>
+								// Theo dõi sự thay đổi trên các dropdown biến thể
+								document.querySelectorAll('.variant-select').forEach(select => {
+									select.addEventListener('change', updatePrice);
+								});
+
+								function updatePrice() {
+									// Lấy giá của biến thể đã chọn
+									let selectedOption = document.querySelector('.variant-select option:checked');
+									let price = parseInt(selectedOption.getAttribute('data-price')) || 0;
+
+									// Cập nhật giá hiển thị theo biến thể đã chọn
+									document.getElementById('price-display').innerText = new Intl.NumberFormat('vi-VN').format(price) + " đ";
+
+									let discountPrice = parseInt(selectedOption.getAttribute('data-discount-price')) || 0;
+
+									// Cập nhật giá hiển thị theo biến thể đã chọn
+									if (discountPrice > 0) {
+										// Nếu có giá giảm, hiển thị giá giảm
+										document.getElementById('discount_price-display').innerHTML = `<strong class="text-danger">${new Intl.NumberFormat('vi-VN').format(price - discountPrice)} đ</strong> <del><strike>${new Intl.NumberFormat('vi-VN').format(price)} đ</strike></del>`;
+									} else {
+										// Nếu không có giá giảm, chỉ hiển thị giá gốc
+										document.getElementById('discount_price-display').innerText = new Intl.NumberFormat('vi-VN').format(price) + " đ";
+									}
+								}
+							</script>
+
+
+							<!-- Khu vực hiển thị giá -->
+
+
+
 
 							<div class="add-to-cart">
 								<div class="qty-label">
@@ -124,6 +176,8 @@ class Detail extends BaseView
 										<span class="qty-down">-</span>
 									</div>
 								</div>
+								<br>
+								<br>
 								<div class="add-to-cart">
 									<form action="/cart/add" method="post">
 										<input type="hidden" name="method" id="" value="POST">
@@ -295,22 +349,22 @@ class Detail extends BaseView
 														endif;
 														?>
 													</div>
+												</div>
 											</div>
 										</div>
 									</div>
+
 								</div>
-
+								<!-- /tab3  -->
 							</div>
-							<!-- /tab3  -->
 						</div>
-					</div>
 
-					<!-- /tab3 -->
+						<!-- /tab3 -->
+					</div>
+					<!-- /product tab content  -->
 				</div>
-				<!-- /product tab content  -->
 			</div>
-		</div>
-		<!-- /product tab -->
+			<!-- /product tab -->
 		</div>
 		<!-- /row -->
 		</div>

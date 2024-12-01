@@ -3,7 +3,6 @@
 namespace App\Views\Client\Pages\Shop;
 
 use App\Views\BaseView;
-
 class Cart extends BaseView
 {
     public static function render($data = null)

@@ -52,7 +52,7 @@ class Sku extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT skus.*, products.name as product_name,
+            $sql = "SELECT skus.*, products.*,
             product_variant_options.name as product_variant_option_name,
             product_variants.name as product_variant_name
             FROM `skus` INNER JOIN product_variant_options 
