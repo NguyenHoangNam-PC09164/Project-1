@@ -88,7 +88,7 @@ class SkuController
             'sku_name'=>$sku_name,
             'product_id'=>$product_id,
             // 'product_variant_id'=>$product_variant_id,
-            'price'=>$price,
+            'prices'=>$price,
             'variant_option_id'=>$variant_option_id,
             'stock_quantity'=>$stock_quantity,
         ];
@@ -173,7 +173,7 @@ class SkuController
 
         // thực hiện cập nhật vào csdl
         $data=[
-            'price'=>$price,
+            'prices'=>$price,
             'stock_quantity'=>$stock_quantity,
         ];
 

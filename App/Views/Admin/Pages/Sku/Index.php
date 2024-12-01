@@ -54,11 +54,11 @@ class Index extends BaseView
                                             ?>
                                                 <tr>
                                                     <th scope="row"><?= $item['id'] ?></th>
-                                                    <td><?= $item['sku_name'] ?></td>
-                                                    <td><?= $item['product_name'] ?></td>
+                                                    <td><?= $item['sku'] ?></td>
+                                                    <td><?= $item['name'] ?></td>
                                                     <td><?= $item['product_variant_name'] ?></td>
                                                     <td><?= $item['product_variant_option_name'] ?></td>
-                                                    <td><?= number_format($item['price']) ?></td>
+                                                    <td><?= number_format($item['prices']) ?></td>
                                                     <td><?= number_format($item['stock_quantity']) ?></td>
                                                     <td>
                                                         <a href="/admin/skus/<?= $item['id'] ?>" class="btn btn-primary ">Sửa</a>

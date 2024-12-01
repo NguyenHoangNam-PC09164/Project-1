@@ -141,22 +141,29 @@ class Detail extends BaseView
 								});
 
 								function updatePrice() {
-									// Lấy giá của biến thể đã chọn
-									let selectedOption = document.querySelector('.variant-select option:checked');
-									let price = parseInt(selectedOption.getAttribute('data-price')) || 0;
+									let totalPrice = 0;
+									let totalDiscountPrice = 0;
 
-									// Cập nhật giá hiển thị theo biến thể đã chọn
-									document.getElementById('price-display').innerText = new Intl.NumberFormat('vi-VN').format(price) + " đ";
+									// Lấy giá của tất cả các biến thể đã chọn và cộng lại
+									document.querySelectorAll('.variant-select').forEach(select => {
+										let selectedOption = select.querySelector('option:checked');
+										let price = parseInt(selectedOption.getAttribute('data-price')) || 0;
+										let discountPrice = parseInt(selectedOption.getAttribute('data-discount-price')) || 0;
 
-									let discountPrice = parseInt(selectedOption.getAttribute('data-discount-price')) || 0;
+										totalPrice += price; // Cộng tổng giá
+										totalDiscountPrice += discountPrice; // Cộng tổng giá giảm (nếu có)
+									});
 
-									// Cập nhật giá hiển thị theo biến thể đã chọn
-									if (discountPrice > 0) {
+									// Cập nhật giá hiển thị theo tổng giá đã chọn
+									document.getElementById('price-display').innerText = new Intl.NumberFormat('vi-VN').format(totalPrice) + " đ";
+
+									// Cập nhật giá giảm nếu có
+									if (totalDiscountPrice > 0) {
 										// Nếu có giá giảm, hiển thị giá giảm
-										document.getElementById('discount_price-display').innerHTML = `<strong class="text-danger">${new Intl.NumberFormat('vi-VN').format(price - discountPrice)} đ</strong> <del><strike>${new Intl.NumberFormat('vi-VN').format(price)} đ</strike></del>`;
+										document.getElementById('discount_price-display').innerHTML = `<strong class="text-danger">${new Intl.NumberFormat('vi-VN').format(totalPrice - totalDiscountPrice)} đ</strong> <del><strike>${new Intl.NumberFormat('vi-VN').format(totalPrice)} đ</strike></del>`;
 									} else {
 										// Nếu không có giá giảm, chỉ hiển thị giá gốc
-										document.getElementById('discount_price-display').innerText = new Intl.NumberFormat('vi-VN').format(price) + " đ";
+										document.getElementById('discount_price-display').innerText = new Intl.NumberFormat('vi-VN').format(totalPrice) + " đ";
 									}
 								}
 							</script>

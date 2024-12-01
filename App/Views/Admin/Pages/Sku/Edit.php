@@ -72,7 +72,7 @@ class Edit extends BaseView
                                     </div>
                                     <div class="mb-3">
                                         <label for="price" class="form-label">Giá</label>
-                                        <input type="text" class="form-control" name="price" id="price" placeholder="Nhập giá sản phẩm" value="<?=$data['data_sku']['price']?>">
+                                        <input type="text" class="form-control" name="price" id="price" placeholder="Nhập giá sản phẩm" value="<?=$data['data_sku']['prices']?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="stock_quantity" class="form-label">Số lượng tồn kho</label>
