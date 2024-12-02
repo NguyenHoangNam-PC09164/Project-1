@@ -65,6 +65,7 @@ class CartController
                 'name' => $product['name'],
                 'image' => $product['image'],
                 'price' => $product['price'],
+                'discount_price' => $product['discount_price'],
                 'quantity' => $quantity,
                 'total_price' => $product['price'] * $quantity,
             ];

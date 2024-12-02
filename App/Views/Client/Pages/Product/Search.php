@@ -135,26 +135,68 @@ class Search extends BaseView
                         </div>
 
                         <div class="row">
-                            <?php if (!empty($products)) : ?>
-                                <?php foreach ($products as $product) : ?>
-                                    <div class="col-md-4 col-xs-6">
-                                        <div class="product">
-                                            <div class="product-img">
-                                                <img src="<?= APP_URL ?>/public/uploads/products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name">
-                                                    <a href="/products/<?= $product['product_id'] ?>"><?= $product['name'] ?></a>
-                                                </h3>
-                                                <h4 class="product-price"><?= number_format($product['price']) ?> đ</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            <?php else : ?>
-                                <h3 class="text-center text-danger">Không tìm thấy sản phẩm nào</h3>
-                            <?php endif; ?>
-                        </div>
+							<?php
+							if (count($products) && count($data['products'])) :
+							?>
+								<?php
+								foreach ($products as $item) :
+								?>
+									<!-- product -->
+									<div class="col-md-4 col-xs-6">
+										<div class="product">
+											<div class="product-img">
+												<img src="<?= APP_URL ?>/public/uploads/products/<?= $item['image'] ?>" alt="">
+												<div class="product-label">
+													<span class="sale">-30%</span>
+													<span class="new">NEW</span>
+												</div>
+											</div>
+											<div class="product-body">
+												<p class="product-category">Danh mục</p>
+												<h3 class="product-name"><a href="/products/<?= $item['product_id'] ?>"><?= $item['name'] ?></a></h3>
+												<?php
+												if ($item['discount_price'] > 0) :
+												?>
+
+													<h4 class="product-price"><strong><?= number_format($item['price'] - $item['discount_price']) ?> đ</strong> <del class="product-old-price"><strike><?= number_format($item['price']) ?> đ</strike> </del> </h4>
+
+												<?php
+												else :
+												?>
+													<h4 class="product-price"><?= number_format($item['price']) ?>đ</h4>
+
+												<?php
+												endif;
+												?>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm yêu thích</span></button>
+													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Thêm so sánh</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp"><a href="/products/<?= $item['product_id'] ?>">Xem thêm</a></span></button>
+												</div>
+
+											</div>
+											<div class="add-to-cart">
+												<form action="/cart/add" method="post">
+													<input type="hidden" name="method" id="" value="POST">
+													<input type="hidden" name="id" id="" value="<?= $item['product_id'] ?>" required>
+													<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								<?php endforeach; ?>
+							<?php else : ?>
+								<!-- No Products Found -->
+								<h3 class="text-center text-danger">Không có sản phẩm</h3>
+							<?php endif; ?>
+						</div>
 
                     </div>
                 </div>

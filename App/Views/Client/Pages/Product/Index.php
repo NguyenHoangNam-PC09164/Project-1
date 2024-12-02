@@ -5,6 +5,7 @@ namespace App\Views\Client\Pages\Product;
 use App\Views\BaseView;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sku;
 
 class Index extends BaseView
 {
@@ -12,6 +13,8 @@ class Index extends BaseView
 	{
 		$categories = (new Category())->getAll();
 		$products = (new Product())->getAll();
+		$sku = (new Sku())->getSkuByInnerJoinVariantAndVariantOption();
+
 		// var_dump($products);
 ?>
 		<div class="section">
@@ -26,14 +29,16 @@ class Index extends BaseView
 							<h3 class="aside-title">Danh mục</h3>
 							<div class="checkbox-filter">
 								<?php if (!empty($categories) && is_array($categories)) : ?>
-									<?php foreach ($categories as $item) : ?>
+									<?php foreach ($categories as $index => $item) : ?>
 										<div class="input-checkbox">
-											<input type="checkbox" id="category-1">
-											<label for="category-1">
+											<input type="checkbox" id="category-<?= htmlspecialchars($index, ENT_QUOTES, 'UTF-8') ?>"
+												data-category-id="<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
+											<label for="category-<?= htmlspecialchars($index, ENT_QUOTES, 'UTF-8') ?>">
 												<span></span>
 												<a data-toggle="tab" href="/products/categories/<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
 													<?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>
-												</a> <small>(3)</small>
+												</a>
+												<small>(3)</small>
 											</label>
 										</div>
 									<?php endforeach; ?>
@@ -42,6 +47,7 @@ class Index extends BaseView
 								<?php endif; ?>
 							</div>
 						</div>
+
 						<!-- /aside Widget -->
 						<!-- aside Widget -->
 						<!--// lọc giá sản phẩm  -->
