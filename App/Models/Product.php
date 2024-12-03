@@ -80,6 +80,25 @@ class Product extends BaseModel
         }
     }
 
+    public function getAllProductByCategory(int $id)
+    {
+        $result = [];
+        try {
+            $sql = "SELECT products.*,categories.name as category_name FROM `products` INNER JOIN categories ON products.category_id=categories.id 
+            WHERE products.category_id=?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+
+
     public function getOneProductByStatus(int $id)
     {
         $result = [];

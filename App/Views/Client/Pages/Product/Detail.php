@@ -17,7 +17,8 @@ class Detail extends BaseView
 		$is_login = AuthHelper::checkLogin();
 		$products = (new Product())->getProductCategoryRelate();
 		$sku = (new Sku())->getSkuByInnerJoinVariantAndVariantOption();
-		// var_dump($sku);
+		
+
 
 		// var_dump($data);
 ?>

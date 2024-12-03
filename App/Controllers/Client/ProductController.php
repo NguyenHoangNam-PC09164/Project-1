@@ -14,22 +14,23 @@ use App\Views\Client\Pages\Product\Category as ProductCategory;
 use App\Views\Client\Pages\Product\Detail;
 use App\Views\Client\Pages\Product\Index;
 use App\Views\Client\Pages\Product\Search;
-use App\Views\Client\Pages\Product\CategoryView;
+use App\Views\Client\Pages\Product\Category as Categorys ;
 class ProductController
 {
     // hiển thị danh sách
     public static function index()
     {
  
-        // $category= new Category();
-        // $categories= $category->getAllCategoryByStatus();
+        $categories= (new Category())->getAll();
+
         $product=new Product();
         $products= $product->getAllProductByStatus();
+        $products_Views= $product->getAllManyViews();
 
   
         $data = [
             'products' => $products,
-            // 'categories' => $categories
+            'categories' => $categories
         ];
         Header::render();
         Notification::render();
@@ -42,6 +43,7 @@ class ProductController
     {
         $product=new Product();
         $product_detail=$product->getOneProductByStatus($id);
+        $categories=$product->getAllProductJoinCategory();
         
 
         if(!$product_detail){
@@ -96,20 +98,26 @@ class ProductController
     }
     public static function getProductByCategory($id)
     {
-        $category= new Category();
-        $categories=$category->getAllByStatus();
 
-        $product= new Product();
-        $products=$product->getAllProductByCategoryAndStatus($id);
+    
+        $productModel = new Product();
+        $products = $productModel->getAllProductByCategory($id);
+        $categories= (new Category())->getAllCategory();
 
+    
         $data = [
             'products' => $products,
             'categories' => $categories
+
         ];
+    
+        // Render views
         Header::render();
         Notification::render();
         NotificationHelper::unset();
-        CategoryView::render($data);
+        Categorys::render($data);
         Footer::render();
     }
+    
+    
 }
