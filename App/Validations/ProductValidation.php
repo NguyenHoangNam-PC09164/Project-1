@@ -41,7 +41,12 @@ class ProductValidation
 
         //mô tả
         if (!isset($_POST['description']) || $_POST['description'] === '') {
-            NotificationHelper::error('description', 'Mô tả không được để trống');
+            NotificationHelper::error('description', 'Mô tả ngắn không được để trống');
+            $is_valid = false;
+        }
+        //mô tả dài
+        if (!isset($_POST['long_description']) || $_POST['long_description'] === '') {
+            NotificationHelper::error('description', 'Mô tả dài không được để trống');
             $is_valid = false;
         }
 

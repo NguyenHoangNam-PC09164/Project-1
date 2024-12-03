@@ -8,6 +8,7 @@ class Edit extends BaseView
 {
     public static function render($data = null)
     {
+        // var_dump($data);
 ?>
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
@@ -55,12 +56,16 @@ class Edit extends BaseView
                                         <input type="number" class="form-control" id="discount_price" name="discount_price" value="<?= $data['product']['discount_price'] ?>" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="description">Mô tả*</label>
+                                        <label for="description">Mô tả ngắn*</label>
                                         <textarea class="form-control" id="description" name="description"><?= $data['product']['description'] ?></textarea>
                                     </div>
                                     <div class="mb-3">
+                                        <label for="long_description">Mô tả dài*</label>
+                                        <textarea class="form-control" id="long_description" name="long_description"><?= $data['product']['long_description'] ?></textarea>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="quantity">Số lượng*</label>
-                                        <input type="number" class="form-control" id="quantity" name="quantity" value="<?= $data['product']['discount_price'] ?>" required>
+                                        <input type="number" class="form-control" id="quantity" name="quantity" value="<?= $data['product']['quantity'] ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="category_id">Loại sản phẩm*</label>

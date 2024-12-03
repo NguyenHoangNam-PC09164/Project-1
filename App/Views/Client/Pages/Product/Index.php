@@ -31,12 +31,12 @@ class Index extends BaseView
 								<?php if (!empty($categories) && is_array($categories)) : ?>
 									<?php foreach ($categories as $index => $item) : ?>
 										<div class="input-checkbox">
-											<input type="checkbox" id="category-<?= htmlspecialchars($index, ENT_QUOTES, 'UTF-8') ?>"
-												data-category-id="<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
-											<label for="category-<?= htmlspecialchars($index, ENT_QUOTES, 'UTF-8') ?>">
+											<input type="checkbox" id="category-<?= ($index) ?>"
+												data-category-id="<?= ($item['id']) ?>">
+											<label for="category-<?= ($index) ?>">
 												<span></span>
-												<a data-toggle="tab" href="/products/categories/<?= htmlspecialchars($item['id'], ENT_QUOTES, 'UTF-8') ?>">
-													<?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>
+												<a data-toggle="tab" href="/products/categories/<?= ($item['id']) ?>">
+													<?= ($item['name'])  ?>
 												</a>
 												<small>(3)</small>
 											</label>

@@ -53,8 +53,12 @@ class Create extends BaseView
                                         <input type="text" class="form-control" name="discount_price" id="discount_price" placeholder="Nhập giá giảm sản phẩm">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="description" class="form-label">Mô tả</label>
-                                        <textarea type="text" class="form-control" name="description" id="description" placeholder="Nhập mô tả sản phẩm"></textarea>
+                                        <label for="description" class="form-label">Mô tả ngắn</label>
+                                        <textarea type="text" class="form-control" name="description" id="description" placeholder="Nhập mô tả ngắn sản phẩm"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="long_description" class="form-label">Mô tả dài</label>
+                                        <textarea type="text" class="form-control" name="long_description" id="long_description" placeholder="Nhập mô tả dài sản phẩm"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label for="quantity" class="form-label">Số lượng</label>

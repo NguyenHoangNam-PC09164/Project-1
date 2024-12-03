@@ -224,7 +224,7 @@ class Detail extends BaseView
 						<div id="product-tab">
 							<!-- product tab nav -->
 							<ul class="tab-nav">
-								<!-- <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li> -->
+								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
 								<li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
 							</ul>
 							<!-- /product tab nav -->
@@ -242,28 +242,90 @@ class Detail extends BaseView
 								<!-- /tab1  -->
 
 								<!-- tab3  -->
-								<!-- <div id="tab3" class="tab-pane fade in"> -->
-								<div class="container">
-									<div class="row">
-										<div class="col-lg-12">
-											<div class="panel panel-default">
-												<div class="panel-heading text-center">
-													<h4 class="panel-title">Bình luận mới nhất</h4>
-												</div>
-												<div class="panel-body">
-													<div class="comment-widgets">
-														<?php
-														// var_dump($data['comments']);
-														if (isset($data) && isset($data['comments']) && $data && $data['comments']) :
-															foreach ($data['comments'] as $item) :
-														?>
-																<!-- Comment Row -->
+								<div id="tab3" class="tab-pane fade in">
+									<div class="container">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="panel panel-default">
+													<div class="panel-heading text-center">
+														<h4 class="panel-title">Bình luận mới nhất</h4>
+													</div>
+													<div class="panel-body">
+														<div class="comment-widgets">
+															<?php
+															// var_dump($data['comments']);
+															if (isset($data) && isset($data['comments']) && $data && $data['comments']) :
+																foreach ($data['comments'] as $item) :
+															?>
+																	<!-- Comment Row -->
+																	<div class="media comment-row">
+																		<div class="media-left">
+																			<?php
+																			if ($item['avatar']) :
+																			?>
+																				<img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="user" width="50" class="img-circle">
+																			<?php
+																			else :
+																			?>
+																				<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="img-circle">
+																			<?php
+																			endif;
+																			?>
+																		</div>
+																		<div class="media-body">
+																			<h4 class="media-heading"><?= $item['name'] ?> - <?= $item['username'] ?></h4>
+																			<p><?= $item['content'] ?></p>
+																			<div class="comment-footer">
+																				<span class="text-muted pull-right"><?= $item['date'] ?></span>
+																				<?php
+																				if (isset($data) && $is_login && ($_SESSION['user']['user_id'] == $item['user_id'])) :
+																				?>
+																					<div class="action">
+																						<button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#<?= $item['username'] ?><?= $item['id'] ?>" aria-expanded="false" aria-controls="<?= $item['username'] ?><?= $item['id'] ?>">Sửa</button>
+																						<form action="/comments/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Chắc chưa?')" style="display: inline-block">
+																							<input type="hidden" name="method" value="DELETE">
+																							<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
+																							<button type="submit" class="btn btn-danger btn-sm">Xoá</button>
+																						</form>
+																					</div>
+																					<div class="collapse" id="<?= $item['username'] ?><?= $item['id'] ?>">
+																						<div class="well">
+																							<form action="/comments/<?= $item['id'] ?>" method="post">
+																								<input type="hidden" name="method" value="PUT">
+																								<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
+																								<div class="form-group">
+																									<label for="">Bình luận</label>
+																									<textarea class="form-control" name="content" rows="3" placeholder="Nhập bình luận..."><?= $item['content'] ?></textarea>
+																								</div>
+																								<button type="submit" class="btn btn-primary">Gửi</button>
+																							</form>
+																						</div>
+																					</div>
+																				<?php
+																				endif;
+																				?>
+																			</div>
+																		</div>
+																	</div>
+																<?php
+																endforeach;
+																?>
+															<?php
+															else :
+															?>
+																<h6 class="text-center text-danger">Chưa có bình luận</h6>
+															<?php
+															endif;
+															?>
+															<?php
+															if (isset($data) && $is_login) :
+															?>
 																<div class="media comment-row">
 																	<div class="media-left">
 																		<?php
-																		if ($item['avatar']) :
+																		if ($_SESSION['user']['avatar']) :
 																		?>
-																			<img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="user" width="50" class="img-circle">
+																			<img src="<?= APP_URL ?>/public/uploads/users/<?= $_SESSION['user']['avatar'] ?>" alt="user" width="50" class="img-circle">
 																		<?php
 																		else :
 																		?>
@@ -273,107 +335,45 @@ class Detail extends BaseView
 																		?>
 																	</div>
 																	<div class="media-body">
-																		<h4 class="media-heading"><?= $item['name'] ?> - <?= $item['username'] ?></h4>
-																		<p><?= $item['content'] ?></p>
-																		<div class="comment-footer">
-																			<span class="text-muted pull-right"><?= $item['date'] ?></span>
-																			<?php
-																			if (isset($data) && $is_login && ($_SESSION['user']['user_id'] == $item['user_id'])) :
-																			?>
-																				<div class="action">
-																					<button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#<?= $item['username'] ?><?= $item['id'] ?>" aria-expanded="false" aria-controls="<?= $item['username'] ?><?= $item['id'] ?>">Sửa</button>
-																					<form action="/comments/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Chắc chưa?')" style="display: inline-block">
-																						<input type="hidden" name="method" value="DELETE">
-																						<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
-																						<button type="submit" class="btn btn-danger btn-sm">Xoá</button>
-																					</form>
-																				</div>
-																				<div class="collapse" id="<?= $item['username'] ?><?= $item['id'] ?>">
-																					<div class="well">
-																						<form action="/comments/<?= $item['id'] ?>" method="post">
-																							<input type="hidden" name="method" value="PUT">
-																							<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
-																							<div class="form-group">
-																								<label for="">Bình luận</label>
-																								<textarea class="form-control" name="content" rows="3" placeholder="Nhập bình luận..."><?= $item['content'] ?></textarea>
-																							</div>
-																							<button type="submit" class="btn btn-primary">Gửi</button>
-																						</form>
-																					</div>
-																				</div>
-																			<?php
-																			endif;
-																			?>
-																		</div>
+																		<h4 class="media-heading"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h4>
+																		<form action="/comments" method="POST">
+																			<input type="hidden" name="method" value="POST">
+																			<input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
+																			<input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
+																			<div class="form-group">
+																				<label for="content">Bình luận</label>
+																				<textarea class="form-control" name="content" id="content" rows="3" placeholder="Nhập bình luận..."></textarea>
+																			</div>
+																			<button type="submit" class="btn btn-primary">Gửi</button>
+																		</form>
 																	</div>
 																</div>
 															<?php
-															endforeach;
+															else :
 															?>
-														<?php
-														else :
-														?>
-															<h6 class="text-center text-danger">Chưa có bình luận</h6>
-														<?php
-														endif;
-														?>
-														<?php
-														if (isset($data) && $is_login) :
-														?>
-															<div class="media comment-row">
-																<div class="media-left">
-																	<?php
-																	if ($_SESSION['user']['avatar']) :
-																	?>
-																		<img src="<?= APP_URL ?>/public/uploads/users/<?= $_SESSION['user']['avatar'] ?>" alt="user" width="50" class="img-circle">
-																	<?php
-																	else :
-																	?>
-																		<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="img-circle">
-																	<?php
-																	endif;
-																	?>
-																</div>
-																<div class="media-body">
-																	<h4 class="media-heading"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h4>
-																	<form action="/comments" method="POST">
-																		<input type="hidden" name="method" value="POST">
-																		<input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
-																		<input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
-																		<div class="form-group">
-																			<label for="content">Bình luận</label>
-																			<textarea class="form-control" name="content" id="content" rows="3" placeholder="Nhập bình luận..."></textarea>
-																		</div>
-																		<button type="submit" class="btn btn-primary">Gửi</button>
-																	</form>
-																</div>
-															</div>
-														<?php
-														else :
-														?>
-															<h6 class="text-center text-danger">Vui lòng đăng nhập để bình luận</h6>
-														<?php
-														endif;
-														?>
+																<h6 class="text-center text-danger">Vui lòng đăng nhập để bình luận</h6>
+															<?php
+															endif;
+															?>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
+
 									</div>
-
+									<!-- /tab3  -->
 								</div>
-								<!-- /tab3  -->
 							</div>
-						</div>
 
-						<!-- /tab3 -->
+							<!-- /tab3 -->
+						</div>
+						<!-- /product tab content  -->
 					</div>
-					<!-- /product tab content  -->
 				</div>
+				<!-- /product tab -->
 			</div>
-			<!-- /product tab -->
-		</div>
-		<!-- /row -->
+			<!-- /row -->
 		</div>
 		<!-- /container -->
 		</div>

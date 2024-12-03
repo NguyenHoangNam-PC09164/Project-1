@@ -36,7 +36,8 @@ class Index extends BaseView
                                     <th scope="col">Tên sản phẩm</th>
                                     <th scope="col">Giá</th>
                                     <th scope="col">Số lượng</th>
-                                    <th scope="col">Mô tả</th>
+                                    <th scope="col">Mô tả ngắn</th>
+                                    <th scope="col">Mô tả dài</th>
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col">Thao tác</th>
                                 </tr>
@@ -54,6 +55,22 @@ class Index extends BaseView
                                         <td><?= number_format($item['price']) ?></td>
                                         <td><?= number_format($item['quantity']) ?></td>
                                         <td><?= $item['description'] ?></td>
+                                        <td>
+                                            <a href="#" onclick="showModal('<?= htmlspecialchars($item['long_description'], ENT_QUOTES, 'UTF-8') ?>')">
+                                                <?= strlen($item['long_description']) > 200
+                                                    ? htmlspecialchars(substr($item['long_description'], 0, 100), ENT_QUOTES, 'UTF-8') . '...'
+                                                    : htmlspecialchars($item['long_description'], ENT_QUOTES, 'UTF-8');
+                                                ?>
+                                            </a>
+                                            </a>
+                                        </td>
+
+                                        <script>
+                                            function showModal(content) {
+                                                alert(content);
+                                            }
+                                        </script>
+
                                         <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                         <td>
                                             <a href="/admin/products/<?= $item['product_id'] ?>" class="btn btn-primary ">Sửa</a>

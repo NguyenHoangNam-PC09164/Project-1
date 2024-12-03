@@ -70,6 +70,7 @@ class ProductController
         $price = $_POST['price'];
         $discount_price = $_POST['discount_price'];
         $description = $_POST['description'];
+        $long_description = $_POST['long_description'];
         $is_feature = $_POST['is_feature'];
         $status = $_POST['status'];
         $category_id = $_POST['category_id'];
@@ -104,6 +105,7 @@ class ProductController
             'price' => $price,
             'discount_price' => $discount_price,
             'description' => $description,
+            'long_description' => $long_description,
             'is_feature' => $is_feature,
             'status' => $status,
             'category_id' => $category_id,
@@ -188,6 +190,7 @@ class ProductController
         $price = $_POST['price'];
         $discount_price = $_POST['discount_price'];
         $description = $_POST['description'];
+        $long_description = $_POST['long_description'];
         $is_feature = $_POST['is_feature'];
         $status = $_POST['status'];
         $category_id = $_POST['category_id'];
@@ -223,6 +226,7 @@ class ProductController
             'price' => $price,
             'discount_price' => $discount_price,
             'description' => $description,
+            'long_description' => $long_description,
             'is_feature' => $is_feature,
             'status' => $status,
             'category_id' => $category_id,
