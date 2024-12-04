@@ -1004,11 +1004,25 @@ Borders
 
 .text-muted {
     color: #7171a6 !important;
-    font-size:20px !important;;
+    font-size:20px !important;
+}
+
+.icon{
+    color: #7171a6 !important;
+    font-size: 30px!important;
+}
+
+.text-count{
+    color: #7171a6 !important;
+    font-size: 30px!important;
 }
 
 .rating-color {
     color: #ffa811;
+}
+
+.bg-warning-subtle{
+    background-color: #fcf8e3; 
 }
 
 
