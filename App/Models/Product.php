@@ -229,4 +229,22 @@ class Product extends BaseModel
     //         return [];
     //     }
     // }
+
+    public function getSkuByProductAndVariant(int $id) {
+        $result=[];
+        try{
+            $sql="SELECT skus.*, products.product_id as product_id, products.name as product_name, products.image as product_image, products.quantity as products_quantity, product_variants.name as product_variant_name, product_variant_options.name as product_variant_options_name 
+            FROM `skus` INNER JOIN products ON products.product_id = skus.product_id INNER JOIN product_variant_options ON skus.variant_option_id = product_variant_options.id 
+            INNER JOIN product_variants ON product_variant_options.product_variant_id = product_variants.id WHERE products.product_id=?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        }catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
 }

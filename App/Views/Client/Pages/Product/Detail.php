@@ -16,7 +16,8 @@ class Detail extends BaseView
 	{
 		$is_login = AuthHelper::checkLogin();
 		$products = (new Product())->getProductCategoryRelate();
-		$sku = (new Sku())->getSkuByInnerJoinVariantAndVariantOption();
+		$id = $data['product']['product_id'];
+		$sku = (new Product())->getSkuByProductAndVariant($id);
 		
 
 
@@ -51,11 +52,11 @@ class Detail extends BaseView
 					<div class="col-md-5 col-md-push-2">
 						<div id="product-main-img">
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 
 
@@ -64,11 +65,11 @@ class Detail extends BaseView
 					<div class="col-md-2  col-md-pull-5">
 						<div id="product-imgs">
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 
 							<div class="product-preview">
-								<img src="<?= APP_URL ?>/public/uploads/products/<?= $sku[0]['image'] ?>" alt="">
+								<img src="<?= APP_URL ?>/public/uploads/products/<?= $data['product']['image'] ?>" alt="">
 							</div>
 						</div>
 					</div>
@@ -78,7 +79,7 @@ class Detail extends BaseView
 
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name"><?= $sku[0]['name'] ?></h2>
+							<h2 class="product-name"><?= $data['product']['name'] ?></h2>
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -91,290 +92,321 @@ class Detail extends BaseView
 							</div>
 							<div>
 								<?php
-								if ($sku[0]['discount_price'] > 0):
+								if ($data['product']['discount_price'] > 0):
 								?>
-									<h3 class="product-price" id="price-display"><strong class="text-danger"> <?= number_format($sku[0]['prices'] - $sku[0]['discount_price']) ?>đ</strong> <del class="product-old-price" id="discount_price-display"><strike><?= number_format($sku[0]['prices']) ?> đ</strike> </del> </h3>
+									<h3 class="product-price" id="price-display"><strong class="text-danger"> <?= number_format($sku[0]['prices'] - $data['product']['discount_price']) ?>đ</strong> <del class="product-old-price" id="discount_price-display"><strike><?= number_format($sku[0]['prices']) ?> đ</strike> </del> </h3>
 								<?php
 								else :
 								?>
-									<h3 class="product-price"><?= number_format($sku[0]['prices']) ?> đ</h3>
+									<h3 class="product-price"><?= number_format($sku['prices']) ?> đ</h3>
 
 								<?php
 								endif;
 								?>
 							</div>
-							<p><?= $sku[0]['description'] ?></p>
 
-							<div class="product-options">
-								<?php if (!empty($sku) && is_array($sku)) : ?>
+							<p><?= $data['product']['description'] ?></p>
+							<form action="/cart/add" method="post">
+								<div class="product-options">
+									<!-- Hiển thị Mã sản phẩm -->
+									<p>Mã sản phẩm: <span data-sku-display><?= htmlspecialchars($sku[0]['sku']) ?></span></p>
+
 									<?php
-									// Nhóm các biến thể theo `product_variant_name`
-									$groupedOptions = [];
-									foreach ($sku as $item) {
-										$groupedOptions[$item['product_variant_name']][] = [
-											'id' => $item['variant_option_id'],
-											'name' => $item['product_variant_option_name'],
-											'price' => $item['prices']
-										];
-									}
+									// Lọc và hiển thị biến thể Kích thước
+									$sizes = array_filter($sku, function ($item) {
+										return $item['product_variant_name'] === 'Kích thước';
+									});
+									if (count($sizes) > 0) :
 									?>
-									<?php foreach ($groupedOptions as $variantName => $options) : ?>
 										<label>
-											<span><?= htmlspecialchars($variantName) ?>:</span>
-											<select class="input-select variant-select" data-variant="<?= htmlspecialchars($variantName) ?>">
-												<?php foreach ($options as $option) : ?>
-													<option value="<?= htmlspecialchars($option['id']) ?>" data-price="<?= htmlspecialchars($option['price']) ?>">
-														<?= htmlspecialchars($option['name']) ?>
+											<span>Kích thước:</span>
+											<select class="input-select variant-select" data-variant="size">
+												<?php foreach ($sizes as $item) : ?>
+													<option value="<?= htmlspecialchars($item['variant_option_id']) ?>"
+														data-price="<?= htmlspecialchars($item['prices']) ?>"
+														data-sku="<?= htmlspecialchars($item['sku']) ?>">
+														<?= htmlspecialchars($item['product_variant_options_name']) ?>
 													</option>
 												<?php endforeach; ?>
 											</select>
 										</label>
-									<?php endforeach; ?>
-								<?php else : ?>
-									<li><span>Không có biến thể nào</span></li>
-								<?php endif; ?>
-							</div>
+									<?php endif; ?>
 
-							<script>
-								// Theo dõi sự thay đổi trên các dropdown biến thể
-								document.querySelectorAll('.variant-select').forEach(select => {
-									select.addEventListener('change', updatePrice);
-								});
+									<!-- Lọc và hiển thị biến thể Độ phân giải -->
+									<?php
+									$resolutions = array_filter($sku, function ($item) {
+										return $item['product_variant_name'] === 'Độ phân giải';
+									});
+									if (count($resolutions) > 0) :
+									?>
+										<label>
+											<span>Độ phân giải:</span>
+											<select class="input-select variant-select" data-variant="resolution">
+												<?php foreach ($resolutions as $item) : ?>
+													<option value="<?= htmlspecialchars($item['variant_option_id']) ?>"
+														data-price="<?= htmlspecialchars($item['prices']) ?>"
+														data-sku="<?= htmlspecialchars($item['sku']) ?>">
+														<?= htmlspecialchars($item['product_variant_options_name']) ?>
+													</option>
+												<?php endforeach; ?>
+											</select>
+										</label>
+									<?php endif; ?>
+								</div>
 
-								function updatePrice() {
-									let totalPrice = 0;
-									let totalDiscountPrice = 0;
-
-									// Lấy giá của tất cả các biến thể đã chọn và cộng lại
+								<!-- JavaScript -->
+								<script>
+									// Theo dõi sự thay đổi trên các dropdown biến thể
 									document.querySelectorAll('.variant-select').forEach(select => {
-										let selectedOption = select.querySelector('option:checked');
-										let price = parseInt(selectedOption.getAttribute('data-price')) || 0;
-										let discountPrice = parseInt(selectedOption.getAttribute('data-discount-price')) || 0;
-
-										totalPrice += price; // Cộng tổng giá
-										totalDiscountPrice += discountPrice; // Cộng tổng giá giảm (nếu có)
+										select.addEventListener('change', () => {
+											updatePrice();
+											updateSKU();
+										});
 									});
 
-									// Cập nhật giá hiển thị theo tổng giá đã chọn
-									document.getElementById('price-display').innerText = new Intl.NumberFormat('vi-VN').format(totalPrice) + " đ";
+									// Cập nhật giá sản phẩm
+									function updatePrice() {
+										let totalPrice = 0;
+										let totalDiscountPrice = 0;
 
-									// Cập nhật giá giảm nếu có
-									if (totalDiscountPrice > 0) {
-										// Nếu có giá giảm, hiển thị giá giảm
-										document.getElementById('discount_price-display').innerHTML = `<strong class="text-danger">${new Intl.NumberFormat('vi-VN').format(totalPrice - totalDiscountPrice)} đ</strong> <del><strike>${new Intl.NumberFormat('vi-VN').format(totalPrice)} đ</strike></del>`;
-									} else {
-										// Nếu không có giá giảm, chỉ hiển thị giá gốc
-										document.getElementById('discount_price-display').innerText = new Intl.NumberFormat('vi-VN').format(totalPrice) + " đ";
+										// Lấy giá của tất cả các biến thể đã chọn và cộng lại
+										document.querySelectorAll('.variant-select').forEach(select => {
+											let selectedOption = select.querySelector('option:checked');
+											let price = parseInt(selectedOption.getAttribute('data-price')) || 0;
+											let discountPrice = parseInt(selectedOption.getAttribute('data-discount-price')) || 0;
+
+											totalPrice += price; // Cộng tổng giá
+											totalDiscountPrice += discountPrice; // Cộng tổng giá giảm (nếu có)
+										});
+
+										// Cập nhật giá hiển thị theo tổng giá đã chọn
+										document.getElementById('price-display').innerText = new Intl.NumberFormat('vi-VN').format(totalPrice) + " đ";
+
+										
 									}
-								}
-							</script>
 
+									// Cập nhật Mã sản phẩm (SKU)
+									function updateSKU() {
+										let selectedSKU = '';
 
-							<!-- Khu vực hiển thị giá -->
+										// Duyệt qua tất cả các biến thể và lấy mã SKU của biến thể đang chọn
+										document.querySelectorAll('.variant-select').forEach(select => {
+											let selectedOption = select.querySelector('option:checked');
+											if (selectedOption && selectedOption.getAttribute('data-sku')) {
+												selectedSKU = selectedOption.getAttribute('data-sku');
+											}
+										});
 
+										// Cập nhật nội dung của phần hiển thị mã sản phẩm
+										const skuDisplay = document.querySelector('p span[data-sku-display]');
+										if (skuDisplay) {
+											skuDisplay.innerText = selectedSKU || 'Không có thông tin mã sản phẩm';
+										}
+									}
+								</script>
 
+								
 
-
-							<div class="add-to-cart">
-								<div class="qty-label">
-									Số lượng
-									<div class="input-number">
-										<input type="number" name="quantity" id="quantity" value="1" min="1" required>
-										<span class="qty-up">+</span>
-										<span class="qty-down">-</span>
-									</div>
-								</div>
-								<br>
-								<br>
+								<!-- Khu vực thêm vào giỏ hàng -->
 								<div class="add-to-cart">
-									<form action="/cart/add" method="post">
-										<input type="hidden" name="method" id="" value="POST">
-										<input type="hidden" name="id" id="" value="<?= $data['product']['product_id'] ?>" required>
-										<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</button>
-									</form>
-
-								</div>
-
-
-							</div>
-
-							<ul class="product-btns">
-								<li><a href="#"><i class="fa fa-heart-o"></i> Thêm yêu thích</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> Thêm so sánh</a></li>
-							</ul>
-
-							<ul class="product-links">
-								<li>Danh mục:</li>
-								<li><a href="#">Sony</a></li>
-							</ul>
-
-							<ul class="product-links">
-								<li>Chia sẻ:</li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-							</ul>
-
-						</div>
-					</div>
-					<!-- /Product details -->
-
-					<!-- Product tab -->
-					<div class="col-md-12">
-						<div id="product-tab">
-							<!-- product tab nav -->
-							<ul class="tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
-								<li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
-							</ul>
-							<!-- /product tab nav -->
-
-							<!-- product tab content -->
-							<div class="tab-content">
-								<!-- tab1  -->
-								<div id="tab1" class="tab-pane fade in active">
-									<div class="row">
-										<div class="col-md-12">
-											<p><?= $data['product']['long_description'] ?></p>
+									<div class="qty-label">
+										Số lượng
+										<div class="input-number">
+											<input type="number" name="quantity" id="quantity" value="1" min="1" required>
+											<span class="qty-up">+</span>
+											<span class="qty-down">-</span>
 										</div>
 									</div>
+									<br><br>
+									<input type="hidden" name="method" value="POST">
+									<input type="hidden" name="id" value="<?= $data['product']['product_id'] ?>" required>
+									<button type="submit" class="add-to-cart-btn">
+										<i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng
+									</button>
 								</div>
-								<!-- /tab1  -->
+							</form>
 
-								<!-- tab3  -->
-								<div id="tab3" class="tab-pane fade in">
-									<div class="container">
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="panel panel-default">
-													<div class="panel-heading text-center">
-														<h4 class="panel-title">Bình luận mới nhất</h4>
-													</div>
-													<div class="panel-body">
-														<div class="comment-widgets">
-															<?php
-															// var_dump($data['comments']);
-															if (isset($data) && isset($data['comments']) && $data && $data['comments']) :
-																foreach ($data['comments'] as $item) :
-															?>
-																	<!-- Comment Row -->
-																	<div class="media comment-row">
-																		<div class="media-left">
-																			<?php
-																			if ($item['avatar']) :
-																			?>
-																				<img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="user" width="50" class="img-circle">
-																			<?php
-																			else :
-																			?>
-																				<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="img-circle">
-																			<?php
-																			endif;
-																			?>
-																		</div>
-																		<div class="media-body">
-																			<h4 class="media-heading"><?= $item['name'] ?> - <?= $item['username'] ?></h4>
-																			<p><?= $item['content'] ?></p>
-																			<div class="comment-footer">
-																				<span class="text-muted pull-right"><?= $item['date'] ?></span>
-																				<?php
-																				if (isset($data) && $is_login && ($_SESSION['user']['user_id'] == $item['user_id'])) :
-																				?>
-																					<div class="action">
-																						<button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#<?= $item['username'] ?><?= $item['id'] ?>" aria-expanded="false" aria-controls="<?= $item['username'] ?><?= $item['id'] ?>">Sửa</button>
-																						<form action="/comments/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Chắc chưa?')" style="display: inline-block">
-																							<input type="hidden" name="method" value="DELETE">
-																							<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
-																							<button type="submit" class="btn btn-danger btn-sm">Xoá</button>
-																						</form>
-																					</div>
-																					<div class="collapse" id="<?= $item['username'] ?><?= $item['id'] ?>">
-																						<div class="well">
-																							<form action="/comments/<?= $item['id'] ?>" method="post">
-																								<input type="hidden" name="method" value="PUT">
-																								<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
-																								<div class="form-group">
-																									<label for="">Bình luận</label>
-																									<textarea class="form-control" name="content" rows="3" placeholder="Nhập bình luận..."><?= $item['content'] ?></textarea>
-																								</div>
-																								<button type="submit" class="btn btn-primary">Gửi</button>
-																							</form>
-																						</div>
-																					</div>
-																				<?php
-																				endif;
-																				?>
+
+						
+
+						<ul class="product-btns">
+							<li><a href="#"><i class="fa fa-heart-o"></i> Thêm yêu thích</a></li>
+							<li><a href="#"><i class="fa fa-exchange"></i> Thêm so sánh</a></li>
+						</ul>
+
+						<ul class="product-links">
+							<li>Danh mục:</li>
+							<li><a href="#">Sony</a></li>
+						</ul>
+
+						<ul class="product-links">
+							<li>Chia sẻ:</li>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+						</ul>
+
+					</div>
+				</div>
+				<!-- /Product details -->
+
+				<!-- Product tab -->
+				<div class="col-md-12">
+					<div id="product-tab">
+						<!-- product tab nav -->
+						<ul class="tab-nav">
+							<!-- <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li> -->
+							<li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
+						</ul>
+						<!-- /product tab nav -->
+
+						<!-- product tab content -->
+						<div class="tab-content">
+							<!-- tab1  -->
+							<div id="tab1" class="tab-pane fade in active">
+								<div class="row">
+									<div class="col-md-12">
+										<p><?= $data['product']['long_description'] ?></p>
+									</div>
+								</div>
+							</div>
+							<!-- /tab1  -->
+
+							<!-- tab3  -->
+							<!-- <div id="tab3" class="tab-pane fade in"> -->
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="panel panel-default">
+											<div class="panel-heading text-center">
+												<h4 class="panel-title">Bình luận mới nhất</h4>
+											</div>
+											<div class="panel-body">
+												<div class="comment-widgets">
+													<?php
+													// var_dump($data['comments']);
+													if (isset($data) && isset($data['comments']) && $data && $data['comments']) :
+														foreach ($data['comments'] as $item) :
+													?>
+															<!-- Comment Row -->
+															<div class="media comment-row">
+																<div class="media-left">
+																	<?php
+																	if ($item['avatar']) :
+																	?>
+																		<img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="user" width="50" class="img-circle">
+																	<?php
+																	else :
+																	?>
+																		<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="img-circle">
+																	<?php
+																	endif;
+																	?>
+																</div>
+																<div class="media-body">
+																	<h4 class="media-heading"><?= $item['name'] ?> - <?= $item['username'] ?></h4>
+																	<p><?= $item['content'] ?></p>
+																	<div class="comment-footer">
+																		<span class="text-muted pull-right"><?= $item['date'] ?></span>
+																		<?php
+																		if (isset($data) && $is_login && ($_SESSION['user']['user_id'] == $item['user_id'])) :
+																		?>
+																			<div class="action">
+																				<button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#<?= $item['username'] ?><?= $item['id'] ?>" aria-expanded="false" aria-controls="<?= $item['username'] ?><?= $item['id'] ?>">Sửa</button>
+																				<form action="/comments/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Chắc chưa?')" style="display: inline-block">
+																					<input type="hidden" name="method" value="DELETE">
+																					<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
+																					<button type="submit" class="btn btn-danger btn-sm">Xoá</button>
+																				</form>
 																			</div>
-																		</div>
-																	</div>
-																<?php
-																endforeach;
-																?>
-															<?php
-															else :
-															?>
-																<h6 class="text-center text-danger">Chưa có bình luận</h6>
-															<?php
-															endif;
-															?>
-															<?php
-															if (isset($data) && $is_login) :
-															?>
-																<div class="media comment-row">
-																	<div class="media-left">
-																		<?php
-																		if ($_SESSION['user']['avatar']) :
-																		?>
-																			<img src="<?= APP_URL ?>/public/uploads/users/<?= $_SESSION['user']['avatar'] ?>" alt="user" width="50" class="img-circle">
-																		<?php
-																		else :
-																		?>
-																			<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="img-circle">
+																			<div class="collapse" id="<?= $item['username'] ?><?= $item['id'] ?>">
+																				<div class="well">
+																					<form action="/comments/<?= $item['id'] ?>" method="post">
+																						<input type="hidden" name="method" value="PUT">
+																						<input type="hidden" name="product_id" value="<?= $data['product']['product_id'] ?>">
+																						<div class="form-group">
+																							<label for="">Bình luận</label>
+																							<textarea class="form-control" name="content" rows="3" placeholder="Nhập bình luận..."><?= $item['content'] ?></textarea>
+																						</div>
+																						<button type="submit" class="btn btn-primary">Gửi</button>
+																					</form>
+																				</div>
+																			</div>
 																		<?php
 																		endif;
 																		?>
 																	</div>
-																	<div class="media-body">
-																		<h4 class="media-heading"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h4>
-																		<form action="/comments" method="POST">
-																			<input type="hidden" name="method" value="POST">
-																			<input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
-																			<input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
-																			<div class="form-group">
-																				<label for="content">Bình luận</label>
-																				<textarea class="form-control" name="content" id="content" rows="3" placeholder="Nhập bình luận..."></textarea>
-																			</div>
-																			<button type="submit" class="btn btn-primary">Gửi</button>
-																		</form>
-																	</div>
 																</div>
-															<?php
-															else :
-															?>
-																<h6 class="text-center text-danger">Vui lòng đăng nhập để bình luận</h6>
-															<?php
-															endif;
-															?>
+															</div>
+														<?php
+														endforeach;
+														?>
+													<?php
+													else :
+													?>
+														<h6 class="text-center text-danger">Chưa có bình luận</h6>
+													<?php
+													endif;
+													?>
+													<?php
+													if (isset($data) && $is_login) :
+													?>
+														<div class="media comment-row">
+															<div class="media-left">
+																<?php
+																if ($_SESSION['user']['avatar']) :
+																?>
+																	<img src="<?= APP_URL ?>/public/uploads/users/<?= $_SESSION['user']['avatar'] ?>" alt="user" width="50" class="img-circle">
+																<?php
+																else :
+																?>
+																	<img src="<?= APP_URL ?>/public/uploads/users/default-user.jpg" alt="user" width="50" class="img-circle">
+																<?php
+																endif;
+																?>
+															</div>
+															<div class="media-body">
+																<h4 class="media-heading"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h4>
+																<form action="/comments" method="POST">
+																	<input type="hidden" name="method" value="POST">
+																	<input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
+																	<input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
+																	<div class="form-group">
+																		<label for="content">Bình luận</label>
+																		<textarea class="form-control" name="content" id="content" rows="3" placeholder="Nhập bình luận..."></textarea>
+																	</div>
+																	<button type="submit" class="btn btn-primary">Gửi</button>
+																</form>
+															</div>
 														</div>
-													</div>
+													<?php
+													else :
+													?>
+														<h6 class="text-center text-danger">Vui lòng đăng nhập để bình luận</h6>
+													<?php
+													endif;
+													?>
 												</div>
 											</div>
 										</div>
 
 									</div>
-									<!-- /tab3  -->
 								</div>
-							</div>
 
-							<!-- /tab3 -->
+							</div>
+							<!-- /tab3  -->
 						</div>
-						<!-- /product tab content  -->
 					</div>
+
+					<!-- /tab3 -->
 				</div>
-				<!-- /product tab -->
+				<!-- /product tab content  -->
 			</div>
-			<!-- /row -->
+		</div>
+		<!-- /product tab -->
+		</div>
+		<!-- /row -->
 		</div>
 		<!-- /container -->
 		</div>

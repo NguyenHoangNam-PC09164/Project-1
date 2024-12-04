@@ -10,7 +10,7 @@ class Cart extends BaseView
     {
         $cart = $data['cart'] ?? [];
         $total = array_sum(array_column($cart, 'total_price'));
-        var_dump($cart);
+        // var_dump($cart); 
 ?>
 
         <div class="section">
@@ -24,6 +24,7 @@ class Cart extends BaseView
                             <tr>
                                 <th class="text-center">Hình ảnh</th>
                                 <th class="text-center">Sản phẩm</th>
+                                
                                 <th class="text-center">Số lượng</th>
                                 <th class="text-center">Đơn giá</th>
                                 <th class="text-center">Thành tiền</th>
@@ -38,7 +39,8 @@ class Cart extends BaseView
                                              alt="<?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?>" 
                                              class="product-image">
                                     </td>
-                                    <td><?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?></td>
+                                    <td><?= ($item['name']) ?></td>
+                                    
                                     <td>
                                         <form action="/cart/update" method="post">
                                             <input type="hidden" name="method" value="POST">
@@ -91,3 +93,4 @@ class Cart extends BaseView
 <?php
     }
 }
+?>
