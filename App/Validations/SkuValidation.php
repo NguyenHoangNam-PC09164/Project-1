@@ -12,8 +12,8 @@ use App\Helpers\NotificationHelper;
         $is_valid = true;
 
         //mã sản phẩm
-        if (!isset($_POST['sku']) || $_POST['sku'] === '') {
-            NotificationHelper::error('sku', 'Mã sản phẩm không được để trống');
+        if (!isset($_POST['sku_name']) || $_POST['sku_name'] === '') {
+            NotificationHelper::error('sku_name', 'Mã sản phẩm không được để trống');
             $is_valid = false;
         }
 
