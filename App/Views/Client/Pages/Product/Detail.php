@@ -109,7 +109,7 @@ class Detail extends BaseView
 							<form action="/cart/add" method="post">
 								<div class="product-options">
 									<!-- Hiển thị Mã sản phẩm -->
-									<p>Mã sản phẩm: <span data-sku-display><?= htmlspecialchars($sku[0]['sku']) ?></span></p>
+									<p>Mã sản phẩm: <span data-sku-display><?= htmlspecialchars($sku[0]['sku_name']) ?></span></p>
 
 									<?php
 									// Lọc và hiển thị biến thể Kích thước
@@ -124,7 +124,7 @@ class Detail extends BaseView
 												<?php foreach ($sizes as $item) : ?>
 													<option value="<?= htmlspecialchars($item['variant_option_id']) ?>"
 														data-price="<?= htmlspecialchars($item['prices']) ?>"
-														data-sku="<?= htmlspecialchars($item['sku']) ?>">
+														data-sku="<?= htmlspecialchars($item['sku_name']) ?>">
 														<?= htmlspecialchars($item['product_variant_options_name']) ?>
 													</option>
 												<?php endforeach; ?>
@@ -145,7 +145,7 @@ class Detail extends BaseView
 												<?php foreach ($resolutions as $item) : ?>
 													<option value="<?= htmlspecialchars($item['variant_option_id']) ?>"
 														data-price="<?= htmlspecialchars($item['prices']) ?>"
-														data-sku="<?= htmlspecialchars($item['sku']) ?>">
+														data-sku="<?= htmlspecialchars($item['sku_name']) ?>">
 														<?= htmlspecialchars($item['product_variant_options_name']) ?>
 													</option>
 												<?php endforeach; ?>
