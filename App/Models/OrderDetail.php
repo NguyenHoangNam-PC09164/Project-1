@@ -35,4 +35,26 @@ class OrderDetail extends BaseModel
     {
         return $this->getAllByStatus();
     }
+    public function getOrderByUser(int $id)
+    {
+        try {
+            $sql = "SELECT p.image, p.name, od.quantity, (od.price * od.quantity) as price, 
+                       o.order_date, o.payment_status , od.id
+                FROM `order_details` AS od
+                INNER JOIN products AS p ON od.product_id = p.product_id
+                INNER JOIN orders AS o ON od.order_id = o.id
+                WHERE o.user_id = ?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->num_rows > 0 ? $result->fetch_all(MYSQLI_ASSOC) : [];
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy dữ liệu đơn hàng: ' . $th->getMessage());
+            return [];
+        }
+    }
+   
 }

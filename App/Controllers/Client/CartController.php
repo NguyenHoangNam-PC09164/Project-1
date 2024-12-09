@@ -18,6 +18,7 @@ class CartController
             header('Location: /login');
             exit();
         }
+        
         // Lấy dữ liệu giỏ hàng từ cookie
         $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
 

@@ -68,7 +68,7 @@ class Header extends BaseView
                             <li><a href="#"><i class="fa fa-map-marker"></i> Cần Thơ</a></li>
                         </ul>
                         <ul class="header-links pull-right">
-                            <li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
+                            <li><a href="/order"><i class="fa fa-shopping-cart"></i> Đơn hàng</a></li>
                             <?php if ($is_login && isset($_SESSION['user'])) : ?>
                                 <li class="nav-item">
                                     <div class="dropdown">

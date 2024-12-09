@@ -35,5 +35,38 @@ class Order extends BaseModel
     {
         return $this->getAllByStatus();
     }
-    
+   
+    public function getAllByUser(int $id)
+    {
+        try {
+            $sql = "SELECT * FROM `orders` WHERE orders.user_id =?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->num_rows > 0 ? $result->fetch_all(MYSQLI_ASSOC) : [];
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy dữ liệu đơn hàng: ' . $th->getMessage());
+            return [];
+        }
+    }
+    public function getLatestOrderIdByUser(int $user_id)
+    {
+        try {
+            $sql = "SELECT MAX(id) as latest_order_id FROM `orders` WHERE user_id = ?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            return $row['latest_order_id'] ?? null;
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy ID đơn hàng mới nhất: ' . $th->getMessage());
+            return null;
+        }
+    }
 }
