@@ -27,6 +27,7 @@ class OrderView extends BaseView
                                 <th>Số lượng</th>
                                 <th>Tổng tiền</th>
                                 <th>Trạng thái</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,9 @@ class OrderView extends BaseView
                                             </div>
                                         <?php endif; ?>
                                     </td>
+                                    <td>
+                                        <a href="/order/<?= $order['id']?>">Chi tiết</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -62,57 +66,7 @@ class OrderView extends BaseView
             </div>
         </div>
 
-        <!-- PayPal SDK -->
-        <script src="https://www.paypal.com/sdk/js?client-id=AWTlwInXfZ-bN2g11sAM9n1dp9NL1cU6BmB1hxTz_Sg2z9BmaL5hgf04yTxTV0ClB6vwdrt1PUeZe0EF&currency=USD"></script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                <?php foreach ($orders as $order): 
-                    if ($order['payment_status'] == 0): 
-                        $vnd_to_usd = $order['price'] / 25346;
-                ?>
-                    const totalPrice<?= $order['id'] ?> = <?= json_encode($vnd_to_usd, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-
-                    paypal.Buttons({
-                        createOrder: function(data, actions) {
-                            return actions.order.create({
-                                purchase_units: [{
-                                    amount: {
-                                        value: totalPrice<?= $order['id'] ?>.toFixed(2)
-                                    }
-                                }]
-                            });
-                        },
-                        onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(details) {
-                                alert('Thanh toán PayPal thành công!');
-                                // Gửi thông tin cập nhật trạng thái thanh toán lên server
-                                fetch('<?= APP_URL ?>/update-payment-status', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        orderId: <?= json_encode($order['id']) ?>
-                                    })
-                                }).then(response => response.json())
-                                  .then(data => {
-                                      if (data.success) {
-                                          location.reload(); // Reload trang
-                                      } else {
-                                          alert('Cập nhật trạng thái thất bại.');
-                                      }
-                                  });
-                            });
-                        },
-                        onError: function(err) {
-                            console.error('Lỗi PayPal:', err);
-                        }
-                    }).render('#paypal-button-container-<?= $order['id'] ?>');
-                <?php endif; endforeach; ?>
-            });
-        </script>
-
+        
 <?php
     }
 }

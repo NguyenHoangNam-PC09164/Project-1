@@ -36,6 +36,9 @@ Route::get('/checkout', 'App\Controllers\Client\CheckoutController@checkout');
 Route::post('/checkoutAction', 'App\Controllers\Client\CheckoutController@checkoutAction');
 
 Route::get('/order', 'App\Controllers\Client\OrderController@order');
+Route::get('/order/{id}', 'App\Controllers\Client\OrderController@orderDetail');
+
+
 Route::post('/orderAction', 'App\Controllers\Client\OrderController@orderAction');
 
 Route::get('/cart', 'App\Controllers\Client\CartController@index');

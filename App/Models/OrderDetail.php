@@ -56,5 +56,20 @@ class OrderDetail extends BaseModel
             return [];
         }
     }
-   
+    public function getOrderDetailByOrder(int $id)
+    {
+        try {
+            $sql = "SELECT * FROM `order_details` as od INNER JOIN orders as o ON od.order_id=o.id WHERE od.id=?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->num_rows > 0 ? $result->fetch_all(MYSQLI_ASSOC) : [];
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy dữ liệu đơn hàng: ' . $th->getMessage());
+            return [];
+        }
+    }
 }

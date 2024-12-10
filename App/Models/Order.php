@@ -69,4 +69,19 @@ class Order extends BaseModel
             return null;
         }
     }
+    public function updatePaymentStatus($order_id, $status)
+    {
+        try {
+            $sql = "UPDATE `orders` SET payment_status = ? WHERE id = ?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ii', $status, $order_id);
+            $stmt->execute();
+
+            return $stmt->affected_rows > 0; // Trả về true nếu cập nhật thành công
+        } catch (\Throwable $th) {
+            error_log('Lỗi cập nhật trạng thái thanh toán: ' . $th->getMessage());
+            return false;
+        }
+    }
 }
