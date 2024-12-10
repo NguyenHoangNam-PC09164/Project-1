@@ -11,7 +11,7 @@ use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Layouts\Header;
 use App\Views\Client\Pages\Shop\Checkout;
 use App\Helpers\AuthHelper;
-
+use App\Helpers\OrderHelper;
 class CheckoutController
 {
     // hiển thị giao diện register
@@ -45,46 +45,55 @@ class CheckoutController
             header('Location: /checkout');
             exit();
         }
-
-        // Lấy thông tin từ form (ví dụ: tên, email, điện thoại, địa chỉ)
+    
+        // Lấy thông tin từ form
         $name = $_POST['name'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
+        $province_code = $_POST['province'];
+        $district_code = $_POST['district'];
         $payment_status = $_POST['payment_status'];
         $user_id = $_SESSION['user']['user_id']; // ID người dùng hiện tại
-
+    
+        // Lấy thông tin tỉnh/thành phố và quận/huyện
+        $province_name = OrderHelper::getProvinceNameByCode($province_code);
+        $district_name = OrderHelper::getDistrictNameByCode($district_code);
+    
+        // Kết hợp địa chỉ đầy đủ
+        $full_address = "$address, $district_name, $province_name";
+    
         // Giải mã giỏ hàng từ cookie
         $cart = json_decode($_COOKIE['cart'], true);
         $total_price = 0;
         $order_details = '';
-
+    
         // Tạo đơn hàng mới
         $order = new Order();
         $data = [
             'name' => $name,
             'email' => $email,
             'phone' => $phone,
-            'address' => $address,
+            'address' => $full_address, // Địa chỉ đầy đủ
             'user_id' => $user_id,
             'payment_status' => $payment_status,
         ];
-
+    
         // Lưu thông tin đơn hàng vào cơ sở dữ liệu
         $order->createOrder($data);
-
+    
         // Lấy `order_id` mới nhất
         $order_id = $order->getLatestOrderIdByUser($user_id);
-
+    
         // Tạo chi tiết đơn hàng và tính tổng giá trị
         foreach ($cart as $item) {
             $order_details .= "<tr>
-                            <td>{$item['name']}</td>
-                            <td>{$item['quantity']}</td>
-                            <td>{$item['total_price']} đ</td>
-                          </tr>";
+                                <td>{$item['name']}</td>
+                                <td>{$item['quantity']}</td>
+                                <td>{$item['total_price']} đ</td>
+                              </tr>";
             $total_price += $item['total_price'];
-
+    
             // Lưu chi tiết sản phẩm vào bảng OrderDetails với `order_id` là `order_id` mới nhất
             $order_detail = new OrderDetail();
             $order_detail_data = [
@@ -95,21 +104,22 @@ class CheckoutController
             ];
             $order_detail->createOrderDetail($order_detail_data);
         }
-
+    
         // Gửi email cho khách hàng và admin
         $authHelper = new AuthHelper();
-        $email_sent = $authHelper->sendOrderEmail($email, $name, $order_details, $address, $order_id, $total_price, $payment_status, $phone, $email);
-
+        $email_sent = $authHelper->sendOrderEmail($email, $name, $order_details, $full_address, $order_id, $total_price, $payment_status, $phone, $email);
+    
         if (!$email_sent) {
             NotificationHelper::error('email', 'Đặt hàng thành công nhưng không thể gửi email.');
         }
-
+    
         // Xóa giỏ hàng sau khi đặt hàng thành công
         setcookie('cart', '', time() - 3600);
-
+    
         // Hiển thị thông báo thành công và chuyển hướng về trang chủ
         NotificationHelper::success('store', 'Đặt hàng thành công!');
         header('Location: /checkout');
         exit();
     }
+    
 }

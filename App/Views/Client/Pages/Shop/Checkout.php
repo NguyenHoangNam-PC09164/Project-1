@@ -12,13 +12,12 @@ class Checkout extends BaseView
         $total = array_sum(array_column($cart, 'total_price'));
         $vnd_to_usd = $total / 25346;  // Convert VND to USD
 
-        // If cart is empty, set total to 0 to avoid rendering issues
+        // Ensure total and converted values are properly handled for empty carts
         if (empty($cart)) {
             $total = 0;
             $vnd_to_usd = 0;
         }
 ?>
-
         <div class="section">
             <div class="container">
                 <form id="checkout-form" action="/checkoutAction" method="POST">
@@ -26,7 +25,7 @@ class Checkout extends BaseView
                     <input type="hidden" id="payment_status" name="payment_status" value="0">
                     <div class="row">
                         <div class="col-md-7">
-                            <!-- Thông tin khách hàng -->
+                            <!-- Customer Information -->
                             <div class="billing-details">
                                 <div class="section-title">
                                     <h3 class="title">Địa chỉ thanh toán</h3>
@@ -41,13 +40,23 @@ class Checkout extends BaseView
                                     <input class="input" type="email" name="email" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
+                                    <select class="input" id="province" name="province" required>
+                                        <option value="">Chọn tỉnh/thành phố</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="input" id="district" name="district" required>
+                                        <option value="">Chọn quận/huyện</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <input class="input" type="text" name="address" placeholder="Địa chỉ đầy đủ" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-5 order-details">
-                            <!-- Đơn hàng của bạn -->
+                            <!-- Order Summary -->
                             <div class="section-title text-center">
                                 <h3 class="title">Đơn hàng của bạn</h3>
                             </div>
@@ -64,7 +73,7 @@ class Checkout extends BaseView
                                     <?php else: ?>
                                         <?php foreach ($cart as $item): ?>
                                             <div class="order-col">
-                                                <div><?= htmlspecialchars($item['name']) ?> x <?= $item['quantity'] ?></div>
+                                                <div><?= htmlspecialchars($item['name']) ?> x <?= htmlspecialchars($item['quantity']) ?></div>
                                                 <div><?= number_format($item['total_price'], 0, ',', '.') ?> VND</div>
                                             </div>
                                         <?php endforeach; ?>
@@ -89,14 +98,48 @@ class Checkout extends BaseView
 
                             <!-- JavaScript -->
                             <script>
-                                document.addEventListener('DOMContentLoaded', function() {
+                                document.addEventListener('DOMContentLoaded', function () {
                                     const checkoutForm = document.getElementById('checkout-form');
                                     const paymentStatusInput = document.getElementById('payment_status');
-                                    const totalPrice = <?= json_encode($vnd_to_usd, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>; // đảm bảo an toàn khi nhúng php vào js
+                                    const totalPrice = <?= json_encode($vnd_to_usd, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+
+                                    fetch('https://provinces.open-api.vn/api/?depth=2')
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error("Failed to fetch province data.");
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            const provinceSelect = document.getElementById('province');
+                                            const districtSelect = document.getElementById('district');
+                                            
+                                            data.forEach(province => {
+                                                const option = document.createElement('option');
+                                                option.value = province.code;
+                                                option.textContent = province.name;
+                                                provinceSelect.appendChild(option);
+                                            });
+
+                                            provinceSelect.addEventListener('change', () => {
+                                                const selectedProvince = data.find(province => province.code == provinceSelect.value);
+                                                districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+
+                                                if (selectedProvince) {
+                                                    selectedProvince.districts.forEach(district => {
+                                                        const option = document.createElement('option');
+                                                        option.value = district.code;
+                                                        option.textContent = district.name;
+                                                        districtSelect.appendChild(option);
+                                                    });
+                                                }
+                                            });
+                                        })
+                                        .catch(error => console.error("Error fetching province data:", error));
 
                                     if (totalPrice > 0) {
                                         paypal.Buttons({
-                                            createOrder: function(data, actions) {
+                                            createOrder: function (data, actions) {
                                                 return actions.order.create({
                                                     purchase_units: [{
                                                         amount: {
@@ -105,15 +148,16 @@ class Checkout extends BaseView
                                                     }]
                                                 });
                                             },
-                                            onApprove: function(data, actions) {
-                                                return actions.order.capture().then(function(details) {
+                                            onApprove: function (data, actions) {
+                                                return actions.order.capture().then(function (details) {
                                                     alert('Thanh toán PayPal thành công!');
-                                                    paymentStatusInput.value = 1; // Set payment_status to 1
-                                                    checkoutForm.submit(); // Submit form
+                                                    paymentStatusInput.value = 1;
+                                                    checkoutForm.submit();
                                                 });
                                             },
-                                            onError: function(err) {
-                                                alert('Đã xảy ra lỗi trong quá trình thanh toán: ' + err);
+                                            onError: function (err) {
+                                                console.error('Error with PayPal payment:', err);
+                                                alert('Đã xảy ra lỗi trong quá trình thanh toán. Vui lòng thử lại.');
                                             }
                                         }).render('#paypal-button-container');
                                     } else {
@@ -130,8 +174,6 @@ class Checkout extends BaseView
                 </form>
             </div>
         </div>
-
-
 <?php
     }
 }
