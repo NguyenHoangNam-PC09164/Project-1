@@ -8,7 +8,6 @@ class Index extends BaseView
 {
 	public static function render($data = null)
 	{
-		
 ?>
 		<div class="section">
 			<!-- container -->
@@ -24,36 +23,36 @@ class Index extends BaseView
 								<?php foreach ($data['categories'] as $category): ?>
 									<div class="input-checkbox">
 										<label for="category">
-
 											<a class="nav-link text-cate text-dark" href="/products/Category/<?= $category['id'] ?>"><?= $category['name'] ?></a>
-
 										</label>
 									</div>
 								<?php endforeach; ?>
-
 							</div>
 						</div>
 
 						<!-- /aside Widget -->
 						<!-- aside Widget -->
-						<!--// lọc giá sản phẩm  -->
+						<!-- lọc giá sản phẩm -->
 						<div class="aside">
 							<h3 class="aside-title">Giá</h3>
-							<div class="price-filter">
-								<div id="price-slider"></div>
-								<div class="input-number price-min">
-									<input id="price-min" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
-								</div>
+							<form method="GET" action="/products/filter">
+								<div class="price-filter">
+									<div id="price-slider"></div>
+									<div class="input-number price-min">
+										<input name="min_price" id="price-min" type="number" placeholder="Min">
+										<span class="qty-up">+</span>
+										<span class="qty-down">-</span>
+									</div>
 
-								<span>-</span>
-								<div class="input-number price-max">
-									<input id="price-max" type="number">
-									<span class="qty-up">+</span>
-									<span class="qty-down">-</span>
+									<span>-</span>
+									<div class="input-number price-max">
+										<input name="max_price" id="price-max" type="number" placeholder="Max">
+										<span class="qty-up">+</span>
+										<span class="qty-down">-</span>
+									</div>
+									<button type="submit">Lọc</button>
 								</div>
-							</div>
+							</form>
 						</div>
 
 						<div class="aside">
@@ -161,7 +160,6 @@ class Index extends BaseView
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
-								
 								<h3 class="text-center text-danger">Không có sản phẩm</h3>
 							<?php endif; ?>
 							</div>
@@ -189,6 +187,5 @@ class Index extends BaseView
 		</div>
 
 <?php
-
 	}
 }

@@ -214,21 +214,21 @@ class Product extends BaseModel
 
     // lọc giá tiền
 
-    // public function getProductByPriceRange($minPrice, $maxPrice)
-    // {
-    //     try {
-    //         $conn = $this->getConnection(); // Sử dụng getConnection
-    //         $stmt = $conn->prepare("SELECT * FROM `products` WHERE price BETWEEN ? AND ?");
-    //         $stmt->bind_param("ii", $minPrice, $maxPrice);
-    //         $stmt->execute();
+    public function getProductByPriceRange($minPrice, $maxPrice)
+    {
+        try {
+            $conn = $this->getConnection(); // Sử dụng getConnection
+            $stmt = $conn->prepare("SELECT * FROM `products` WHERE price BETWEEN ? AND ?");
+            $stmt->bind_param("ii", $minPrice, $maxPrice);
+            $stmt->execute();
 
-    //         $result = $stmt->get_result();
-    //         return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
-    //     } catch (\Throwable $th) {
-    //         error_log("Error in getProductByPriceRange(): " . $th->getMessage());
-    //         return [];
-    //     }
-    // }
+            $result = $stmt->get_result();
+            return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+        } catch (\Throwable $th) {
+            error_log("Error in getProductByPriceRange(): " . $th->getMessage());
+            return [];
+        }
+    }
 
     public function getSkuByProductAndVariant(int $id) {
         $result=[];

@@ -119,5 +119,32 @@ class ProductController
         Footer::render();
     }
     
-    
+    public static function filterByPrice()
+    {
+        // Lấy giá trị khoảng giá từ request
+        $minPrice = isset($_GET['min_price']) ? intval($_GET['min_price']) : 0;
+        $maxPrice = isset($_GET['max_price']) ? intval($_GET['max_price']) : PHP_INT_MAX;
+
+        // Gọi phương thức từ Model Product
+        $productModel = new Product();
+        $products = $productModel->getProductByPriceRange($minPrice, $maxPrice);
+
+        // Lấy danh mục sản phẩm để hiển thị trong view
+        $categories = (new Category())->getAllCategory();
+
+        // Truyền dữ liệu vào view
+        $data = [
+            'products' => $products,
+            'categories' => $categories,
+            'min_price' => $minPrice,
+            'max_price' => $maxPrice
+        ];
+
+        // Render views
+        Header::render();
+        Notification::render();
+        NotificationHelper::unset();
+        Index::render($data);
+        Footer::render();
+    }
 }

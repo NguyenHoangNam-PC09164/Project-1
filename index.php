@@ -27,6 +27,8 @@ Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 Route::get('/products/Category/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
 
+// Route để lọc sản phẩm theo phạm vi giá
+Route::get('/products/filter', 'App\Controllers\Client\ProductController@filterByPrice');
 
 Route::post('/comments','App\Controllers\Client\CommentController@store');
 Route::put('/comments/{id}','App\Controllers\Client\CommentController@update');
