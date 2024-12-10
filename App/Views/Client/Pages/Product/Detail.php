@@ -256,7 +256,7 @@ class Detail extends BaseView
 					<div id="product-tab">
 						<!-- product tab nav -->
 						<ul class="tab-nav">
-							<!-- <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li> -->
+							<li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
 							<li><a data-toggle="tab" href="#tab3">Đánh giá</a></li>
 						</ul>
 						<!-- /product tab nav -->
