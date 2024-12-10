@@ -54,7 +54,6 @@ class UserController
         Header::render();
         Notification::render();
         NotificationHelper::unset();
-        // hiển thị form sửa
         Edit::render($data);
         Footer::render();
     }
