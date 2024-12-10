@@ -82,21 +82,24 @@ class Index extends BaseView
 						<!-- store top filter -->
 						<div class="store-filter clearfix">
 							<div class="store-sort">
-								<label>
-									Sắp xếp:
-									<select class="input-select">
-										<option value="0">Phổ biến</option>
-										<option value="1">Nổi bật</option>
-									</select>
-								</label>
+								<form method="GET" action="/products/display">
+									<label>
+										Sắp xếp:
+										<select class="input-select" name="sort" onchange="this.form.submit()">
+											<option value="popular" <?= isset($_GET['sort']) && $_GET['sort'] === 'popular' ? 'selected' : '' ?>>Phổ biến</option>
+											<option value="featured" <?= isset($_GET['sort']) && $_GET['sort'] === 'featured' ? 'selected' : '' ?>>Nổi bật</option>
+										</select>
+									</label>
+									<label>
+										Xem:
+										<select class="input-select" name="view">
+											<option value="20" >20</option>
+											<option value="50" >50</option>
+										</select>
+									</label>
+								</form>
 
-								<label>
-									Xem:
-									<select class="input-select">
-										<option value="0">20</option>
-										<option value="1">50</option>
-									</select>
-								</label>
+
 							</div>
 							<ul class="store-grid">
 								<li class="active"><i class="fa fa-th"></i></li>

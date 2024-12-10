@@ -210,7 +210,18 @@ class Product extends BaseModel
             return $result;
         }
     }
-
+    public function getAllManyView()
+    {
+        $result = [];
+        try {
+            $sql = "SELECT * FROM `products` ORDER BY view desc";
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
 
     // lọc giá tiền
 
