@@ -33,11 +33,11 @@ class Footer extends BaseView
                             <div class="footer">
                                 <h3 class="footer-title">VỀ CHÚNG TÔI</h3>
                                 <ul class="footer-links">
-                                    <li><a href="#">Trang chủ</a></li>
-                                    <li><a href="#">Sản phẩm</a></li>
-                                    <li><a href="#">Giới thiệu</a></li>
-                                    <li><a href="#">Tin tức</a></li>
-                                    <li><a href="#">Liên hệ</a></li>
+                                    <li><a href="/">Trang chủ</a></li>
+                                    <li><a href="/products">Sản phẩm</a></li>
+                                    <li><a href="/introduce">Giới thiệu</a></li>
+                                    <li><a href="/news">Tin tức</a></li>
+                                    <li><a href="/contact">Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -61,10 +61,10 @@ class Footer extends BaseView
                             <div class="footer">
                                 <h3 class="footer-title">DỊCH VỤ</h3>
                                 <ul class="footer-links">
-                                    <li><a href="#">Tài khoản</a></li>
-                                    <li><a href="#">Xem giỏ hàng</a></li>
+                                    <li><a href="">Tài khoản</a></li>
+                                    <li><a href="/cart">Xem giỏ hàng</a></li>
                                     <li><a href="#">Xem yêu thích</a></li>
-                                    <li><a href="#">Theo dõi đơn hàng</a></li>
+                                    <li><a href="/order">Theo dõi đơn hàng</a></li>
                                     <li><a href="#">Giúp đỡ</a></li>
                                 </ul>
                             </div>

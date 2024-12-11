@@ -28,8 +28,8 @@ class Home extends BaseView
                                         <img   src="../../../public/assets/client/img/product8.jpg" alt="" width="360px">
                                     </div>
                                     <div class="shop-body">
-                                        <h3  href="/products/categories/<?= ($item['id']) ?>"><?= ($item['name']) ?><br></h3>
-                                        <a  href="/products/categories/<?= ($item['id']) ?>" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
+                                        <h3  href="/products/Category/<?= ($item['id']) ?>"><?= ($item['name']) ?><br></h3>
+                                        <a  href="/products/Category/<?= ($item['id']) ?>" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                                 </div>
@@ -53,7 +53,7 @@ class Home extends BaseView
                                     <?php if (!empty($categories) && is_array($categories)) : ?>
                                         <?php foreach ($categories as $item) : ?>
                                             <li>
-                                                <a data-toggle="" href="/products/categories/<?= ($item['id']) ?>"><?= ($item['name']) ?>
+                                                <a data-toggle="" href="/products/Category/<?= ($item['id']) ?>"><?= ($item['name']) ?>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
@@ -156,7 +156,7 @@ class Home extends BaseView
                                     <?php if (!empty($categories) && is_array($categories)) : ?>
                                         <?php foreach ($categories as $item) : ?>
                                             <li>
-                                                <a data-toggle="" href="/products/categories/<?= ($item['id']) ?>"><?= ($item['name']) ?>
+                                                <a data-toggle="" href="/products/Category/<?= ($item['id']) ?>"><?= ($item['name']) ?>
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
