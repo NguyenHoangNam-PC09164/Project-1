@@ -57,10 +57,10 @@ class Index extends BaseView
 
 						<div class="aside">
 							<h3 class="aside-title">Nhiều lượt xem nhất</h3>
-							<?php if (!empty($data['products'])) : ?>
-								<?php foreach ($data['products'] as $products_Views) : ?>
+							<?php if (!empty($data['products_Views'])) : ?>
+								<?php foreach ($data['products_Views'] as $products_Views) : ?>
 									<div class="product-widget">
-										<div class="product-img">
+										<div class="product-img">	
 											<img src="<?= APP_URL ?>/public/uploads/products/<?= $products_Views['image'] ?>" alt="">
 										</div>
 										<div class="product-body">

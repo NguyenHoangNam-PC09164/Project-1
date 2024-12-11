@@ -31,7 +31,8 @@ class ProductController
 
         $data = [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'products_Views'=>$products_Views
         ];
         Header::render();
         Notification::render();

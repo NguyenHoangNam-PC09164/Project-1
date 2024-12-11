@@ -74,6 +74,7 @@ class Index extends BaseView
                                         <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                         <td>
                                             <a href="/admin/products/<?= $item['product_id'] ?>" class="btn btn-primary ">Sửa</a>
+                           
                                             <form action="/admin/products/<?= $item['product_id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Bạn có muốn xóa?')">
                                                 <input type="hidden" name="method" value="DELETE" id="">
                                                 <button type="submit" class="btn btn-danger text-white">Xoá</button>
