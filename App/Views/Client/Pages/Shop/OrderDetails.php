@@ -8,11 +8,11 @@ class OrderDetails extends BaseView
 {
     public static function render($data = null)
     {
-        $cart = $data['cart'] ?? [];
+        
         $total_price = $data[0]['price'] * $data[0]['quantity'];
         
         $vnd_to_usd = $total_price / 25346;  // Convert VND to USD
-        var_dump($data);
+        // var_dump($data);
 ?>
 
         <div class="section">
