@@ -36,7 +36,7 @@ class Index extends BaseView
 
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Danh sách người dùng </h5>
+                                    <h3 class="card-title custom-title">Danh sách người dùng </h3>
                                     <?php
                                     if (count($data)) :
                                     ?>

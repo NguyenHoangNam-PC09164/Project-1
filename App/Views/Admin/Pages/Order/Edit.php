@@ -34,7 +34,7 @@ class Edit extends BaseView
                             <div class="card">
                                 <form class="form-horizontal" action="/admin/orders/<?= $data['id'] ?>" method="POST" enctype="multipart/form-data">
                                     <div class="card-body">
-                                        <h4 class="card-title">Sửa đơn hàng</h4>
+                                        <h3 class="card-title custom-title">Sửa đơn hàng</h3>
                                         <input type="hidden" name="method" id="" value="PUT">
                                         <div class="form-group">
                                             <label for="id">ID</label>

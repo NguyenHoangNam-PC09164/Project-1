@@ -19,8 +19,8 @@ class Home extends BaseView
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển 1</a></li>
-                                            <li class="breadcrumb-item active mt-1" aria-current="page">Thống kê</li>
+                                            <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
+                                            <li class="breadcrumb-item active pt-2" aria-current="page"><a href="/admin" class="link">Thống kê</a></li>
                                             <!-- <?= var_dump($data); ?> -->
                                         </ol>
                                     </nav>
@@ -78,7 +78,7 @@ class Home extends BaseView
 
                             <div class="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Danh mục loại sản phẩm</h5>
+                                    <h3 class="card-title ">Danh mục loại sản phẩm</h3>
                                     <div class="card-body">
                                         <div id="c3chart_category" style="height: 420px;"></div>
                                     </div>
@@ -88,7 +88,7 @@ class Home extends BaseView
 
                             <div class="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Top 5 Sản phẩm bán chạy nhất</h5>
+                                    <h3 class="card-title">Top 5 Sản phẩm bán chạy nhất</h3>
                                     <div class="card-body">
                                         <div id="morris_totalrevenue"></div>
                                     </div>
@@ -101,7 +101,7 @@ class Home extends BaseView
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Đơn hàng đã đặt gần đây</h5>
+                                    <h3 class="card-title">Đơn hàng đã đặt gần đây</h3>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
@@ -185,7 +185,7 @@ class Home extends BaseView
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Sản phẩm được yêu thích nhất</h5>
+                                    <h3 class="card-title">Sản phẩm được yêu thích nhất</h3>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">

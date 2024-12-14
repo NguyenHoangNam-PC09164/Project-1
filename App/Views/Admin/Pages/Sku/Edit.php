@@ -19,8 +19,8 @@ class Edit extends BaseView
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Sửa biến thể sản phẩm</li>
+                                        <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page"><a href="/admin/skus/<?=$data['data_sku']['id']?>" class="link">Sửa biến thể sản phẩm</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -33,7 +33,7 @@ class Edit extends BaseView
                         <div class="card">
                             <form class="form" action="/admin/skus/<?=$data['data_sku']['id']?>" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
-                                    <h3 class="card-title">Sửa biến thể sản phẩm</h3>
+                                    <h2 class="card-title custom-title">Sửa biến thể sản phẩm</h2>
                                     <input type="hidden" name="method" id="" value="PUT">
                                     <div class="mb-3">
                                         <label for="id" class="form-label">ID</label>
@@ -44,7 +44,7 @@ class Edit extends BaseView
                                         <input type="text" class="form-control" name="sku_name" id="sku_name" placeholder="Nhập mã sản phẩm" value="<?=$data['data_sku']['sku_name']?>" disabled>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="variant_option_id" class="form-label">Biến thể*</label>
+                                        <label for="variant_option_id" class="form-label">Biến thể</label>
                                         <select class="form-control" style="width: 100%; height:36px;" id="variant_option_id" name="variant_option_id" disabled >
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <?php
@@ -57,7 +57,7 @@ class Edit extends BaseView
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="product_id" class="form-label">Tên sản phẩm*</label>
+                                        <label for="product_id" class="form-label">Tên sản phẩm</label>
                                         <select class="form-control" style="width: 100%; height:36px;" id="product_id" name="product_id" onchange="updateVariantOptions(this.value)" disabled>
                                             <option value="" selected disabled>Vui lòng chọn...</option>
                                             <?php

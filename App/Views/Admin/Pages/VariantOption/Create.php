@@ -18,7 +18,7 @@ class Create extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Biến thể</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page"><a href="/admin/variant_options/create" class="link">Thêm biến thể</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -28,6 +28,7 @@ class Create extends BaseView
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
+                            <h3 class="card-title custom-title">Thêm biến thể</h3>
                             <form class="form px-3" action="/admin/variant_options" method="POST">
                                 <div class="card-body">
                                     <input type="hidden" id="" name="method" value="POST">

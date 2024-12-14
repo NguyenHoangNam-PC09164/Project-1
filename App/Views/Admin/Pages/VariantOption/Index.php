@@ -18,7 +18,7 @@ class Index extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Biến thể</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page"><a href="/admin/variant_options" class="link">Danh sách biến thể</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -29,6 +29,7 @@ class Index extends BaseView
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
+                            <h3 class="card-title custom-title">Danh sách biến thể</h3>
                             <?php
                             if (count($data)) :
                             ?>
@@ -53,7 +54,7 @@ class Index extends BaseView
                                                         <input type="hidden" name="method" value="DELETE" id="">
                                                         <button type="submit" class="btn btn-danger text-light">Xoá</button>
                                                     </form>
-                                                  
+
                                                 </td>
                                             </tr>
                                         <?php

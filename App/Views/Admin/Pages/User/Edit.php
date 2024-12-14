@@ -33,10 +33,10 @@ class Edit extends BaseView
                             <div class="card">
                                 <form class="form-horizontal" action="/admin/users/<?= $data['user_id'] ?>" method="POST" enctype="multipart/form-data">
                                     <div class="card-body">
-                                        <h4 class="card-title">Sửa người dùng</h4>
+                                        <h3 class="card-title custom-title">Sửa người dùng</h3>
                                         <input type="hidden" name="method" id="" value="PUT">
                                         <div align="center">
-                                            <img src="<?= APP_URL ?>/public/uploads/users/<?= $data['avatar'] ?>" alt="" width="100px">
+                                            <img class="mt-5" src="<?= APP_URL ?>/public/uploads/users/<?= $data['avatar'] ?>" alt="" width="100px">
                                         </div>
 
                                         <div class="form-group">

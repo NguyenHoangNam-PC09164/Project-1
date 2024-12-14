@@ -36,7 +36,7 @@ class Detail extends BaseView
 
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Danh sách đơn hàng </h5>
+                                    <h3 class="card-title custom-title">Danh sách đơn hàng </h3>
                                     <?php
                                     if (count($data)) :
                                     ?>

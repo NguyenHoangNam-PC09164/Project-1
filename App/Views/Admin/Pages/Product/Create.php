@@ -19,8 +19,8 @@ class Create extends BaseView
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Thêm sản phẩm</li>
+                                        <li class="breadcrumb-item"><a href="/admin" class="breadcrumb-link">Bảng điều khiển</a></li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page"><a href="/admin/products/create" class="link">Thêm sản phẩm</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -33,7 +33,7 @@ class Create extends BaseView
                         <div class="card">
                             <form class="form" action="/admin/products" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
-                                    <h3 class="card-title">Thêm sản phẩm</h3>
+                                    <h3 class="card-title custom-title">Thêm sản phẩm</h3>
                                     <input type="hidden" name="method" id="" value="POST">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Tên sản phẩm</label>
