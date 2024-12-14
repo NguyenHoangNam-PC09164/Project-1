@@ -166,6 +166,16 @@ class Header extends BaseView
                                             </ul>
                                         </div>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Quản lý đơn hàng</a>
+                                        <div id="submenu-8" class="collapse submenu" style="">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="/admin/orders">Danh sách đơn hàng</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>

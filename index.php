@@ -203,12 +203,19 @@ Route::put('/admin/users/{id}', 'App\Controllers\Admin\UserController@update');
 // DELETE /user/{id} (delete loại người dùng với id cụ thể)
 Route::delete('/admin/users/{id}', 'App\Controllers\Admin\UserController@delete');
 
+//ORDERS
+// GET /order
+Route::get('/admin/orders', 'App\Controllers\Admin\OrderController@index');
 
+// GET 
+Route::get('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@edit');
+Route::put('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@update');
 
+Route::get('/admin/orders/detail/{id}', 'App\Controllers\Admin\OrderController@detail');
 
-
-
-
+Route::delete('/admin/orders/detail/{id}', 'App\Controllers\Admin\OrderController@deleteOrderDetail');
+// DELETE 
+Route::delete('/admin/orders/{id}', 'App\Controllers\Admin\OrderController@delete');
 
 
 //COMMENTS

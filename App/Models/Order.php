@@ -35,7 +35,7 @@ class Order extends BaseModel
     {
         return $this->getAllByStatus();
     }
-   
+
     public function getAllByUser(int $id)
     {
         try {
@@ -82,6 +82,62 @@ class Order extends BaseModel
         } catch (\Throwable $th) {
             error_log('Lỗi cập nhật trạng thái thanh toán: ' . $th->getMessage());
             return false;
+        }
+    }
+    public function getAllOrderAndOrderDetailByStatus()
+    {
+        try {
+            $sql = "SELECT p.name, od.quantity, (od.price * od.quantity) as price, 
+            o.order_date, o.payment_status , od.id as id_orderDetail, o.name as username, o.phone, o.address , o.status, o.id
+            FROM `orders` AS o 
+            INNER JOIN order_details AS od ON od.order_id = o.id 
+            INNER JOIN products AS p ON od.product_id = p.product_id";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy dữ liệu đơn hàng: ' . $th->getMessage());
+            return [];
+        }
+    }
+    public function getOneOrderAndOrderDetailById(int $id)
+    {
+        try {
+            $sql = "SELECT p.name, od.quantity, (od.price * od.quantity) as price, 
+            o.order_date, o.payment_status , od.id as id_orderDetail, o.name as username, o.phone, o.address , o.status, o.id
+            FROM `orders` AS o 
+            INNER JOIN order_details AS od ON od.order_id = o.id 
+            INNER JOIN products AS p ON od.product_id = p.product_id WHERE o.id=?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_assoc();
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy dữ liệu đơn hàng: ' . $th->getMessage());
+            return [];
+        }
+    }
+    public function getAllOrderAndOrderDetailById(int $id)
+    {
+        try {
+            $sql = "SELECT p.image ,p.name, od.quantity, (od.price * od.quantity) as price, 
+            o.order_date, o.payment_status , od.id as id_orderDetail, o.name as username, o.phone, o.address , o.status, o.id
+            FROM `orders` AS o 
+            INNER JOIN order_details AS od ON od.order_id = o.id 
+            INNER JOIN products AS p ON od.product_id = p.product_id WHERE o.id=?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result->num_rows > 0 ? $result->fetch_all(MYSQLI_ASSOC) : [];
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy dữ liệu đơn hàng: ' . $th->getMessage());
+            return [];
         }
     }
 }

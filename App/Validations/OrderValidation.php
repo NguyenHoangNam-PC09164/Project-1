@@ -49,4 +49,30 @@ class OrderValidation{
         }       
         return $is_valid;
     }
+    public static function edit(): bool
+    {
+        $is_valid = true;
+
+        // họ tên
+        if(!isset($_POST['username'])|| $_POST['username']===''){
+            NotificationHelper::error('name','Họ tên không được để trống');
+            $is_valid = false;
+        }
+
+        if (!isset($_POST['phone']) || $_POST['phone'] === '') {
+            NotificationHelper::error('phone', 'Số điện thoại không được để trống');
+            $is_valid = false;
+        } else {
+            // Kiểm tra nếu số điện thoại chỉ gồm 10 chữ số
+            if (!preg_match('/^\d{10}$/', $_POST['phone'])) {
+                NotificationHelper::error('phone', 'Số điện thoại phải là 10 chữ số');
+                $is_valid = false;
+            }
+        }
+        if(!isset($_POST['address'])|| $_POST['address']===''){
+            NotificationHelper::error('address','Địa chỉ không được để trống');
+            $is_valid = false;
+        } 
+        return $is_valid;
+    }
 }
