@@ -20,7 +20,7 @@ class Detail extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển </a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Chi tiết đơn hàng</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page"><a href="/admin/orders/detail/<?=$data[0]['id']?>" class="link">Chi tiết đơn hàng</a></li>
                                     </ol>
                                 </nav>
                             </div>

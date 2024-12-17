@@ -85,7 +85,7 @@ class OrderController
     {
         $order = new Order();
         $data = $order->getAllOrderAndOrderDetailById($id);
-
+        // var_dump($data);
         if (!$data) {
             NotificationHelper::error('edit', 'Không thể xem đơn hàng này');
             header("location: /admin/orders/detail/$id");

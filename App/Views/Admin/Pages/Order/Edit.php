@@ -19,7 +19,7 @@ class Edit extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển </a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Đơn hàng</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page"><a href="/admin/orders/<?=$data['id']?>" class="link">Sửa đơn hàng</a></li>
                                     </ol>
                                 </nav>
                             </div>

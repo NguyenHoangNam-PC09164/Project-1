@@ -18,7 +18,7 @@ class Index extends BaseView
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Bảng điều khiển</a></li>
-                                        <li class="breadcrumb-item active mt-1" aria-current="page">Bình luận</li>
+                                        <li class="breadcrumb-item active mt-2" aria-current="page"><a href="/admin/comments" class="link">Danh sách bình luận</a></li>
                                     </ol>
                                 </nav>
                             </div>
