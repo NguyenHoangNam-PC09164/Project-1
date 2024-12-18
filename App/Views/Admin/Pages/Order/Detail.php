@@ -76,7 +76,7 @@ class Detail extends BaseView
                                                             <td>
                                                                 <form action="/admin/orders/detail/<?= $item['id_orderDetail'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
                                                                     <input type="hidden" name="method" value="DELETE" id="">
-                                                                    <button type="submit" class="btn btn-danger text-white">Xoá</button>
+                                                                    <!-- <button type="submit" class="btn btn-danger text-white">Xoá</button> -->
                                                                 </form>
                                                             </td>
                                                         </tr>

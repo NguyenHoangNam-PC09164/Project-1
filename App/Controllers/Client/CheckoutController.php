@@ -90,7 +90,7 @@ class CheckoutController
             $order_details .= "<tr>
                                 <td>{$item['name']}</td>
                                 <td>{$item['quantity']}</td>
-                                <td>{$item['total_price']} đ</td>
+                                <td>{$item['price']} đ</td>
                               </tr>";
             $total_price += $item['total_price'];
     
